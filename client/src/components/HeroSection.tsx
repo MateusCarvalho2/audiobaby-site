@@ -95,12 +95,12 @@ export default function HeroSection() {
             </div>
             <div className="w-px bg-[#94B1DA]/20" />
             <div>
-              <p className="font-nunito font-900 text-3xl text-[#94B1DA]">Sem</p>
+              <p className="font-nunito font-900 text-3xl text-[#94B1DA]" style={{width: '172px', borderWidth: '4px'}}>+ Conforto</p>
               <p className="font-lato text-sm text-[#718096]">Sedação<br />sempre que possível</p>
             </div>
             <div className="w-px bg-[#94B1DA]/20" />
             <div>
-              <p className="font-nunito font-900 text-3xl text-[#94B1DA]">1 lugar</p>
+              <p className="font-nunito font-900 text-3xl text-[#94B1DA]">O melhor lugar para o seu bebê</p>
               <p className="font-lato text-sm text-[#718096]">Todos os exames<br />auditivos</p>
             </div>
           </div>

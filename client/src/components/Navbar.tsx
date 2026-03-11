@@ -55,7 +55,7 @@ export default function Navbar() {
           <img
             src={LOGO_URL}
             alt="AudioBaby — Núcleo de Audiologia Infantil"
-            className="h-12 md:h-14 w-auto object-contain"
+            className="h-12 md:h-14 w-auto object-contain" style={{paddingRight: '24px', paddingLeft: '14px', marginTop: '3px', marginBottom: '6px', marginLeft: '-1px', width: '178px', height: '94px'}}
           />
         </a>
 
