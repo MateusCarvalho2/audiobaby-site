@@ -49,7 +49,7 @@ export default function FaqSection() {
                 Dúvidas Frequentes
               </span>
             </div>
-            <h2 className="font-nunito font-900 text-3xl md:text-4xl text-[#2C3E50] mb-6 leading-tight">
+            <h2 className="font-rheago text-3xl md:text-4xl text-[#2C3E50] mb-6 leading-tight">
               Sabemos que você
               <br />
               tem <span className="text-[#94B1DA]">muitas perguntas.</span>
@@ -61,7 +61,7 @@ export default function FaqSection() {
               href="https://wa.me/5500000000000?text=Olá! Tenho dúvidas sobre os exames auditivos da AudioBaby."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#94B1DA] hover:bg-[#6B90C4] text-white font-nunito font-700 text-sm px-6 py-3 rounded-full transition-all duration-200 hover:shadow-lg"
+              className="btn-premium inline-flex items-center gap-2 bg-[#94B1DA] text-white font-nunito font-700 text-sm px-6 py-3 rounded-full"
             >
               Falar com nossa equipe
             </a>
@@ -76,7 +76,7 @@ export default function FaqSection() {
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-[#F8FBFF] transition-colors"
+                  className="interactive-hover w-full flex items-center justify-between gap-4 p-5 text-left"
                 >
                   <span className="font-nunito font-700 text-sm text-[#2C3E50] leading-snug">
                     {faq.q}

@@ -55,7 +55,7 @@ export default function DiferenciaisSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          <h2 className="font-nunito font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
+          <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
             Ciência e cuidado
             <br />
             <span className="text-[#94B1DA]">caminham juntos aqui</span>
@@ -72,8 +72,8 @@ export default function DiferenciaisSection() {
             {diferenciais.slice(0, 3).map((d, i) => (
               <div
                 key={d.title}
-                className="reveal bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 border border-[#94B1DA]/15"
-                style={{ transitionDelay: `${i * 0.1}s` }}
+                className="reveal card-hover bg-[#F8FBFF] rounded-3xl p-6 shadow-sm border border-[#94B1DA]/15"
+                style={{ animationDelay: `${i * 0.1}s` }}
               >
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#EEF4FB] flex items-center justify-center text-2xl flex-shrink-0">
@@ -139,8 +139,8 @@ export default function DiferenciaisSection() {
             {diferenciais.slice(3, 6).map((d, i) => (
               <div
                 key={d.title}
-                className="reveal bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 border border-[#94B1DA]/15"
-                style={{ transitionDelay: `${(i + 3) * 0.1}s` }}
+                className="reveal card-hover bg-[#F8FBFF] rounded-3xl p-6 shadow-sm border border-[#94B1DA]/15"
+                style={{ animationDelay: `${(i + 3) * 0.1}s` }}
               >
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#EEF4FB] flex items-center justify-center text-2xl flex-shrink-0">

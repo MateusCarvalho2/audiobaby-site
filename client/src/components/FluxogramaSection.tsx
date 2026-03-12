@@ -75,7 +75,7 @@ export default function FluxogramaSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          <h2 className="font-nunito font-900 text-3xl md:text-4xl lg:text-5xl text-white mb-4">
+          <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-white mb-4">
             Do nascimento ao diagnóstico,
             <br />
             <span className="text-[#F4C62F]">cada passo com você</span>
@@ -95,11 +95,11 @@ export default function FluxogramaSection() {
               <div
                 key={step.step}
                 className="reveal flex flex-col items-center text-center"
-                style={{ transitionDelay: `${i * 0.1}s` }}
+                style={{ animationDelay: `${i * 0.15}s` }}
               >
                 {/* Step number circle */}
-                <div className="relative z-10 mb-4">
-                  <div className={`w-16 h-16 rounded-full ${step.color} flex items-center justify-center shadow-lg border-4 border-white/30`}>
+                <div className="card-hover relative z-10 mb-4">
+                  <div className={`w-16 h-16 rounded-full ${step.color} flex items-center justify-center shadow-lg border-4 border-white/30 transition-all duration-300`}>
                     <span className="text-2xl">{step.icon}</span>
                   </div>
                   {/* Step number badge */}
