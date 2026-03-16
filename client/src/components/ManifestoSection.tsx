@@ -2,7 +2,6 @@
  * AudioBaby ManifestoSection
  * Design: Seção com fundo azul claro, texto do manifesto em destaque
  * Layout: Assimétrico - texto à esquerda, imagem à direita
- * Animações: reveal-left/right com microinterações nos cards de valores
  */
 
 const BEBE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/bebe_dormindo_exame_214b7618.jpg";
@@ -34,7 +33,7 @@ export default function ManifestoSection() {
               </span>
             </div>
 
-            <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] leading-tight mb-8">
+            <h2 className="font-nunito font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] leading-tight mb-6">
               Nascemos para estar
               <br />
               <span className="text-[#94B1DA]">ao seu lado</span>
@@ -73,12 +72,8 @@ export default function ManifestoSection() {
                 { icon: "💛", label: "Acolhimento Humano" },
                 { icon: "👶", label: "Foco no Bebê" },
                 { icon: "👨‍👩‍👧", label: "Suporte à Família" },
-              ].map((v, i) => (
-                <div 
-                  key={v.label} 
-                  className="reveal-scale interactive-hover flex items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-sm"
-                  style={{ animationDelay: `${i * 0.1}s` }}
-                >
+              ].map((v) => (
+                <div key={v.label} className="flex items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-sm">
                   <span className="text-2xl">{v.icon}</span>
                   <span className="font-nunito font-700 text-sm text-[#2C3E50]">{v.label}</span>
                 </div>
@@ -88,7 +83,7 @@ export default function ManifestoSection() {
 
           {/* Image */}
           <div className="reveal-right relative">
-            <div className="card-hover relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src={BEBE_IMG}
                 alt="Bebê dormindo durante exame auditivo PEATE/BERA na AudioBaby"
@@ -96,7 +91,7 @@ export default function ManifestoSection() {
               />
               {/* Image overlay badge */}
               <div className="absolute bottom-6 left-6 right-6">
-                <div className="glass-card rounded-2xl px-5 py-4 backdrop-blur-md bg-white/80">
+                <div className="glass-card rounded-2xl px-5 py-4">
                   <p className="font-nunito font-800 text-[#2C3E50] text-sm">
                     Exames em sono espontâneo
                   </p>
@@ -108,7 +103,7 @@ export default function ManifestoSection() {
             </div>
 
             {/* Floating stat card */}
-            <div className="reveal-scale absolute -top-6 -right-4 md:-right-8 bg-[#F4C62F] rounded-2xl px-5 py-4 shadow-xl">
+            <div className="absolute -top-6 -right-4 md:-right-8 bg-[#F4C62F] rounded-2xl px-5 py-4 shadow-xl">
               <p className="font-nunito font-900 text-3xl text-[#2C3E50]">+10</p>
               <p className="font-lato text-xs text-[#2C3E50] font-bold">tipos de exames<br />auditivos</p>
             </div>

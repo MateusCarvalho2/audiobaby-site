@@ -45,7 +45,7 @@ export default function DepoimentosSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          <h2 className="font-rheago text-3xl md:text-4xl text-[#2C3E50] mb-4">
+          <h2 className="font-nunito font-900 text-3xl md:text-4xl text-[#2C3E50] mb-4">
             Histórias reais de
             <br />
             <span className="text-[#94B1DA]">cuidado e confiança</span>
@@ -57,8 +57,8 @@ export default function DepoimentosSection() {
           {depoimentos.map((dep, i) => (
             <div
               key={dep.nome}
-              className={`reveal card-hover rounded-3xl p-7 ${dep.destaque ? "bg-[#94B1DA] md:-mt-4 md:mb-4 shadow-2xl" : "bg-white shadow-md"}`}
-              style={{ animationDelay: `${i * 0.15}s` }}
+              className={`reveal rounded-3xl p-7 ${dep.destaque ? "bg-[#94B1DA] md:-mt-4 md:mb-4 shadow-2xl" : "bg-white shadow-md"} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
+              style={{ transitionDelay: `${i * 0.15}s` }}
             >
               {/* Stars */}
               <div className="flex gap-1 mb-4">
@@ -100,8 +100,8 @@ export default function DepoimentosSection() {
               { icon: "🔬", title: "Equipamentos calibrados", sub: "e certificados INMETRO" },
               { icon: "📋", title: "Protocolos internacionais", sub: "JCIH e Ministério da Saúde" },
               { icon: "❤️", title: "Atendimento humanizado", sub: "para toda a família" },
-            ].map((badge, i) => (
-              <div key={badge.title} className="reveal-scale bg-white rounded-2xl p-5 text-center shadow-sm border border-[#94B1DA]/10" style={{ animationDelay: `${i * 0.1}s` }}>
+            ].map((badge) => (
+              <div key={badge.title} className="bg-white rounded-2xl p-5 text-center shadow-sm border border-[#94B1DA]/10">
                 <span className="text-3xl block mb-2">{badge.icon}</span>
                 <p className="font-nunito font-800 text-sm text-[#2C3E50]">{badge.title}</p>
                 <p className="font-lato text-xs text-[#94B1DA] mt-1">{badge.sub}</p>

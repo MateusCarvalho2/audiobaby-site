@@ -146,7 +146,7 @@ export default function ExamesSection() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`interactive-hover flex items-center gap-2 px-4 py-2.5 rounded-full font-nunito font-700 text-sm transition-all duration-300 ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-nunito font-700 text-sm transition-all duration-200 ${
                 activeCategory === cat.id
                   ? "bg-[#94B1DA] text-white shadow-lg scale-105"
                   : "bg-[#EEF4FB] text-[#6B90C4] hover:bg-[#94B1DA]/20"
@@ -163,7 +163,7 @@ export default function ExamesSection() {
           {(exames[activeCategory] || []).map((exame, i) => (
             <div
               key={exame.title}
-              className="reveal card-hover group bg-white border border-[#94B1DA]/20 rounded-3xl p-6 hover:border-[#94B1DA]/60"
+              className="group bg-white border border-[#94B1DA]/20 rounded-3xl p-6 hover:border-[#94B1DA]/60 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               <div className="flex items-start gap-4 mb-4">

@@ -71,7 +71,7 @@ export default function HeroSection() {
               href="https://wa.me/5500000000000?text=Olá! Gostaria de agendar um exame na AudioBaby."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-premium inline-flex items-center justify-center gap-2 bg-[#F4C62F] text-[#2C3E50] font-nunito font-800 text-base px-7 py-4 rounded-full shadow-lg"
+              className="inline-flex items-center justify-center gap-2 bg-[#F4C62F] hover:bg-[#D4A820] text-[#2C3E50] font-nunito font-800 text-base px-7 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:scale-105 shadow-lg"
             >
               <Phone size={18} />
               Agendar pelo WhatsApp
@@ -81,7 +81,7 @@ export default function HeroSection() {
                 const el = document.querySelector("#exames");
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               }}
-              className="interactive-hover inline-flex items-center justify-center gap-2 bg-white/80 border-2 border-[#94B1DA] text-[#6B90C4] font-nunito font-700 text-base px-7 py-4 rounded-full backdrop-blur-sm"
+              className="inline-flex items-center justify-center gap-2 bg-white/80 hover:bg-white border-2 border-[#94B1DA] text-[#6B90C4] font-nunito font-700 text-base px-7 py-4 rounded-full transition-all duration-200 hover:shadow-lg backdrop-blur-sm"
             >
               Conhecer os Exames
             </button>
@@ -95,12 +95,12 @@ export default function HeroSection() {
             </div>
             <div className="w-px bg-[#94B1DA]/20" />
             <div>
-              <p className="font-rheago text-3xl text-[#94B1DA] interactive-hover" style={{width: '172px', borderWidth: '4px'}}>+ Conforto</p>
+              <p className="font-nunito font-900 text-3xl text-[#94B1DA]" style={{width: '172px', borderWidth: '4px'}}>+ Conforto</p>
               <p className="font-lato text-sm text-[#718096]">Sedação<br />sempre que possível</p>
             </div>
             <div className="w-px bg-[#94B1DA]/20" />
             <div>
-              <p className="font-rheago text-2xl text-[#94B1DA] interactive-hover">O melhor lugar para o seu bebê</p>
+              <p className="font-nunito font-900 text-3xl text-[#94B1DA]">O melhor lugar para o seu bebê</p>
               <p className="font-lato text-sm text-[#718096]">Todos os exames<br />auditivos</p>
             </div>
           </div>
