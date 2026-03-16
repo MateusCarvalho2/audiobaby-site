@@ -31,9 +31,38 @@ export default function HeroSection() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
       </div>
 
-      {/* Decorative wave icon */}
-      <div className="absolute top-1/3 right-8 md:right-16 opacity-20 animate-float hidden md:block">
-        <img src={WAVE_ICON} alt="" className="w-32 h-auto" />
+      {/* Decorative wave icon - animated */}
+      <div className="absolute top-1/3 right-8 md:right-16 opacity-20 hidden md:block">
+        <svg className="w-32 h-auto" viewBox="0 0 100 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <style>{`
+            @keyframes wave {
+              0%, 100% { transform: translateY(0px); }
+              50% { transform: translateY(-8px); }
+            }
+            .wave-bar {
+              animation: wave 1.2s ease-in-out infinite;
+              transform-origin: center;
+            }
+            .wave-bar:nth-child(1) { animation-delay: 0s; }
+            .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+            .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+            .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+            .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+            .wave-bar:nth-child(6) { animation-delay: 0.5s; }
+            .wave-bar:nth-child(7) { animation-delay: 0.6s; }
+            .wave-bar:nth-child(8) { animation-delay: 0.7s; }
+            .wave-bar:nth-child(9) { animation-delay: 0.8s; }
+          `}</style>
+          <rect x="5" y="20" width="4" height="20" fill="#94B1DA" className="wave-bar" />
+          <rect x="12" y="15" width="4" height="30" fill="#94B1DA" className="wave-bar" />
+          <rect x="19" y="10" width="4" height="40" fill="#94B1DA" className="wave-bar" />
+          <rect x="26" y="15" width="4" height="30" fill="#94B1DA" className="wave-bar" />
+          <rect x="33" y="20" width="4" height="20" fill="#94B1DA" className="wave-bar" />
+          <rect x="40" y="15" width="4" height="30" fill="#94B1DA" className="wave-bar" />
+          <rect x="47" y="10" width="4" height="40" fill="#94B1DA" className="wave-bar" />
+          <rect x="54" y="15" width="4" height="30" fill="#94B1DA" className="wave-bar" />
+          <rect x="61" y="20" width="4" height="20" fill="#94B1DA" className="wave-bar" />
+        </svg>
       </div>
 
       {/* Content */}
@@ -48,7 +77,7 @@ export default function HeroSection() {
           </div>
 
           {/* Main headline */}
-          <h1 className="font-nunito font-900 text-4xl md:text-5xl lg:text-6xl text-[#2C3E50] leading-tight mb-6">
+          <h1 className="font-rheago text-4xl md:text-5xl lg:text-6xl text-[#2C3E50] leading-tight mb-6">
             Quando a audição
             <br />
             do seu bebê{" "}
