@@ -130,7 +130,7 @@ export default function ExamesSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          <h2 className="font-nunito font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
+          <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
             Todos os exames auditivos
             <br />
             <span className="text-[#94B1DA]">em um único lugar</span>

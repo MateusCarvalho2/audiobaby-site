@@ -49,7 +49,7 @@ export default function FaqSection() {
                 Dúvidas Frequentes
               </span>
             </div>
-            <h2 className="font-nunito font-900 text-3xl md:text-4xl text-[#2C3E50] mb-6 leading-tight">
+            <h2 className="font-rheago text-3xl md:text-4xl text-[#2C3E50] mb-6 leading-tight">
               Sabemos que você
               <br />
               tem <span className="text-[#94B1DA]">muitas perguntas.</span>

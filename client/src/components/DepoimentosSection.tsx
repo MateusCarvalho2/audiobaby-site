@@ -45,7 +45,7 @@ export default function DepoimentosSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          <h2 className="font-nunito font-900 text-3xl md:text-4xl text-[#2C3E50] mb-4">
+          <h2 className="font-rheago text-3xl md:text-4xl text-[#2C3E50] mb-4">
             Histórias reais de
             <br />
             <span className="text-[#94B1DA]">cuidado e confiança</span>

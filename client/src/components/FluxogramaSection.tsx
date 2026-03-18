@@ -75,7 +75,7 @@ export default function FluxogramaSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          <h2 className="font-nunito font-900 text-3xl md:text-4xl lg:text-5xl text-white mb-4">
+          <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-white mb-4">
             Do nascimento ao diagnóstico,
             <br />
             <span className="text-[#F4C62F]">cada passo com você</span>

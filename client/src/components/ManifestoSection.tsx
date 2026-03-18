@@ -33,7 +33,7 @@ export default function ManifestoSection() {
               </span>
             </div>
 
-            <h2 className="font-nunito font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] leading-tight mb-6">
+            <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] leading-tight mb-6">
               Nascemos para estar
               <br />
               <span className="text-[#94B1DA]">ao seu lado</span>

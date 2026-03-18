@@ -4,7 +4,7 @@
  * Monta todas as seções do site institucional
  */
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ManifestoSection from "@/components/ManifestoSection";
@@ -16,8 +16,16 @@ import FaqSection from "@/components/FaqSection";
 import ContatoSection from "@/components/ContatoSection";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WaveDivider, { AudioWaveBar } from "@/components/WaveDivider";
+import AgendamentoModal from "@/components/AgendamentoModal";
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Expor função para abrir modal globalmente
+  useEffect(() => {
+    (window as any).openAgendamentoModal = () => setIsModalOpen(true);
+  }, []);
+
   // Scroll reveal observer
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -99,6 +107,11 @@ export default function Home() {
 
       {/* Floating WhatsApp button */}
       <WhatsAppFloat />
+
+      {/* Agendamento Modal */}
+      <AgendamentoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }
+
+

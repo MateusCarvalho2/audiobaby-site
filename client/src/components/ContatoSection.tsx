@@ -33,7 +33,7 @@ export default function ContatoSection() {
                 </span>
               </div>
 
-              <h2 className="font-nunito font-900 text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
+              <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
                 Seu bebê merece
                 <br />
                 <span className="text-[#F4C62F]">ouvir o mundo</span>
