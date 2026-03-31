@@ -6,14 +6,6 @@
 
 const depoimentos = [
   {
-    nome: "Ana Paula M.",
-    filho: "Mãe do Pedro, 4 meses",
-    texto: "Quando meu filho falhou na triagem da maternidade, entrei em desespero. A equipe da AudioBaby foi incrível — me explicaram tudo com calma, fizeram o PEATE no sono dele e no mesmo dia já tínhamos o diagnóstico. Me senti acolhida do início ao fim.",
-    estrelas: 5,
-    avatar: "AP",
-    cor: "bg-[#94B1DA]",
-  },
-  {
     nome: "Fernanda L.",
     filho: "Mãe da Sofia, 2 anos",
     texto: "Minha filha tem perda auditiva neurossensorial bilateral. Encontrei na AudioBaby não só o diagnóstico preciso, mas uma equipe que me orientou em cada passo — desde a indicação do aparelho até o acompanhamento fonoaudiológico. São parceiros de verdade.",
