@@ -1,6 +1,7 @@
 /*
  * AudioBaby — Home Page
- * Modified to include the new EquipeSection and adjust wave transitions accordingly.
+ * Updated to remove the DepoimentosSection and add the UnidadeSection showcasing the clinic.
+ * The UnidadeSection displays photos of the unit and key contact information.
  */
 
 import { useEffect } from "react";
@@ -11,7 +12,7 @@ import ExamesSection from "@/components/ExamesSection";
 import FluxogramaSection from "@/components/FluxogramaSection";
 import DiferenciaisSection from "@/components/DiferenciaisSection";
 import EquipeSection from "@/components/EquipeSection";
-import DepoimentosSection from "@/components/DepoimentosSection";
+import UnidadeSection from "@/components/UnidadeSection";
 import FaqSection from "@/components/FaqSection";
 import ContatoSection from "@/components/ContatoSection";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -34,7 +35,9 @@ export default function Home() {
       }
     );
 
-    const elements = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+    const elements = document.querySelectorAll(
+      ".reveal, .reveal-left, .reveal-right"
+    );
     elements.forEach((el) => observer.observe(el));
 
     return () => {
@@ -91,11 +94,14 @@ export default function Home() {
       {/* FAQ */}
       <FaqSection />
 
-      {/* Wave transition */}
-      <WaveDivider color="white" bgColor="#EEF4FB" flip />
+      {/* Wave transition to Unidade Section */}
+      <WaveDivider color="#F8FBFF" bgColor="#EEF4FB" flip />
 
-      {/* Depoimentos */}
-      <DepoimentosSection />
+      {/* Unidade — photos of the clinic and contact details */}
+      <UnidadeSection />
+
+      {/* Wave transition to Contato */}
+      <WaveDivider color="#2C3E50" bgColor="#F8FBFF" />
 
       {/* Contato + Footer */}
       <ContatoSection />

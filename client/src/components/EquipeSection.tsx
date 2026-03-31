@@ -12,7 +12,7 @@ const team = [
   {
     name: "Dra. Adriana Silveira Santos",
     details:
-      "CRM-BA 13.600 | RQE 4.886 – 14.329 | Médica Otorrinolaringologista Responsável Técnica | Homeopatia",
+      "CRM-BA 13.600 | RQE 4.886 – 14.329 | Médica Otorrinolaringologista | Responsável Técnico | Homeopatia",
     imgSrc: "/imagens/corpoclinico/Adriana.png",
   },
   {
@@ -24,7 +24,7 @@ const team = [
   {
     name: "Dr. Fabio de Alencar Rodrigues Junior",
     details:
-      "CRM 39.762 - BA | RQE 2.955 – Otologia | diagnóstico avançado e intervenção terapêutica das perdas auditivas",
+      "CRM 39.762 - BA | RQE 2.955 – Otologista | diagnóstico avançado e intervenção terapêutica das perdas auditivas",
     imgSrc: "/imagens/corpoclinico/Fabio.png",
   },
   {

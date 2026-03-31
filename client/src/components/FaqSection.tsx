@@ -58,7 +58,7 @@ export default function FaqSection() {
               É completamente normal sentir dúvidas e ansiedade quando se trata da saúde auditiva do seu filho. Reunimos as perguntas mais comuns das mães que atendemos.
             </p>
             <a
-              href="https://wa.me/5500000000000?text=Olá! Tenho dúvidas sobre os exames auditivos da AudioBaby."
+              href="https://wa.me/5571981581346?text=Olá! Tenho dúvidas sobre os exames auditivos da AudioBaby."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#94B1DA] hover:bg-[#6B90C4] text-white font-nunito font-700 text-sm px-6 py-3 rounded-full transition-all duration-200 hover:shadow-lg"
