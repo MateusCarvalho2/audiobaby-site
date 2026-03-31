@@ -1,39 +1,46 @@
 /*
  * AudioBaby EquipeSection
- * New section showcasing the clinical team. Provides placeholders for photos and displays names and credentials.
+ * New section showcasing the clinical team. Provides placeholders for photos and displays names,
+ * credentials and profile photos. Each team member can include an `imgSrc` property
+ * pointing to a file in the `public/imagens/corpoclinico` directory.
  */
 
-// Array of team members with names and credentials. Each entry includes a
-// descriptive string that will be displayed below the name. Photo placeholders
-// can be replaced in the future by adding an `imgSrc` property and using it
-// inside the card.
+// Array of team members with names, credentials and an optional photo path.  If you
+// add new professionals, provide their `imgSrc` matching the filename you placed
+// under `public/imagens/corpoclinico` so the image loads correctly on the website.
 const team = [
   {
     name: "Dra. Adriana Silveira Santos",
     details:
       "CRM-BA 13.600 | RQE 4.886 – 14.329 | Médica Otorrinolaringologista Responsável Técnica | Homeopatia",
+    imgSrc: "/imagens/corpoclinico/Adriana.png",
   },
   {
     name: "Dra. Rosa Lima Beltrão Bacellar",
     details:
       "CRM 17.014 - BA | RQE 7.667 – Foniatria | distúrbios de linguagem",
+    imgSrc: "/imagens/corpoclinico/Rosa.png",
   },
   {
     name: "Dr. Fabio de Alencar Rodrigues Junior",
     details:
       "CRM 39.762 - BA | RQE 2.955 – Otologia | diagnóstico avançado e intervenção terapêutica das perdas auditivas",
+    imgSrc: "/imagens/corpoclinico/Fabio.png",
   },
   {
     name: "Aêdo Santos Cidreira",
     details: "CRFa 7.915 | Processamento Auditivo | Audiologia Infantil",
+    imgSrc: "/imagens/corpoclinico/Aedo.png",
   },
   {
     name: "Lucienne Rezende Montalverne",
     details: "CRFa 6.609 | Audiologia Infantil",
+    imgSrc: "/imagens/corpoclinico/Luciene.png",
   },
   {
     name: "Pedro Henrique de Macedo",
     details: "CRFa 21.729 | Audiologia Infantil",
+    imgSrc: "/imagens/corpoclinico/Pedro.png",
   },
 ];
 
@@ -50,7 +57,7 @@ export default function EquipeSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          {/* Use Rheago via global heading styling (no font-nunito class) */}
+          {/* Large section heading uses Rheago via global CSS (h2) */}
           <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
             Conheça nosso corpo clínico
           </h2>
@@ -61,11 +68,26 @@ export default function EquipeSection() {
         {/* Team Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {team.map((member, idx) => (
-            <div key={idx} className="reveal flex flex-col items-center text-center bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
-              {/* Placeholder for profile photo */}
-              <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#EEF4FB] mb-4 overflow-hidden" />
-              <h3 className="font-nunito font-800 text-[#2C3E50] text-base mb-1">{member.name}</h3>
-              <p className="font-lato text-sm text-[#718096] leading-relaxed">{member.details}</p>
+            <div
+              key={idx}
+              className="reveal flex flex-col items-center text-center bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
+            >
+              {/* Profile photo or fallback placeholder */}
+              {member.imgSrc ? (
+                <img
+                  src={member.imgSrc}
+                  alt={member.name}
+                  className="w-24 h-24 md:w-28 md:h-28 rounded-full mb-4 object-cover"
+                />
+              ) : (
+                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#EEF4FB] mb-4 overflow-hidden" />
+              )}
+              <h3 className="font-nunito font-800 text-[#2C3E50] text-base mb-1">
+                {member.name}
+              </h3>
+              <p className="font-lato text-sm text-[#718096] leading-relaxed">
+                {member.details}
+              </p>
             </div>
           ))}
         </div>

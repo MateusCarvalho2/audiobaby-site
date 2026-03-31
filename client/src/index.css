@@ -93,9 +93,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  h1, h2, h3, h4, h5, h6 {
-    /* Use Rheago font for all headings. Adding !important ensures this takes precedence over utility classes like font-nunito */
-    font-family: 'Rheago', sans-serif !important;
+  /* Apply the Rheago font only to the largest headings (h1 and h2). Smaller headings (h3-h6)
+     and names retain their assigned fonts (Nunito or Lato). */
+  h1,
+  h2 {
+    font-family: 'Rheago', sans-serif;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
