@@ -3,7 +3,7 @@
  * Modified sedation messaging in highlight card and adjusted section title to use Rheago font.
  */
 
-const CLINICA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/clinica_ambiente_dfb06cf9.jpg";
+const CLINICA_IMG = "/imagens/unidade/ambiente.jpg";
 const CONSULTA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/mae_consulta_devolutiva_c2ca083e.jpg";
 const HEADPHONE_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/4_ac7150bc.png";
 const WHISTLE_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/5_05c11fe1.png";
