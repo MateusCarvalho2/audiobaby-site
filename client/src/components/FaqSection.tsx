@@ -1,12 +1,14 @@
 /*
  * AudioBaby FaqSection
- * Design: Accordion de perguntas frequentes das mães
- * Fundo: Azul claro suave
+ * Modified to remove convênio information and adjust sedation wording.
+ * Titles now rely on global heading styles (Rheago font) by omitting font-nunito on headings.
  */
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
+// Questions and answers for the FAQ accordion. Removed the convênio question
+// and updated the sedation answer to reflect that sedation is used when necessary.
 const faqs = [
   {
     q: "Meu bebê falhou na triagem auditiva da maternidade. O que isso significa?",
@@ -22,15 +24,12 @@ const faqs = [
   },
   {
     q: "Meu filho vai precisar de sedação para fazer o PEATE/BERA?",
-    a: "Na grande maioria dos casos, não. Realizamos o PEATE em sono espontâneo — aproveitamos o momento em que o bebê está dormindo naturalmente. Para crianças maiores que não conseguem dormir espontaneamente, avaliamos cada caso individualmente. Sedação só é indicada em situações muito específicas, sempre com acompanhamento médico.",
+    // Updated answer: sedação quando necessário, sempre com acompanhamento médico.
+    a: "Na grande maioria dos casos, não. Realizamos o PEATE em sono espontâneo — aproveitamos o momento em que o bebê está dormindo naturalmente. Para crianças maiores que não conseguem dormir espontaneamente, avaliamos cada caso individualmente. Sedação quando necessária, sempre com acompanhamento médico.",
   },
   {
     q: "Quais são os fatores de risco para perda auditiva em bebês?",
     a: "Os principais fatores de risco incluem: permanência em UTI neonatal por mais de 5 dias, uso de medicamentos ototóxicos, histórico familiar de perda auditiva na infância, infecções congênitas (CMV, toxoplasmose, rubéola, sífilis, herpes), hiperbilirrubinemia grave, malformações craniofaciais, prematuridade e baixo peso ao nascer. Bebês com esses fatores precisam de acompanhamento auditivo mesmo que passem na triagem inicial.",
-  },
-  {
-    q: "Atendemos convênios?",
-    a: "Atendemos convênios e particulares. Entre em contato com nossa equipe para verificar a cobertura do seu plano de saúde e disponibilidade de agenda. Trabalhamos para que o cuidado auditivo do seu filho seja acessível.",
   },
 ];
 
@@ -38,7 +37,7 @@ export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 md:py-24 bg-[#EEF4FB]">
+    <section id="faq" className="py-20 md:py-24 bg-[#EEF4FB]">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: header */}
@@ -49,7 +48,8 @@ export default function FaqSection() {
                 Dúvidas Frequentes
               </span>
             </div>
-            <h2 className="font-rheago text-3xl md:text-4xl text-[#2C3E50] mb-6 leading-tight">
+            {/* Removed font-nunito from the heading so global Rheago applies */}
+            <h2 className="font-900 text-3xl md:text-4xl text-[#2C3E50] mb-6 leading-tight">
               Sabemos que você
               <br />
               tem <span className="text-[#94B1DA]">muitas perguntas.</span>

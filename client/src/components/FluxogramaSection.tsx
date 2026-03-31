@@ -1,7 +1,6 @@
 /*
  * AudioBaby FluxogramaSection
- * Design: Linha do tempo visual do fluxo de triagem ao diagnóstico
- * Fundo: Azul bebê com elementos brancos e amarelos
+ * Modified sedation messaging in the diagnosis step and adjusted headings for Rheago font.
  */
 
 const GRAFISMO_COMP = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/2_16bdae17.png";
@@ -29,7 +28,8 @@ const steps = [
     step: "03",
     title: "Diagnóstico Avançado",
     subtitle: "PEATE/BERA + ASSR + Imitanciometria",
-    desc: "Exames objetivos de alta precisão, realizados em sono espontâneo na AudioBaby, sem sedação sempre que possível.",
+    // Updated description: sedation when necessary
+    desc: "Exames objetivos de alta precisão, realizados em sono espontâneo na AudioBaby, sedação quando necessária.",
     color: "bg-white",
     textColor: "text-[#2C3E50]",
     icon: "🔬",
@@ -38,7 +38,7 @@ const steps = [
     step: "04",
     title: "Devolutiva Integrada",
     subtitle: "Médico + Fonoaudiólogo",
-    desc: "Explicação clara do diagnóstico, prognóstico e plano de cuidado. Suporte emocional estruturado à família.",
+    desc: "Avaliação Integrada.",
     color: "bg-[#F4C62F]",
     textColor: "text-[#2C3E50]",
     icon: "💬",
@@ -75,7 +75,8 @@ export default function FluxogramaSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-white mb-4">
+          {/* Removed font-nunito to allow Rheago font on the main heading */}
+          <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-white mb-4">
             Do nascimento ao diagnóstico,
             <br />
             <span className="text-[#F4C62F]">cada passo com você</span>

@@ -1,0 +1,75 @@
+/*
+ * AudioBaby EquipeSection
+ * New section showcasing the clinical team. Provides placeholders for photos and displays names and credentials.
+ */
+
+// Array of team members with names and credentials. Each entry includes a
+// descriptive string that will be displayed below the name. Photo placeholders
+// can be replaced in the future by adding an `imgSrc` property and using it
+// inside the card.
+const team = [
+  {
+    name: "Dra. Adriana Silveira Santos",
+    details:
+      "CRM-BA 13.600 | RQE 4.886 – 14.329 | Médica Otorrinolaringologista Responsável Técnica | Homeopatia",
+  },
+  {
+    name: "Dra. Rosa Lima Beltrão Bacellar",
+    details:
+      "CRM 17.014 - BA | RQE 7.667 – Foniatria | distúrbios de linguagem",
+  },
+  {
+    name: "Dr. Fabio de Alencar Rodrigues Junior",
+    details:
+      "CRM 39.762 - BA | RQE 2.955 – Otologia | diagnóstico avançado e intervenção terapêutica das perdas auditivas",
+  },
+  {
+    name: "Aêdo Santos Cidreira",
+    details: "CRFa 7.915 | Processamento Auditivo | Audiologia Infantil",
+  },
+  {
+    name: "Lucienne Rezende Montalverne",
+    details: "CRFa 6.609 | Audiologia Infantil",
+  },
+  {
+    name: "Pedro Henrique de Macedo",
+    details: "CRFa 21.729 | Audiologia Infantil",
+  },
+];
+
+export default function EquipeSection() {
+  return (
+    <section id="equipe" className="py-20 md:py-28 bg-white overflow-hidden">
+      <div className="container">
+        {/* Header */}
+        <div className="text-center mb-12 reveal">
+          <div className="inline-flex items-center gap-2 mb-4">
+            <div className="w-8 h-0.5 bg-[#F4C62F]" />
+            <span className="font-nunito font-700 text-sm text-[#6B90C4] uppercase tracking-widest">
+              Nossa Equipe
+            </span>
+            <div className="w-8 h-0.5 bg-[#F4C62F]" />
+          </div>
+          {/* Use Rheago via global heading styling (no font-nunito class) */}
+          <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
+            Conheça nosso corpo clínico
+          </h2>
+          <p className="font-lato text-lg text-[#718096] max-w-2xl mx-auto">
+            Profissionais dedicados que unem experiência, técnica e acolhimento para cuidar da audição do seu filho.
+          </p>
+        </div>
+        {/* Team Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {team.map((member, idx) => (
+            <div key={idx} className="reveal flex flex-col items-center text-center bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+              {/* Placeholder for profile photo */}
+              <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#EEF4FB] mb-4 overflow-hidden" />
+              <h3 className="font-nunito font-800 text-[#2C3E50] text-base mb-1">{member.name}</h3>
+              <p className="font-lato text-sm text-[#718096] leading-relaxed">{member.details}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

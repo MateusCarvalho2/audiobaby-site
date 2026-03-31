@@ -1,7 +1,6 @@
 /*
  * AudioBaby ManifestoSection
- * Design: Seção com fundo azul claro, texto do manifesto em destaque
- * Layout: Assimétrico - texto à esquerda, imagem à direita
+ * Modified sedation messaging in the overlay badge and adjusted headings to allow Rheago font.
  */
 
 const BEBE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/bebe_dormindo_exame_214b7618.jpg";
@@ -33,7 +32,8 @@ export default function ManifestoSection() {
               </span>
             </div>
 
-            <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] leading-tight mb-6">
+            {/* Removed font-nunito to allow Rheago font for heading */}
+            <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] leading-tight mb-6">
               Nascemos para estar
               <br />
               <span className="text-[#94B1DA]">ao seu lado</span>
@@ -96,7 +96,8 @@ export default function ManifestoSection() {
                     Exames em sono espontâneo
                   </p>
                   <p className="font-lato text-xs text-[#718096] mt-1">
-                    Sem sedação, sem pressa, respeitando o ritmo do seu bebê
+                    {/* Updated sedation text: when necessary */}
+                    Sedação quando necessária, sem pressa, respeitando o ritmo do seu bebê
                   </p>
                 </div>
               </div>

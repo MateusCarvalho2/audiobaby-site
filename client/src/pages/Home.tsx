@@ -1,31 +1,23 @@
 /*
  * AudioBaby — Home Page
- * Design Philosophy: "Cuidado em Movimento" — Organic Warmth + Scientific Precision
- * Monta todas as seções do site institucional
+ * Modified to include the new EquipeSection and adjust wave transitions accordingly.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ManifestoSection from "@/components/ManifestoSection";
 import ExamesSection from "@/components/ExamesSection";
 import FluxogramaSection from "@/components/FluxogramaSection";
 import DiferenciaisSection from "@/components/DiferenciaisSection";
+import EquipeSection from "@/components/EquipeSection";
 import DepoimentosSection from "@/components/DepoimentosSection";
 import FaqSection from "@/components/FaqSection";
 import ContatoSection from "@/components/ContatoSection";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WaveDivider, { AudioWaveBar } from "@/components/WaveDivider";
-import AgendamentoModal from "@/components/AgendamentoModal";
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Expor função para abrir modal globalmente
-  useEffect(() => {
-    (window as any).openAgendamentoModal = () => setIsModalOpen(true);
-  }, []);
-
   // Scroll reveal observer
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -90,7 +82,10 @@ export default function Home() {
       {/* Diferenciais */}
       <DiferenciaisSection />
 
-      {/* Wave transition */}
+      {/* Equipe Section */}
+      <EquipeSection />
+
+      {/* Wave transition to FAQ */}
       <WaveDivider color="#EEF4FB" bgColor="white" />
 
       {/* FAQ */}
@@ -107,11 +102,6 @@ export default function Home() {
 
       {/* Floating WhatsApp button */}
       <WhatsAppFloat />
-
-      {/* Agendamento Modal */}
-      <AgendamentoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }
-
-

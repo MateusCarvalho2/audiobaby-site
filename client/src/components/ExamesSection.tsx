@@ -1,7 +1,6 @@
 /*
  * AudioBaby ExamesSection
- * Design: Grid de cards de exames com ícones dos grafismos da marca
- * Layout: Tabs por categoria + cards informativos
+ * Modified to update sedation messaging and apply Rheago font to the main section title.
  */
 
 import { useState } from "react";
@@ -43,7 +42,7 @@ const exames: Record<string, Array<{ title: string; desc: string; detail: string
     {
       title: "PEATE / BERA Diagnóstico",
       desc: "Potencial Evocado Auditivo de Tronco Encefálico",
-      detail: "Exame central da AudioBaby. Realizado preferencialmente em sono espontâneo. Estima limiares auditivos e diferencia tipos de perda auditiva.",
+      detail: "Realizado preferencialmente em sono espontâneo. Estima limiares auditivos em cada frequência sonora específica e diferencia tipos de perda auditiva.",
       icon: "📊",
     },
     {
@@ -89,22 +88,28 @@ const exames: Record<string, Array<{ title: string; desc: string; detail: string
     {
       title: "Bateria Completa de Testes PAC",
       desc: "Testes dicóticos, monóticos e temporais",
-      detail: "Avaliação criteriosa e individualizada com integração dos achados audiológicos, escolares e clínicos. Relatório técnico com orientações terapêuticas.",
+      detail: "Avaliação criteriosa e individualizada com integração dos achados audiológicos, escolares e clínicos. Relatório individualizado, com orientações terapêuticas.",
       icon: "📋",
     },
   ],
   medico: [
     {
-      title: "Consulta em Otorrinolaringologia",
+      title: "Consulta Médica Complementar",
       desc: "Avaliação clínica integrada",
-      detail: "Investigação etiológica das alterações auditivas. Solicitação de exames complementares. Planejamento terapêutico e seguimento longitudinal.",
+      detail: "Investigação etiológica das alterações auditivas e dos distúrbios de linguagem. Solicitação de exames complementares. Planejamento terapêutico e seguimento longitudinal.",
       icon: "👨‍⚕️",
     },
     {
-      title: "Devolutiva Diagnóstica Integrada",
+      title: "Devolutiva Integrada",
       desc: "Médico + Fonoaudiólogo juntos",
-      detail: "Modelo assistencial diferenciado. Linguagem clara e acolhedora. Explicação do diagnóstico, prognóstico e plano de cuidado com suporte emocional à família.",
+      detail: "Análise e Relatórios  Integrados",
       icon: "💬",
+    },
+    {
+      title: "Consulta Homeopática",
+      desc: "Avaliação homeopática integrada",
+      detail: "Tratamento de suporte para a criança com dificuldades de ajuste do ciclo sono-vigília, ou para apoio emocional das mães em fase de lactação e acompanhamento  dos filhos.",
+      icon: "👨‍⚕️🌿",
     },
     {
       title: "Follow-up Auditivo de Bebês de Risco",
@@ -130,7 +135,8 @@ export default function ExamesSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
+          {/* Removed font-nunito to allow Rheago for the main section title */}
+          <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
             Todos os exames auditivos
             <br />
             <span className="text-[#94B1DA]">em um único lugar</span>
@@ -146,11 +152,10 @@ export default function ExamesSection() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-nunito font-700 text-sm transition-all duration-200 ${
-                activeCategory === cat.id
-                  ? "bg-[#94B1DA] text-white shadow-lg scale-105"
-                  : "bg-[#EEF4FB] text-[#6B90C4] hover:bg-[#94B1DA]/20"
-              }`}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-nunito font-700 text-sm transition-all duration-200 ${activeCategory === cat.id
+                ? "bg-[#94B1DA] text-white shadow-lg scale-105"
+                : "bg-[#EEF4FB] text-[#6B90C4] hover:bg-[#94B1DA]/20"
+                }`}
             >
               <span>{cat.icon}</span>
               {cat.label}
@@ -189,12 +194,14 @@ export default function ExamesSection() {
               <img src={HEADPHONE_ICON} alt="" className="w-10 h-10 object-contain" />
               <span className="font-nunito font-800 text-[#94B1DA] text-sm uppercase tracking-wide">Diferencial AudioBaby</span>
             </div>
-            <h3 className="font-nunito font-900 text-2xl md:text-3xl text-[#2C3E50] mb-4">
+            <h3 className="font-900 text-2xl md:text-3xl text-[#2C3E50] mb-4">
               Exames em sono espontâneo,
-              <span className="text-[#94B1DA]"> sem sedação</span>
+              {/* Updated tagline: sedation when necessary */}
+              <span className="text-[#94B1DA]"> Sedação quando necessária</span>
             </h3>
             <p className="font-lato text-[#4A5568] leading-relaxed mb-6">
               Nosso ambiente é preparado especialmente para o sono natural do bebê. Sem pressa, sem pressão. Respeitamos o ritmo do seu filho para garantir resultados precisos e uma experiência tranquila para toda a família.
+              Exames com sedação, se necessário. Caso indicado, nossa equipe conta com a flexibilidade de realizar a avaliação auditiva em ambiente hospitalar  seguro, sob sedação, com suporte e acompanhamento de um médico anestesista, um médico otorrinolaringologista e um fonoaudiólogo.
             </p>
             <ul className="space-y-2">
               {[

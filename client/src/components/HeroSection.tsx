@@ -1,8 +1,6 @@
 /*
  * AudioBaby HeroSection
- * Design: Full-screen hero com imagem de mãe e bebê, texto do manifesto, CTA
- * Fundo: Imagem hero com overlay azul suave
- * Texto: Escuro sobre fundo claro (imagem é high-key/clara)
+ * Modified sedation messaging in the stats and preserved existing design.
  */
 
 import { Phone, ChevronDown } from "lucide-react";
@@ -124,8 +122,9 @@ export default function HeroSection() {
             </div>
             <div className="w-px bg-[#94B1DA]/20" />
             <div>
-              <p className="font-nunito font-900 text-3xl text-[#94B1DA]" style={{width: '172px', borderWidth: '4px'}}>+ Conforto</p>
-              <p className="font-lato text-sm text-[#718096]">Sedação<br />sempre que possível</p>
+              <p className="font-nunito font-900 text-3xl text-[#94B1DA]" style={{ width: '172px', borderWidth: '4px' }}>+ Conforto</p>
+              {/* Updated sedation message: when necessary */}
+              <p className="font-lato text-sm text-[#718096]">Sedação<br />quando necessária</p>
             </div>
             <div className="w-px bg-[#94B1DA]/20" />
             <div>

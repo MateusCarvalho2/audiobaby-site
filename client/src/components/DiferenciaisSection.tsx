@@ -1,7 +1,6 @@
 /*
  * AudioBaby DiferenciaisSection
- * Design: Cards com ícones dos grafismos, fundo branco, destaque amarelo
- * Layout: Grid assimétrico com imagem central
+ * Modified sedation messaging in highlight card and adjusted section title to use Rheago font.
  */
 
 const CLINICA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/clinica_ambiente_dfb06cf9.jpg";
@@ -55,7 +54,8 @@ export default function DiferenciaisSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          <h2 className="font-rheago text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
+          {/* Removed font-nunito on heading to allow Rheago */}
+          <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
             Ciência e cuidado
             <br />
             <span className="text-[#94B1DA]">caminham juntos aqui</span>
@@ -114,8 +114,9 @@ export default function DiferenciaisSection() {
                   <p className="font-lato text-xs text-white/80">Foco em crianças</p>
                 </div>
                 <div>
-                  <p className="font-nunito font-900 text-[#F4C62F] text-xl">Sem</p>
-                  <p className="font-lato text-xs text-white/80">Sedação desnecessária</p>
+                  {/* Updated sedation highlight: show sedation when necessary */}
+                  <p className="font-nunito font-900 text-[#F4C62F] text-xl">Sedação</p>
+                  <p className="font-lato text-xs text-white/80">quando necessária</p>
                 </div>
               </div>
             </div>

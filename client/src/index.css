@@ -1,12 +1,26 @@
 /*
+ * Modified AudioBaby index.css
+ * Added Rheago font face and class definitions.
+ */
+
+/*
  * AudioBaby — Núcleo de Audiologia Infantil
  * Design Philosophy: "Cuidado em Movimento" — Organic Warmth + Scientific Precision
  * Colors: Azul Bebê #94B1DA (Pantone 7681C) | Amarelo Dourado #F4C62F (Pantone 123C)
- * Typography: Nunito (display/titles) + Lato (body)
+ * Typography: Nunito (display/titles) + Lato (body) + Rheago (custom display)
  */
 
 @import "tailwindcss";
 @import "tw-animate-css";
+
+/* Custom font-face for Rheago. The font file is served from the public/fonts directory. */
+@font-face {
+  font-family: 'Rheago';
+  src: url('/fonts/Rheago.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -80,7 +94,8 @@
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Nunito', sans-serif;
+    /* Use Rheago font for all headings. Adding !important ensures this takes precedence over utility classes like font-nunito */
+    font-family: 'Rheago', sans-serif !important;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -131,6 +146,11 @@
 
   .font-lato {
     font-family: 'Lato', sans-serif;
+  }
+
+  /* Custom class for Rheago font */
+  .font-rheago {
+    font-family: 'Rheago', sans-serif;
   }
 
   .text-audiobaby-blue {
