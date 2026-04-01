@@ -1,9 +1,10 @@
 /*
  * AudioBaby UnidadeSection
- * New section showcasing photos of the clinic (unidade) and key contact information.
- * This section displays a header, a grid of images representing the clinic space,
- * and a set of contact details similar to the contact section. To add your own photos,
- * place image files in the `public/imagens/unidade` directory and update the array below.
+ * This section showcases photos of the clinic (unidade) and a header.  The
+ * original component included a grid of contact details (WhatsApp, phone,
+ * address and hours), but those details are already present in the
+ * "Agende sua consulta" section.  At the client's request we removed the
+ * contact information here, leaving only the heading and image grid.
  */
 
 import { Phone, MapPin, Clock } from "lucide-react";
@@ -17,32 +18,6 @@ const unidadeImages = [
 ];
 
 export default function UnidadeSection() {
-  // Define the contact items to display under the photos. Each item includes
-  // an icon component, a title and a description. Adjust the text as needed.
-  const contactItems = [
-    {
-      icon: Phone,
-      title: "WhatsApp",
-      description: "(71) 98158-1346",
-    },
-    {
-      icon: Phone,
-      title: "Ligar diretamente",
-      description: "(71) 3037-8420",
-    },
-    {
-      icon: Clock,
-      title: "Horário de Atendimento",
-      description: "Segunda a Sexta: 8h às 18h | Sábado: 8h às 12h",
-    },
-    {
-      icon: MapPin,
-      title: "Endereço",
-      description:
-        "Av. Luis Viana Filho, 6462, Edf. Wall Street West, torre B, salas 305 e 306",
-    },
-  ];
-
   return (
     <section id="unidade" className="py-20 md:py-28 bg-[#F8FBFF] overflow-hidden">
       <div className="container">
@@ -55,7 +30,7 @@ export default function UnidadeSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          {/* Large heading uses Rheago via global h2 style */}
+          {/* Large heading uses the global h2 style (MontserratAlternates) */}
           <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
             Conheça nossa estrutura
           </h2>
@@ -66,7 +41,7 @@ export default function UnidadeSection() {
         </div>
 
         {/* Photos grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {unidadeImages.map((src, idx) => (
             <div
               key={idx}
@@ -80,25 +55,7 @@ export default function UnidadeSection() {
             </div>
           ))}
         </div>
-
-        {/* Contact details */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {contactItems.map((item, idx) => (
-            <div key={idx} className="reveal flex items-start gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#94B1DA]/20 flex items-center justify-center">
-                <item.icon size={18} className="text-[#94B1DA]" />
-              </div>
-              <div>
-                <p className="font-nunito font-700 text-sm text-[#2C3E50]">
-                  {item.title}
-                </p>
-                <p className="font-lato text-sm text-[#6B90C4] leading-snug">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Contact details removed intentionally */}
       </div>
     </section>
   );

@@ -1,6 +1,8 @@
 /*
  * Modified AudioBaby index.css
  * Added Rheago font face and class definitions.
+ * Added MontserratAlternates-MediumItalic font-face and updated headings
+ * to use this new font per client request.
  */
 
 /*
@@ -16,9 +18,21 @@
 /* Custom font-face for Rheago. The font file is served from the public/fonts directory. */
 @font-face {
   font-family: 'Rheago';
-  src: url('/fonts/Rheago.otf') format('opentype');
+  src: url('') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+}
+
+/*
+ * Custom font-face for MontserratAlternates-MediumItalic.
+ * This font is used for all primary headings (h1 and h2) as requested.
+ */
+@font-face {
+  font-family: 'MontserratAlternates-MediumItalic';
+  src: url('/fonts/MontserratAlternates-MediumItalic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -93,11 +107,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  /* Apply the Rheago font only to the largest headings (h1 and h2). Smaller headings (h3-h6)
-     and names retain their assigned fonts (Nunito or Lato). */
+  /* Apply the MontserratAlternates font only to the largest headings (h1 and h2).
+     Smaller headings (h3-h6) and names retain their assigned fonts (Nunito or Lato). */
   h1,
   h2 {
-    font-family: 'Rheago', sans-serif;
+    font-family: 'MontserratAlternates-MediumItalic', sans-serif;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),

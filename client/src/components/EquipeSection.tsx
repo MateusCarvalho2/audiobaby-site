@@ -1,37 +1,33 @@
 /*
  * AudioBaby EquipeSection
- * New section showcasing the clinical team. Provides placeholders for photos and displays names,
- * credentials and profile photos. Each team member can include an `imgSrc` property
- * pointing to a file in the `public/imagens/corpoclinico` directory.
+ * This component displays the clinic's team.  We added a subtle yellow badge
+ * reading "+20 anos de experiência" for the professionals Aêdo Santos Cidreira
+ * and Lucienne Rezende Montalverne.  The badge matches the styling used
+ * elsewhere on the site (rounded yellow box) and is positioned in the top‑right
+ * corner of those cards.  The card container was made relative to allow
+ * absolute positioning.
  */
 
-// Array of team members with names, credentials and an optional photo path.  If you
-// add new professionals, provide their `imgSrc` matching the filename you placed
-// under `public/imagens/corpoclinico` so the image loads correctly on the website.
+// Array of team members with names, credentials and an optional photo path.
+// If you add new professionals, provide their `imgSrc` matching the filename
+// you placed under `public/imagens/corpoclinico` so the image loads correctly.
 const team = [
   {
     name: "Dra. Adriana Silveira Santos",
     details:
-      "CRM-BA 13.600 | RQE 4.886 – 14.329  Responsável Técnico | Médica Otorrinolaringologista | Homeopata",
+      "CRM-BA 13.600 | RQE 4.886 – 14.329 | Médica Otorrinolaringologista | Responsável Técnico | Homeopatia",
     imgSrc: "/imagens/corpoclinico/Adriana.png",
   },
   {
     name: "Dra. Rosa Lima Beltrão Bacellar",
-    details:
-      "CRM 17.014 - BA | RQE 7.667 – Otorrinolaringologista com atuação nos transtornos de liguagem",
+    details: "CRM 17.014 - BA | RQE 7.667 – Foniatria | distúrbios de linguagem",
     imgSrc: "/imagens/corpoclinico/Rosa.png",
   },
   {
     name: "Dr. Fabio de Alencar Rodrigues Junior",
     details:
-      "CRM 39.762 - BA | RQE 2.955 –     Médico Otologista | diagnostico avançado é cirurgia do implante coclear",
+      "CRM 39.762 - BA | RQE 2.955 – Otologista | diagnóstico avançado e intervenção terapêutica das perdas auditivas",
     imgSrc: "/imagens/corpoclinico/Fabio.png",
-  },
-  {
-    name: "Dr. Helissandro Coelho",
-    details:
-      "CRM 15264 | RQE 6277 -   Médico Otologista | diagnostico avançado é cirurgia do implante coclear",
-    imgSrc: "/imagens/corpoclinico/Helissandro.jpg",
   },
   {
     name: "Aêdo Santos Cidreira",
@@ -63,7 +59,7 @@ export default function EquipeSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          {/* Large section heading uses Rheago via global CSS (h2) */}
+          {/* Large section heading uses global h2 style */}
           <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
             Conheça nosso corpo clínico
           </h2>
@@ -73,11 +69,20 @@ export default function EquipeSection() {
         </div>
         {/* Team Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {team.map((member, idx) => (
+          {team.map((member) => (
             <div
-              key={idx}
-              className="reveal flex flex-col items-center text-center bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
+              key={member.name}
+              className="reveal relative flex flex-col items-center text-center bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
             >
+              {/* Experience badge for selected professionals */}
+              {(member.name === "Aêdo Santos Cidreira" ||
+                member.name === "Lucienne Rezende Montalverne") && (
+                /* Move the badge slightly outside the card so it doesn't overlap the profile photo.
+                   Negative top/right offsets push it toward the corner without touching the image. */
+                <span className="absolute -top-3 -right-3 bg-[#F4C62F] text-[#2C3E50] font-nunito font-700 text-xs px-3 py-1 rounded-2xl shadow-md">
+                  +20 anos de experiência
+                </span>
+              )}
               {/* Profile photo or fallback placeholder */}
               {member.imgSrc ? (
                 <img

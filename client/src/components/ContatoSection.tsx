@@ -1,13 +1,23 @@
 /*
  * AudioBaby ContatoSection + Footer
- * Modified to remove convênio information and add "Equipe" to the footer navigation.
+ * This section covers the "Agende sua Consulta" call‑to‑action and the site
+ * footer.  We updated the Instagram link to open the client's official
+ * profile in a new tab, added an embedded Google Maps iframe showing the
+ * clinic location, updated the copyright year to 2026 and linked the
+ * Política de Privacidade page to the new route.  A signature link was
+ * added to the bottom bar per request.  No other structural changes were
+ * made.
  */
 
 import { Phone, MapPin, Clock, Mail, Instagram, Facebook } from "lucide-react";
+import { Link } from "wouter";
 
-const LOGO_BRANCA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/logo branca_e197d821.png";
-const WAVE_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/3_e124f16a.png";
-const GRAFISMO_COMP = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/2_16bdae17.png";
+const LOGO_BRANCA =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/logo branca_e197d821.png";
+const WAVE_ICON =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/3_e124f16a.png";
+const GRAFISMO_COMP =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/2_16bdae17.png";
 
 export default function ContatoSection() {
   return (
@@ -62,8 +72,9 @@ export default function ContatoSection() {
                   </div>
                   <div>
                     <p className="font-nunito font-700 text-white text-sm">Endereço</p>
-                    <p className="font-lato text-[#94B1DA] text-sm">Av. Luis Viana Filho, 6462,
-                      Edf. Wall Street West, torre B, salas 305 e 306</p>
+                    <p className="font-lato text-[#94B1DA] text-sm">
+                      Av. Luis Viana Filho, 6462, Edf. Wall Street West, torre B, salas 305 e 306
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -72,7 +83,9 @@ export default function ContatoSection() {
                   </div>
                   <div>
                     <p className="font-nunito font-700 text-white text-sm">Horário de Atendimento</p>
-                    <p className="font-lato text-[#94B1DA] text-sm">Segunda a Sexta: 8h às 18h | Sábado: 8h às 12h</p>
+                    <p className="font-lato text-[#94B1DA] text-sm">
+                      Segunda a Sexta: 8h às 18h | Sábado: 8h às 12h
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -89,7 +102,9 @@ export default function ContatoSection() {
               {/* Social */}
               <div className="flex gap-3 mt-8">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/audiobaby.clinica/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-[#94B1DA]/20 hover:bg-[#94B1DA]/40 flex items-center justify-center transition-colors"
                   aria-label="Instagram"
                 >
@@ -102,6 +117,19 @@ export default function ContatoSection() {
                 >
                   <Facebook size={18} className="text-[#94B1DA]" />
                 </a>
+              </div>
+
+              {/* Map embed */}
+              <div className="mt-8">
+                {/* Use a direct Google Maps embed URL instead of the maps.app link to avoid errors
+                    when running locally.  The query encodes the clinic address and uses the embed
+                    output format. */}
+                <iframe
+                  src="https://maps.google.com/maps?q=Av.%20Luis%20Viana%20Filho%206462%2C%20Salvador%20BA%20Brasil&output=embed"
+                  className="w-full h-64 rounded-3xl border-0"
+                  allowFullScreen
+                  loading="lazy"
+                />
               </div>
             </div>
 
@@ -123,8 +151,7 @@ export default function ContatoSection() {
                   className="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1DA851] text-white font-nunito font-800 text-base px-6 py-4 rounded-2xl transition-all duration-200 hover:shadow-lg mb-4"
                 >
                   <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 
-24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                   </svg>
                   Falar pelo WhatsApp
                 </a>
@@ -183,6 +210,7 @@ export default function ContatoSection() {
                   { label: "Sobre nós", href: "#sobre" },
                   { label: "Exames", href: "#exames" },
                   { label: "Diferenciais", href: "#diferenciais" },
+                  { label: "Estrutura", href: "#unidade" },
                   { label: "Equipe", href: "#equipe" },
                   { label: "Contato", href: "#contato" },
                 ].map((link) => (
@@ -225,14 +253,35 @@ export default function ContatoSection() {
           {/* Bottom bar */}
           <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="font-lato text-xs text-white/40">
-              © 2024 AudioBaby — Núcleo de Audiologia Infantil. Todos os direitos reservados.
+              © 2026 AudioBaby — Núcleo de Audiologia Infantil. Todos os direitos reservados.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="font-lato text-xs text-white/40 hover:text-white/70 transition-colors">
+            <div className="flex gap-4 items-center">
+              <Link
+                to="/politica-de-privacidade"
+                className="font-lato text-xs text-white/40 hover:text-white/70 transition-colors"
+              >
                 Política de Privacidade
-              </a>
-              <a href="#" className="font-lato text-xs text-white/40 hover:text-white/70 transition-colors">
+              </Link>
+              <a
+                href="#"
+                className="font-lato text-xs text-white/40 hover:text-white/70 transition-colors"
+              >
                 Termos de Uso
+              </a>
+              {/* Signature link (canto inferior direito) */}
+              {/* Developer signature replaced by logo.  The image lives in public/signature-logo.png
+                  and links to the provided site. */}
+              <a
+                href="https://canva.link/mateuscarvalhomktt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-opacity hover:opacity-80"
+              >
+                <img
+                  src="/signature-logo.png"
+                  alt="Assinatura"
+                  className="h-40 w-auto"
+                />
               </a>
             </div>
           </div>

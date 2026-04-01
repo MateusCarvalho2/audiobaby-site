@@ -1,6 +1,8 @@
 /*
  * AudioBaby — App Root
- * Theme: Light (fundo branco, texto escuro)
+ * Updated to include the Política de Privacidade page.  We import the
+ * PrivacyPolicy component and register a new route at
+ * "/politica-de-privacidade".  All other behaviour remains unchanged.
  */
 
 import { Toaster } from "@/components/ui/sonner";
@@ -10,11 +12,13 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/politica-de-privacidade"} component={PrivacyPolicy} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

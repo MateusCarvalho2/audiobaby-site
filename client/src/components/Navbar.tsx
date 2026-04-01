@@ -1,19 +1,26 @@
 /*
- * Modified AudioBaby Navbar
- * Added 'Equipe' navigation link as requested and preserved existing functionality.
+ * AudioBaby Navbar
+ * This component renders the top navigation bar. It includes a logo,
+ * navigation links, and a call‑to‑action button.  Per client request
+ * we added an "Estrutura" link pointing to the "Nossa Unidade" section
+ * (id="unidade") and kept the existing links.  No other changes
+ * were made to the behaviour or styling.
  */
 
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/logo%20oficial_44c5ffbe.png";
+const LOGO_URL =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/logo%20oficial_44c5ffbe.png";
 
-// Include the new 'Equipe' link to the navigation array.
+// Navigation links for the navbar.  Added "Estrutura" linking to
+// the unidade section (#unidade) as requested.
 const navLinks = [
   { label: "Início", href: "#inicio" },
   { label: "Sobre", href: "#sobre" },
   { label: "Exames", href: "#exames" },
   { label: "Diferenciais", href: "#diferenciais" },
+  { label: "Estrutura", href: "#unidade" },
   { label: "Equipe", href: "#equipe" },
   { label: "Contato", href: "#contato" },
 ];
@@ -40,7 +47,9 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-4"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
+        : "bg-transparent py-4"
         }`}
     >
       <div className="container flex items-center justify-between">
@@ -79,7 +88,8 @@ export default function Navbar() {
                 e.preventDefault();
                 handleNavClick(link.href);
               }}
-              className={`font-nunito font-600 text-sm transition-colors duration-200 hover:text-[#94B1DA] ${isScrolled ? "text-[#2C3E50]" : "text-[#2C3E50]"
+              className={`font-nunito font-600 text-sm transition-colors duration-200 hover:text-[#94B1DA] ${
+                isScrolled ? "text-[#2C3E50]" : "text-[#2C3E50]"
                 }`}
             >
               {link.label}

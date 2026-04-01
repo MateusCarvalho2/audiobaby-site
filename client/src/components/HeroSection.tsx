@@ -1,12 +1,18 @@
 /*
  * AudioBaby HeroSection
- * Modified sedation messaging in the stats and preserved existing design.
+ * Updated hero headline to use the Montserrat Alternates font rather than the
+ * Rheago display font.  This file replicates the original hero section design
+ * from the upstream repository but replaces the `font-rheago` class on the
+ * main heading so that the global h1 style (MontserratAlternates-MediumItalic)
+ * applies.  No other changes to layout or content were made.
  */
 
 import { Phone, ChevronDown } from "lucide-react";
 
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/hero_mae_bebe_cc14e0f0.jpg";
-const WAVE_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/3_e124f16a.png";
+const HERO_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/hero_mae_bebe_cc14e0f0.jpg";
+const WAVE_ICON =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/3_e124f16a.png";
 
 export default function HeroSection() {
   const scrollToNext = () => {
@@ -15,7 +21,10 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
+    <section
+      id="inicio"
+      className="relative min-h-screen flex items-center overflow-hidden"
+    >
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -31,7 +40,12 @@ export default function HeroSection() {
 
       {/* Decorative wave icon - animated */}
       <div className="absolute top-1/3 right-8 md:right-16 opacity-20 hidden md:block">
-        <svg className="w-32 h-auto" viewBox="0 0 100 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="w-32 h-auto"
+          viewBox="0 0 100 60"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <style>{`
             @keyframes wave {
               0%, 100% { transform: translateY(0px); }
@@ -88,14 +102,15 @@ export default function HeroSection() {
 
           {/* Subheadline */}
           <p className="font-lato text-lg text-[#4A5568] leading-relaxed mb-8 max-w-md">
-            Diagnóstico auditivo infantil com ciência, acolhimento e responsabilidade.
-            Transformamos um momento de dúvida em um caminho de cuidado.
+            Diagnóstico auditivo infantil com ciência, acolhimento e
+            responsabilidade. Transformamos um momento de dúvida em um
+            caminho de cuidado.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-3">
             <a
-              href="https://wa.me/5500000000000?text=Olá! Gostaria de agendar um exame na AudioBaby."
+              href="https://wa.me/5571981581346?text=Olá! Gostaria de agendar um exame na AudioBaby."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-[#F4C62F] hover:bg-[#D4A820] text-[#2C3E50] font-nunito font-800 text-base px-7 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:scale-105 shadow-lg"
@@ -117,19 +132,40 @@ export default function HeroSection() {
           {/* Stats */}
           <div className="flex gap-8 mt-10 pt-8 border-t border-[#94B1DA]/20">
             <div>
-              <p className="font-nunito font-900 text-3xl text-[#94B1DA]">100%</p>
-              <p className="font-lato text-sm text-[#718096]">Especializado<br />em bebês</p>
+              <p className="font-nunito font-900 text-3xl text-[#94B1DA]">
+                100%
+              </p>
+              <p className="font-lato text-sm text-[#718096]">
+                Especializado
+                <br />
+                em bebês
+              </p>
             </div>
             <div className="w-px bg-[#94B1DA]/20" />
             <div>
-              <p className="font-nunito font-900 text-3xl text-[#94B1DA]" style={{ width: '172px', borderWidth: '4px' }}>+ Conforto</p>
+              <p
+                className="font-nunito font-900 text-3xl text-[#94B1DA]"
+                style={{ width: "172px", borderWidth: "4px" }}
+              >
+                + Conforto
+              </p>
               {/* Updated sedation message: when necessary */}
-              <p className="font-lato text-sm text-[#718096]">Sedação<br />quando necessária</p>
+              <p className="font-lato text-sm text-[#718096]">
+                Sedação
+                <br />
+                quando necessária
+              </p>
             </div>
             <div className="w-px bg-[#94B1DA]/20" />
             <div>
-              <p className="font-nunito font-900 text-3xl text-[#94B1DA]">O melhor lugar para o seu bebê</p>
-              <p className="font-lato text-sm text-[#718096]">Todos os exames<br />auditivos</p>
+              <p className="font-nunito font-900 text-3xl text-[#94B1DA]">
+                O melhor lugar para o seu bebê
+              </p>
+              <p className="font-lato text-sm text-[#718096]">
+                Todos os exames
+                <br />
+                auditivos
+              </p>
             </div>
           </div>
         </div>
