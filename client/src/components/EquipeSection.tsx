@@ -12,20 +12,26 @@ const team = [
   {
     name: "Dra. Adriana Silveira Santos",
     details:
-      "CRM-BA 13.600 | RQE 4.886 – 14.329 | Médica Otorrinolaringologista | Responsável Técnico | Homeopatia",
+      "CRM-BA 13.600 | RQE 4.886 – 14.329  Responsável Técnico | Médica Otorrinolaringologista | Homeopata",
     imgSrc: "/imagens/corpoclinico/Adriana.png",
   },
   {
     name: "Dra. Rosa Lima Beltrão Bacellar",
     details:
-      "CRM 17.014 - BA | RQE 7.667 – Foniatria | distúrbios de linguagem",
+      "CRM 17.014 - BA | RQE 7.667 – Otorrinolaringologista com atuação nos transtornos de liguagem",
     imgSrc: "/imagens/corpoclinico/Rosa.png",
   },
   {
     name: "Dr. Fabio de Alencar Rodrigues Junior",
     details:
-      "CRM 39.762 - BA | RQE 2.955 – Otologista | diagnóstico avançado e intervenção terapêutica das perdas auditivas",
+      "CRM 39.762 - BA | RQE 2.955 –     Médico Otologista | diagnostico avançado é cirurgia do implante coclear",
     imgSrc: "/imagens/corpoclinico/Fabio.png",
+  },
+  {
+    name: "Dr. Helissandro Coelho",
+    details:
+      "CRM 15264 | RQE 6277 -   Médico Otologista | diagnostico avançado é cirurgia do implante coclear",
+    imgSrc: "/imagens/corpoclinico/Helissandro.jpg",
   },
   {
     name: "Aêdo Santos Cidreira",

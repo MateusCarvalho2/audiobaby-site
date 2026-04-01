@@ -27,13 +27,13 @@ const exames: Record<string, Array<{ title: string; desc: string; detail: string
   neonatal: [
     {
       title: "Triagem Auditiva Neonatal Universal",
-      desc: "Emissões Otoacústicas Evocadas (EOAT e EOAPD)",
+      desc: "Emissões Otoacústicas Evocadas (EOAT e EOAPD) + Imitanciometria Pediatrica",
       detail: "Para recém-nascidos sem fatores de risco. Exame rápido, indolor e realizado durante o sono natural do bebê.",
       icon: "👂",
     },
     {
       title: "Triagem Auditiva Neonatal Ampliada",
-      desc: "EOAs + PEATE Automático (BERA automático)",
+      desc: "EOAs + PEATE Automático (BERA automático) + Imitanciometria Pediatrica",
       detail: "Para bebês com fatores de risco: UTI neonatal, prematuridade, infecções congênitas, hiperbilirrubinemia, histórico familiar.",
       icon: "🔊",
     },
@@ -43,19 +43,19 @@ const exames: Record<string, Array<{ title: string; desc: string; detail: string
       title: "PEATE / BERA Diagnóstico",
       desc: "Potencial Evocado Auditivo de Tronco Encefálico",
       detail: "Realizado preferencialmente em sono espontâneo. Estima limiares auditivos em cada frequência sonora específica e diferencia tipos de perda auditiva.",
-      icon: "📊",
+      icon: "📈",
     },
     {
       title: "PEAEE / ASSR",
       desc: "Potencial Evocado Auditivo de Estado Estável",
       detail: "Estimativa objetiva de limiares auditivos por frequência. Avaliação de perdas auditivas severas e profundas. Complemento de alta precisão ao PEATE.",
-      icon: "📈",
+      icon: "📊",
     },
     {
       title: "Imitanciometria Pediátrica",
       desc: "Avaliação da Orelha Média com sonda 1000 Hz",
       detail: "Padrão ouro para lactentes. Timpanometria e pesquisa de reflexos acústicos. Diferencia perda auditiva condutiva de neurossensorial.",
-      icon: "🎚️",
+      icon: "👂🏼",
     },
   ],
   comportamental: [

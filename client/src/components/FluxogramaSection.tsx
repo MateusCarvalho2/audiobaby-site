@@ -19,7 +19,7 @@ const steps = [
     step: "02",
     title: "Resultado da Triagem",
     subtitle: "Passou ou Falhou?",
-    desc: "Se passou: avaliamos fatores de risco. Se falhou: realizamos reteste e, se necessário, encaminhamos para diagnóstico avançado.",
+    desc: "Se passou: avaliamos fatores de risco. Se falhou: encaminhamos para diagnóstico avançado.",
     color: "bg-[#F4C62F]",
     textColor: "text-[#2C3E50]",
     icon: "📋",
