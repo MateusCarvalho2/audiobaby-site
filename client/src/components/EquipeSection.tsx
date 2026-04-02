@@ -30,6 +30,12 @@ const team = [
     imgSrc: "/imagens/corpoclinico/Fabio.png",
   },
   {
+    name: "Dr. Helissandro Andrade Coelho",
+    details:
+      "CRM 15.264 | RQE 6.277 – Otologista | diagnóstico avançado e intervenção terapêutica das perdas auditivas",
+    imgSrc: "/imagens/corpoclinico/Helissandro.jpg",
+  },
+  {
     name: "Aêdo Santos Cidreira",
     details: "CRFa 7.915 | Processamento Auditivo | Audiologia Infantil",
     imgSrc: "/imagens/corpoclinico/Aedo.png",
