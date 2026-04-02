@@ -1,9 +1,16 @@
 /*
- * AudioBaby FluxogramaSection
- * Modified sedation messaging in the diagnosis step and adjusted headings for Rheago font.
+ * AudioBaby FluxogramaSection — Updated Responsive Timeline
+ *
+ * This version preserves the original flow of care timeline while
+ * improving mobile responsiveness.  The timeline now uses a single
+ * column on very small screens, two columns on small screens, three
+ * columns on medium, and five columns on large devices.  The sedation
+ * messaging has been updated to reflect that sedation is used when
+ * necessary.
  */
 
-const GRAFISMO_COMP = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/2_16bdae17.png";
+const GRAFISMO_COMP =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/2_16bdae17.png";
 
 const steps = [
   {
@@ -75,7 +82,7 @@ export default function FluxogramaSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          {/* Removed font-nunito to allow Rheago font on the main heading */}
+          {/* Main heading uses global MontserratAlternates via h2 */}
           <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-white mb-4">
             Do nascimento ao diagnóstico,
             <br />
@@ -88,10 +95,13 @@ export default function FluxogramaSection() {
 
         {/* Timeline */}
         <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-white/30 z-0" style={{ top: "3rem" }} />
+          {/* Connecting line on medium and up */}
+          <div
+            className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-white/30 z-0"
+            style={{ top: "3rem" }}
+          />
 
-          <div className="grid md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {steps.map((step, i) => (
               <div
                 key={step.step}
@@ -100,7 +110,9 @@ export default function FluxogramaSection() {
               >
                 {/* Step number circle */}
                 <div className="relative z-10 mb-4">
-                  <div className={`w-16 h-16 rounded-full ${step.color} flex items-center justify-center shadow-lg border-4 border-white/30`}>
+                  <div
+                    className={`w-16 h-16 rounded-full ${step.color} flex items-center justify-center shadow-lg border-4 border-white/30`}
+                  >
                     <span className="text-2xl">{step.icon}</span>
                   </div>
                   {/* Step number badge */}
@@ -131,7 +143,9 @@ export default function FluxogramaSection() {
           <div className="inline-flex items-center gap-3 bg-white/15 backdrop-blur-sm rounded-2xl px-6 py-4 border border-white/20">
             <span className="text-2xl">🏆</span>
             <p className="font-lato text-sm text-white">
-              <strong className="font-nunito font-800">Alinhado às melhores práticas internacionais:</strong>{" "}
+              <strong className="font-nunito font-800">
+                Alinhado às melhores práticas internacionais:
+              </strong>{" "}
               Joint Committee on Infant Hearing e Ministério da Saúde do Brasil
             </p>
           </div>

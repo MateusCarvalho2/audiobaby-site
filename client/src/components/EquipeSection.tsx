@@ -73,8 +73,10 @@ export default function EquipeSection() {
             Profissionais dedicados que unem experiência, técnica e acolhimento para cuidar da audição do seu filho.
           </p>
         </div>
-        {/* Team Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Team Grid
+           Start with a single column layout on extra‑small devices, two
+           columns on small screens, and three columns on large screens. */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {team.map((member) => (
             <div
               key={member.name}

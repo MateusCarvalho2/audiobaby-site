@@ -1,14 +1,17 @@
 /*
  * AudioBaby FaqSection
- * Modified to remove convênio information and adjust sedation wording.
- * Titles now rely on global heading styles (Rheago font) by omitting font-nunito on headings.
+ *
+ * This accordion lists common questions and answers for parents.  It uses
+ * Tailwind for styling and animations.  The sedation answer has been
+ * updated to indicate sedation is only used when necessary.  Titles rely
+ * on the global heading styles (MontserratAlternates) for h2.
  */
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-// Questions and answers for the FAQ accordion. Removed the convênio question
-// and updated the sedation answer to reflect that sedation is used when necessary.
+// Questions and answers for the FAQ accordion.  The convênio question
+// has been removed and sedation answer updated.
 const faqs = [
   {
     q: "Meu bebê falhou na triagem auditiva da maternidade. O que isso significa?",
@@ -24,7 +27,7 @@ const faqs = [
   },
   {
     q: "Meu filho vai precisar de sedação para fazer o PEATE/BERA?",
-    // Updated answer: sedação quando necessário, sempre com acompanhamento médico.
+    // Updated answer: sedação quando necessária, sempre com acompanhamento médico.
     a: "Na grande maioria dos casos, não. Realizamos o PEATE em sono espontâneo — aproveitamos o momento em que o bebê está dormindo naturalmente. Para crianças maiores que não conseguem dormir espontaneamente, avaliamos cada caso individualmente. Sedação quando necessária, sempre com acompanhamento médico.",
   },
   {
@@ -48,7 +51,7 @@ export default function FaqSection() {
                 Dúvidas Frequentes
               </span>
             </div>
-            {/* Removed font-nunito from the heading so global Rheago applies */}
+            {/* Section heading uses global MontserratAlternates font */}
             <h2 className="font-900 text-3xl md:text-4xl text-[#2C3E50] mb-6 leading-tight">
               Sabemos que você
               <br />
@@ -83,16 +86,12 @@ export default function FaqSection() {
                   </span>
                   <ChevronDown
                     size={18}
-                    className={`text-[#94B1DA] flex-shrink-0 transition-transform duration-200 ${
-                      openIndex === i ? "rotate-180" : ""
-                    }`}
+                    className={`text-[#94B1DA] flex-shrink-0 transition-transform duration-200 ${openIndex === i ? "rotate-180" : ""}`}
                   />
                 </button>
                 {openIndex === i && (
                   <div className="px-5 pb-5">
-                    <p className="font-lato text-sm text-[#718096] leading-relaxed">
-                      {faq.a}
-                    </p>
+                    <p className="font-lato text-sm text-[#718096] leading-relaxed">{faq.a}</p>
                   </div>
                 )}
               </div>

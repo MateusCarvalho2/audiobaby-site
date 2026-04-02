@@ -1,7 +1,10 @@
 /*
- * AudioBaby — Home Page
- * Updated to remove the DepoimentosSection and add the UnidadeSection showcasing the clinic.
- * The UnidadeSection displays photos of the unit and key contact information.
+ * AudioBaby Home Page
+ *
+ * This page stitches together all of the site sections including the
+ * hero, manifesto, services, timeline, differentiators, team, FAQ,
+ * clinic photos and contact.  It uses an IntersectionObserver to add
+ * reveal animations as sections scroll into view.
  */
 
 import { useEffect } from "react";
@@ -97,7 +100,7 @@ export default function Home() {
       {/* Wave transition to Unidade Section */}
       <WaveDivider color="#F8FBFF" bgColor="#EEF4FB" flip />
 
-      {/* Unidade — photos of the clinic and contact details */}
+      {/* Unidade — photos of the clinic */}
       <UnidadeSection />
 
       {/* Wave transition to Contato */}

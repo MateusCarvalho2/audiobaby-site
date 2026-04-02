@@ -1,19 +1,34 @@
 /*
- * AudioBaby ExamesSection
- * Modified to update sedation messaging and apply Rheago font to the main section title.
+ * AudioBaby ExamesSection — Updated for Responsive Layout
+ *
+ * This version is based on the upstream ExamesSection component but
+ * includes a few enhancements:
+ *   • The exam cards grid now uses one column on the smallest screens,
+ *     two columns on medium widths and three on large devices.  This
+ *     improves readability on mobile without sacrificing density on
+ *     desktop.
+ *   • The sedation messaging has been updated to reflect that sedation
+ *     is used only when necessary.
  */
 
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 
-const HEADPHONE_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/4_ac7150bc.png";
-const WHISTLE_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/5_05c11fe1.png";
-const WAVE_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/3_e124f16a.png";
-const GRAFISMO_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/6_8125284e.png";
-const GRAFISMO2_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/7_adf21273.png";
+const HEADPHONE_ICON =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/4_ac7150bc.png";
+const WHISTLE_ICON =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/5_05c11fe1.png";
+const WAVE_ICON =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/3_e124f16a.png";
+const GRAFISMO_ICON =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/6_8125284e.png";
+const GRAFISMO2_ICON =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/7_adf21273.png";
 
-const TRIAGEM_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/bebe_triagem_neonatal_350ed09d.jpg";
-const FONO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/fonoaudiologa_crianca_fb5ab1ac.jpg";
+const TRIAGEM_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/bebe_triagem_neonatal_350ed09d.jpg";
+const FONO_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/fonoaudiologa_crianca_fb5ab1ac.jpg";
 
 const categories = [
   { id: "neonatal", label: "Recém-nascidos", icon: "👶" },
@@ -23,18 +38,23 @@ const categories = [
   { id: "medico", label: "Atendimento Médico", icon: "🩺" },
 ];
 
-const exames: Record<string, Array<{ title: string; desc: string; detail: string; icon: string }>> = {
+const exames: Record<
+  string,
+  Array<{ title: string; desc: string; detail: string; icon: string }>
+> = {
   neonatal: [
     {
       title: "Triagem Auditiva Neonatal Universal",
       desc: "Emissões Otoacústicas Evocadas (EOAT e EOAPD) + Imitanciometria Pediatrica",
-      detail: "Para recém-nascidos sem fatores de risco. Exame rápido, indolor e realizado durante o sono natural do bebê.",
+      detail:
+        "Para recém-nascidos sem fatores de risco. Exame rápido, indolor e realizado durante o sono natural do bebê.",
       icon: "👂",
     },
     {
       title: "Triagem Auditiva Neonatal Ampliada",
       desc: "EOAs + PEATE Automático (BERA automático) + Imitanciometria Pediatrica",
-      detail: "Para bebês com fatores de risco: UTI neonatal, prematuridade, infecções congênitas, hiperbilirrubinemia, histórico familiar.",
+      detail:
+        "Para bebês com fatores de risco: UTI neonatal, prematuridade, infecções congênitas, hiperbilirrubinemia, histórico familiar.",
       icon: "🔊",
     },
   ],
@@ -42,19 +62,22 @@ const exames: Record<string, Array<{ title: string; desc: string; detail: string
     {
       title: "PEATE / BERA Diagnóstico",
       desc: "Potencial Evocado Auditivo de Tronco Encefálico",
-      detail: "Realizado preferencialmente em sono espontâneo. Estima limiares auditivos em cada frequência sonora específica e diferencia tipos de perda auditiva.",
+      detail:
+        "Realizado preferencialmente em sono espontâneo. Estima limiares auditivos em cada frequência sonora específica e diferencia tipos de perda auditiva.",
       icon: "📈",
     },
     {
       title: "PEAEE / ASSR",
       desc: "Potencial Evocado Auditivo de Estado Estável",
-      detail: "Estimativa objetiva de limiares auditivos por frequência. Avaliação de perdas auditivas severas e profundas. Complemento de alta precisão ao PEATE.",
+      detail:
+        "Estimativa objetiva de limiares auditivos por frequência. Avaliação de perdas auditivas severas e profundas. Complemento de alta precisão ao PEATE.",
       icon: "📊",
     },
     {
       title: "Imitanciometria Pediátrica",
       desc: "Avaliação da Orelha Média com sonda 1000 Hz",
-      detail: "Padrão ouro para lactentes. Timpanometria e pesquisa de reflexos acústicos. Diferencia perda auditiva condutiva de neurossensorial.",
+      detail:
+        "Padrão ouro para lactentes. Timpanometria e pesquisa de reflexos acústicos. Diferencia perda auditiva condutiva de neurossensorial.",
       icon: "👂🏼",
     },
   ],
@@ -62,19 +85,22 @@ const exames: Record<string, Array<{ title: string; desc: string; detail: string
     {
       title: "Audiometria de Observação Comportamental",
       desc: "Para bebês de 0 a 6 meses",
-      detail: "Avaliação da resposta comportamental aos sons. Correlação entre achados objetivos e desempenho auditivo funcional.",
+      detail:
+        "Avaliação da resposta comportamental aos sons. Correlação entre achados objetivos e desempenho auditivo funcional.",
       icon: "👁️",
     },
     {
       title: "Audiometria com Reforço Visual (VRA)",
       desc: "Para crianças de 6 meses a 2 anos",
-      detail: "Técnica lúdica que usa reforço visual para avaliar a audição. Adaptada ao desenvolvimento da criança.",
+      detail:
+        "Técnica lúdica que usa reforço visual para avaliar a audição. Adaptada ao desenvolvimento da criança.",
       icon: "🎠",
     },
     {
       title: "Audiometria Lúdica Condicionada",
       desc: "Para crianças a partir de 2 anos",
-      detail: "Avaliação através de jogos e atividades. Determina limiares auditivos de forma divertida e precisa.",
+      detail:
+        "Avaliação através de jogos e atividades. Determina limiares auditivos de forma divertida e precisa.",
       icon: "🎮",
     },
   ],
@@ -82,13 +108,15 @@ const exames: Record<string, Array<{ title: string; desc: string; detail: string
     {
       title: "Avaliação do Processamento Auditivo Central",
       desc: "Para crianças a partir de 7 anos",
-      detail: "Avalia como o cérebro processa e interpreta os sons. Indicado para dificuldades de compreensão, queixas escolares, trocas fonêmicas e suspeita de TPAC.",
+      detail:
+        "Avalia como o cérebro processa e interpreta os sons. Indicado para dificuldades de compreensão, queixas escolares, trocas fonêmicas e suspeita de TPAC.",
       icon: "🧩",
     },
     {
       title: "Bateria Completa de Testes PAC",
       desc: "Testes dicóticos, monóticos e temporais",
-      detail: "Avaliação criteriosa e individualizada com integração dos achados audiológicos, escolares e clínicos. Relatório individualizado, com orientações terapêuticas.",
+      detail:
+        "Avaliação criteriosa e individualizada com integração dos achados audiológicos, escolares e clínicos. Relatório individualizado, com orientações terapêuticas.",
       icon: "📋",
     },
   ],
@@ -96,7 +124,8 @@ const exames: Record<string, Array<{ title: string; desc: string; detail: string
     {
       title: "Consulta Médica Complementar",
       desc: "Avaliação clínica integrada",
-      detail: "Investigação etiológica das alterações auditivas e dos distúrbios de linguagem. Solicitação de exames complementares. Planejamento terapêutico e seguimento longitudinal.",
+      detail:
+        "Investigação etiológica das alterações auditivas e dos distúrbios de linguagem. Solicitação de exames complementares. Planejamento terapêutico e seguimento longitudinal.",
       icon: "👨‍⚕️",
     },
     {
@@ -108,13 +137,15 @@ const exames: Record<string, Array<{ title: string; desc: string; detail: string
     {
       title: "Consulta Homeopática",
       desc: "Avaliação homeopática integrada",
-      detail: "Tratamento de suporte para a criança com dificuldades de ajuste do ciclo sono-vigília, ou para apoio emocional das mães em fase de lactação e acompanhamento  dos filhos.",
+      detail:
+        "Tratamento de suporte para a criança com dificuldades de ajuste do ciclo sono‑vigília, ou para apoio emocional das mães em fase de lactação e acompanhamento  dos filhos.",
       icon: "👨‍⚕️🌿",
     },
     {
       title: "Follow-up Auditivo de Bebês de Risco",
       desc: "Monitoramento seriado",
-      detail: "Acompanhamento mesmo após triagem normal para bebês com fatores de risco. Conforme recomendações internacionais do Joint Committee on Infant Hearing.",
+      detail:
+        "Acompanhamento mesmo após triagem normal para bebês com fatores de risco. Conforme recomendações internacionais do Joint Committee on Infant Hearing.",
       icon: "📅",
     },
   ],
@@ -135,7 +166,7 @@ export default function ExamesSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          {/* Removed font-nunito to allow Rheago for the main section title */}
+          {/* Main section title uses global MontserratAlternates font via h2 */}
           <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
             Todos os exames auditivos
             <br />
@@ -152,10 +183,11 @@ export default function ExamesSection() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-nunito font-700 text-sm transition-all duration-200 ${activeCategory === cat.id
-                ? "bg-[#94B1DA] text-white shadow-lg scale-105"
-                : "bg-[#EEF4FB] text-[#6B90C4] hover:bg-[#94B1DA]/20"
-                }`}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-nunito font-700 text-sm transition-all duration-200 ${
+                activeCategory === cat.id
+                  ? "bg-[#94B1DA] text-white shadow-lg scale-105"
+                  : "bg-[#EEF4FB] text-[#6B90C4] hover:bg-[#94B1DA]/20"
+              }`}
             >
               <span>{cat.icon}</span>
               {cat.label}
@@ -164,7 +196,7 @@ export default function ExamesSection() {
         </div>
 
         {/* Exames Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {(exames[activeCategory] || []).map((exame, i) => (
             <div
               key={exame.title}
@@ -182,7 +214,9 @@ export default function ExamesSection() {
                   <p className="font-lato text-xs text-[#94B1DA] font-bold mt-1">{exame.desc}</p>
                 </div>
               </div>
-              <p className="font-lato text-sm text-[#718096] leading-relaxed">{exame.detail}</p>
+              <p className="font-lato text-sm text-[#718096] leading-relaxed">
+                {exame.detail}
+              </p>
             </div>
           ))}
         </div>
@@ -192,7 +226,9 @@ export default function ExamesSection() {
           <div className="p-8 md:p-10">
             <div className="flex items-center gap-3 mb-4">
               <img src={HEADPHONE_ICON} alt="" className="w-10 h-10 object-contain" />
-              <span className="font-nunito font-800 text-[#94B1DA] text-sm uppercase tracking-wide">Diferencial AudioBaby</span>
+              <span className="font-nunito font-800 text-[#94B1DA] text-sm uppercase tracking-wide">
+                Diferencial AudioBaby
+              </span>
             </div>
             <h3 className="font-900 text-2xl md:text-3xl text-[#2C3E50] mb-4">
               Exames em sono espontâneo,

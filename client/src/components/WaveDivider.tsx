@@ -1,6 +1,10 @@
 /*
  * AudioBaby WaveDivider
- * Design: Ondas sonoras animadas como elemento de transição entre seções
+ *
+ * Decorative divider composed of a single SVG path representing a wave.
+ * Accepts color and background overrides and a flip property for inverted
+ * orientation.  Also exports an AudioWaveBar for use in the hero and
+ * other sections.
  */
 
 interface WaveDividerProps {

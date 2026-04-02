@@ -33,7 +33,9 @@ export default function ContatoSection() {
         </div>
 
         <div className="container relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Layout: switch to a two‑column grid on medium screens to
+             accommodate more horizontal space earlier. */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12 items-center">
             {/* Left: CTA text */}
             <div className="reveal-left">
               <div className="inline-flex items-center gap-2 mb-6">
@@ -280,7 +282,7 @@ export default function ContatoSection() {
                 <img
                   src="/signature-logo.png"
                   alt="Assinatura"
-                  className="h-40 w-auto"
+                  className="h-6 w-auto"
                 />
               </a>
             </div>

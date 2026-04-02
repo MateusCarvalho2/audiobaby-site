@@ -7,22 +7,22 @@
  * were made to the behaviour or styling.
  */
 
-import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Menu, X, Phone } from 'lucide-react';
 
 const LOGO_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/logo%20oficial_44c5ffbe.png";
+  'https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/logo%20oficial_44c5ffbe.png';
 
 // Navigation links for the navbar.  Added "Estrutura" linking to
 // the unidade section (#unidade) as requested.
 const navLinks = [
-  { label: "Início", href: "#inicio" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Exames", href: "#exames" },
-  { label: "Diferenciais", href: "#diferenciais" },
-  { label: "Estrutura", href: "#unidade" },
-  { label: "Equipe", href: "#equipe" },
-  { label: "Contato", href: "#contato" },
+  { label: 'Início', href: '#inicio' },
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Exames', href: '#exames' },
+  { label: 'Diferenciais', href: '#diferenciais' },
+  { label: 'Estrutura', href: '#unidade' },
+  { label: 'Equipe', href: '#equipe' },
+  { label: 'Contato', href: '#contato' },
 ];
 
 export default function Navbar() {
@@ -33,24 +33,23 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
     const el = document.querySelector(href);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
-        : "bg-transparent py-4"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'
+      }`}
     >
       <div className="container flex items-center justify-between">
         {/* Logo */}
@@ -58,7 +57,7 @@ export default function Navbar() {
           href="#inicio"
           onClick={(e) => {
             e.preventDefault();
-            handleNavClick("#inicio");
+            handleNavClick('#inicio');
           }}
           className="flex items-center"
         >
@@ -67,13 +66,13 @@ export default function Navbar() {
             alt="AudioBaby — Núcleo de Audiologia Infantil"
             className="h-12 md:h-14 w-auto object-contain"
             style={{
-              paddingRight: "24px",
-              paddingLeft: "14px",
-              marginTop: "3px",
-              marginBottom: "6px",
-              marginLeft: "-1px",
-              width: "178px",
-              height: "94px",
+              paddingRight: '24px',
+              paddingLeft: '14px',
+              marginTop: '3px',
+              marginBottom: '6px',
+              marginLeft: '-1px',
+              width: '178px',
+              height: '94px',
             }}
           />
         </a>
@@ -89,8 +88,8 @@ export default function Navbar() {
                 handleNavClick(link.href);
               }}
               className={`font-nunito font-600 text-sm transition-colors duration-200 hover:text-[#94B1DA] ${
-                isScrolled ? "text-[#2C3E50]" : "text-[#2C3E50]"
-                }`}
+                isScrolled ? 'text-[#2C3E50]' : 'text-[#2C3E50]'
+              }`}
             >
               {link.label}
             </a>

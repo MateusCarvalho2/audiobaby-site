@@ -40,8 +40,11 @@ export default function UnidadeSection() {
           </p>
         </div>
 
-        {/* Photos grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {/* Photos grid
+           Use a single column on very small screens, then two columns on small
+           devices, and three columns on medium and up. This improves the
+           presentation on narrow viewports. */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {unidadeImages.map((src, idx) => (
             <div
               key={idx}

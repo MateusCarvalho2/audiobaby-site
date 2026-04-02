@@ -1,43 +1,57 @@
 /*
- * AudioBaby DiferenciaisSection
- * Modified sedation messaging in highlight card and adjusted section title to use Rheago font.
+ * AudioBaby DiferenciaisSection — Responsive Grid Update
+ *
+ * This component highlights why AudioBaby is unique.  We adjust the
+ * main grid to display two columns on medium screens and three on
+ * large screens, instead of only three columns on large screens.
+ * Sedation messaging in the highlight card is updated to indicate
+ * sedation is used when necessary.
  */
 
 const CLINICA_IMG = "/imagens/unidade/ambiente.jpg";
-const CONSULTA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/mae_consulta_devolutiva_c2ca083e.jpg";
-const HEADPHONE_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/4_ac7150bc.png";
-const WHISTLE_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/5_05c11fe1.png";
+const CONSULTA_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/mae_consulta_devolutiva_c2ca083e.jpg";
+const HEADPHONE_ICON =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/4_ac7150bc.png";
+const WHISTLE_ICON =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/5_05c11fe1.png";
 
 const diferenciais = [
   {
     icon: "🏥",
     title: "Ambiente 100% pediátrico",
-    desc: "Espaço projetado para o conforto de bebês e crianças, com temperatura controlada, iluminação suave e silêncio absoluto.",
+    desc:
+      "Espaço projetado para o conforto de bebês e crianças, com temperatura controlada, iluminação suave e silêncio absoluto.",
   },
   {
     icon: "👩‍⚕️",
     title: "Equipe especializada",
-    desc: "Fonoaudiólogos e otorrinolaringologistas com formação específica em audiologia infantil e neonatal.",
+    desc:
+      "Fonoaudiólogos e otorrinolaringologistas com formação específica em audiologia infantil e neonatal.",
   },
   {
     icon: "🔬",
     title: "Tecnologia de ponta",
-    desc: "Equipamentos de última geração calibrados e certificados, garantindo precisão diagnóstica máxima.",
+    desc:
+      "Equipamentos de última geração calibrados e certificados, garantindo precisão diagnóstica máxima.",
   },
   {
     icon: "💛",
     title: "Acolhimento emocional",
-    desc: "Sabemos que um diagnóstico auditivo pode ser assustador. Oferecemos suporte humano e orientação clara em cada etapa.",
+    desc:
+      "Sabemos que um diagnóstico auditivo pode ser assustador. Oferecemos suporte humano e orientação clara em cada etapa.",
   },
   {
     icon: "📝",
     title: "Laudos integrados",
-    desc: "Relatórios técnicos completos com linguagem acessível, integrando achados médicos e fonoaudiológicos.",
+    desc:
+      "Relatórios técnicos completos com linguagem acessível, integrando achados médicos e fonoaudiológicos.",
   },
   {
     icon: "🔄",
     title: "Seguimento longitudinal",
-    desc: "Acompanhamento contínuo desde o nascimento, com protocolos de follow-up personalizados para cada criança.",
+    desc:
+      "Acompanhamento contínuo desde o nascimento, com protocolos de follow‑up personalizados para cada criança.",
   },
 ];
 
@@ -54,7 +68,7 @@ export default function DiferenciaisSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          {/* Removed font-nunito on heading to allow Rheago */}
+          {/* Main heading uses global MontserratAlternates font */}
           <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
             Ciência e cuidado
             <br />
@@ -66,8 +80,8 @@ export default function DiferenciaisSection() {
         </div>
 
         {/* Main grid */}
-        <div className="grid lg:grid-cols-3 gap-8 items-center">
-          {/* Left column - 3 diferenciais */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+          {/* Left column – first 3 diferenciais */}
           <div className="space-y-5">
             {diferenciais.slice(0, 3).map((d, i) => (
               <div
@@ -88,7 +102,7 @@ export default function DiferenciaisSection() {
             ))}
           </div>
 
-          {/* Center - Images */}
+          {/* Center – images and highlight */}
           <div className="reveal flex flex-col gap-4">
             <div className="relative rounded-3xl overflow-hidden shadow-xl h-56">
               <img
@@ -103,9 +117,13 @@ export default function DiferenciaisSection() {
               </div>
             </div>
 
-            {/* Central highlight */}
+            {/* Central highlight card */}
             <div className="bg-[#94B1DA] rounded-3xl p-6 text-center">
-              <img src={HEADPHONE_ICON} alt="" className="w-16 h-16 object-contain mx-auto mb-3 opacity-90" />
+              <img
+                src={HEADPHONE_ICON}
+                alt=""
+                className="w-16 h-16 object-contain mx-auto mb-3 opacity-90"
+              />
               <p className="font-nunito font-900 text-white text-2xl mb-1">Especialistas</p>
               <p className="font-nunito font-700 text-white/80 text-sm">em audição infantil</p>
               <div className="mt-4 pt-4 border-t border-white/20 grid grid-cols-2 gap-3">
@@ -135,7 +153,7 @@ export default function DiferenciaisSection() {
             </div>
           </div>
 
-          {/* Right column - 3 diferenciais */}
+          {/* Right column – last 3 diferenciais */}
           <div className="space-y-5">
             {diferenciais.slice(3, 6).map((d, i) => (
               <div

@@ -1,10 +1,16 @@
 /*
  * AudioBaby ManifestoSection
- * Modified sedation messaging in the overlay badge and adjusted headings to allow Rheago font.
+ *
+ * This section tells the AudioBaby story and reinforces the clinic’s values.
+ * It retains the original design with decorative waves, narrative text and
+ * highlight elements.  Sedation messaging has been updated to indicate
+ * sedation is used when necessary.
  */
 
-const BEBE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/bebe_dormindo_exame_214b7618.jpg";
-const WAVE_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/3_e124f16a.png";
+const BEBE_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/bebe_dormindo_exame_214b7618.jpg";
+const WAVE_ICON =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/3_e124f16a.png";
 
 export default function ManifestoSection() {
   return (
@@ -32,7 +38,7 @@ export default function ManifestoSection() {
               </span>
             </div>
 
-            {/* Removed font-nunito to allow Rheago font for heading */}
+            {/* Main heading uses global MontserratAlternates font */}
             <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] leading-tight mb-6">
               Nascemos para estar
               <br />
@@ -43,15 +49,13 @@ export default function ManifestoSection() {
 
             <div className="space-y-4 font-lato text-[#4A5568] leading-relaxed">
               <p>
-                Existe um momento que nenhuma mãe espera viver: quando alguém diz{" "}
-                <strong className="text-[#2C3E50]">"seu bebê falhou na Triagem Auditiva Neonatal."</strong>
+                Existe um momento que nenhuma mãe espera viver: quando alguém diz
+                <strong className="text-[#2C3E50]"> "seu bebê falhou na Triagem Auditiva Neonatal."</strong>
               </p>
               <p>
                 De repente, aquilo que deveria ser apenas um exame de rotina se transforma em um turbilhão de perguntas. A ansiedade chega primeiro. Depois vem a culpa. E, muitas vezes, a negação.
               </p>
-              <p>
-                Muitas mães percorrem essa jornada sentindo-se sozinhas. Mas elas não deveriam.
-              </p>
+              <p>Muitas mães percorrem essa jornada sentindo-se sozinhas. Mas elas não deveriam.</p>
             </div>
 
             {/* Quote highlight */}
@@ -106,7 +110,11 @@ export default function ManifestoSection() {
             {/* Floating stat card */}
             <div className="absolute -top-6 -right-4 md:-right-8 bg-[#F4C62F] rounded-2xl px-5 py-4 shadow-xl">
               <p className="font-nunito font-900 text-3xl text-[#2C3E50]">+10</p>
-              <p className="font-lato text-xs text-[#2C3E50] font-bold">tipos de exames<br />auditivos</p>
+              <p className="font-lato text-xs text-[#2C3E50] font-bold">
+                tipos de exames
+                <br />
+                auditivos
+              </p>
             </div>
           </div>
         </div>

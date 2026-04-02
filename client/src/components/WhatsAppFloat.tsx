@@ -1,6 +1,7 @@
 /*
  * AudioBaby WhatsAppFloat
- * Design: Botão flutuante WhatsApp com animação de pulso
+ *
+ * A floating WhatsApp button that pulses to draw the user's attention.
  */
 
 export default function WhatsAppFloat() {
