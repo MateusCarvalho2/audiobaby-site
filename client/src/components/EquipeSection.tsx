@@ -15,39 +15,39 @@ const team = [
   {
     name: "Dra. Adriana Silveira Santos",
     details:
-      "CRM-BA 13.600 | RQE 4.886 – 14.329 | Médica Otorrinolaringologista | Responsável Técnico | Homeopatia",
+      "CRM-BA 13.600 | RQE 4.886 – | Médica Otorrinolaringologista | Responsável Técnico | Homeopatia",
     imgSrc: "/imagens/corpoclinico/Adriana.png",
   },
   {
     name: "Dra. Rosa Lima Beltrão Bacellar",
-    details: "CRM 17.014 - BA | RQE 7.667 – Foniatria | distúrbios de linguagem",
+    details: "CRM 17.014 - BA | RQE 7.667 – Otorrinolaringologista com experiência em transtornos de linguagem",
     imgSrc: "/imagens/corpoclinico/Rosa.png",
   },
   {
     name: "Dr. Fabio de Alencar Rodrigues Junior",
     details:
-      "CRM 39.762 - BA | RQE 2.955 – Otologista | diagnóstico avançado e intervenção terapêutica das perdas auditivas",
+      "CRM 39.762 - BA | RQE 2.955 – Otologista | Diagnóstico avançado das perdas auditivas e cirurgia do Implante Coclear.",
     imgSrc: "/imagens/corpoclinico/Fabio.png",
   },
   {
     name: "Dr. Helissandro Andrade Coelho",
     details:
-      "CRM 15.264 | RQE 6.277 – Otologista | diagnóstico avançado e intervenção terapêutica das perdas auditivas",
+      "CRM 15.264 | RQE 6.277 – Otologista | iagnóstico avançado das perdas auditivas e cirurgia do Implante Coclear.",
     imgSrc: "/imagens/corpoclinico/Helissandro.jpg",
   },
   {
     name: "Aêdo Santos Cidreira",
-    details: "CRFa 7.915 | Processamento Auditivo | Audiologia Infantil",
+    details: "CRFa 7.915 | Processamento Auditivo Central  | Audiologista Infantil",
     imgSrc: "/imagens/corpoclinico/Aedo.png",
   },
   {
     name: "Lucienne Rezende Montalverne",
-    details: "CRFa 6.609 | Audiologia Infantil",
+    details: "CRFa 6.609 | Audiologista infantil",
     imgSrc: "/imagens/corpoclinico/Luciene.png",
   },
   {
     name: "Pedro Henrique de Macedo",
-    details: "CRFa 21.729 | Audiologia Infantil",
+    details: "CRFa 21.729 | Audiologista Infantil",
     imgSrc: "/imagens/corpoclinico/Pedro.png",
   },
 ];
@@ -89,6 +89,14 @@ export default function EquipeSection() {
                    Negative top/right offsets push it toward the corner without touching the image. */
                 <span className="absolute -top-3 -right-3 bg-[#F4C62F] text-[#2C3E50] font-nunito font-700 text-xs px-3 py-1 rounded-2xl shadow-md">
                   +20 anos de experiência
+                </span>
+              )}
+              {(member.name === "Dra. Adriana Silveira Santos" ||
+                member.name === "") && (
+                /* Move the badge slightly outside the card so it doesn't overlap the profile photo.
+                   Negative top/right offsets push it toward the corner without touching the image. */
+                <span className="absolute -top-3 -right-3 bg-[#F4C62F] text-[#2C3E50] font-nunito font-700 text-xs px-3 py-1 rounded-2xl shadow-md">
+                  +20 anos de atuação em Eletrofisiologia da Audição
                 </span>
               )}
               {/* Profile photo or fallback placeholder */}

@@ -128,7 +128,7 @@ export default function ContatoSection() {
                     output format. */}
                 <iframe
                   src="https://maps.google.com/maps?q=Av.%20Luis%20Viana%20Filho%206462%2C%20Salvador%20BA%20Brasil&output=embed"
-                  className="w-full h-64 rounded-3xl border-0"
+                  className="w-296  h-64 rounded-3xl border-0"
                   allowFullScreen
                   loading="lazy"
                 />
@@ -142,7 +142,7 @@ export default function ContatoSection() {
                   Agende pelo WhatsApp
                 </h3>
                 <p className="font-lato text-sm text-[#718096] mb-6">
-                  Atendimento rápido e humanizado. Nossa equipe responde em até 2 horas úteis.
+                  Atendimento rápido e humanizado.
                 </p>
 
                 {/* WhatsApp CTA */}
@@ -255,7 +255,7 @@ export default function ContatoSection() {
           {/* Bottom bar */}
           <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="font-lato text-xs text-white/40">
-              © 2026 AudioBaby — Núcleo de Audiologia Infantil. Todos os direitos reservados.
+              © 2026 AudioBaby — Núcleo de Audiologia Infantil. Todos os direitos reservados. <br /> Produzido por: Mateus Carvalho
             </p>
             <div className="flex gap-4 items-center">
               <Link
@@ -268,7 +268,7 @@ export default function ContatoSection() {
                 href="#"
                 className="font-lato text-xs text-white/40 hover:text-white/70 transition-colors"
               >
-                Termos de Uso
+                {/* texto do lado de politica de privacidade */}
               </a>
               {/* Signature link (canto inferior direito) */}
               {/* Developer signature replaced by logo.  The image lives in public/signature-logo.png
@@ -282,7 +282,7 @@ export default function ContatoSection() {
                 <img
                   src="/signature-logo.png"
                   alt="Assinatura"
-                  className="h-6 w-auto"
+                  className="h-40 w-auto"
                 />
               </a>
             </div>

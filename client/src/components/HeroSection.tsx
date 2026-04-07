@@ -145,7 +145,7 @@ export default function HeroSection() {
             <div>
               <p
                 className="font-nunito font-900 text-3xl text-[#94B1DA]"
-                style={{ width: "172px", borderWidth: "4px" }}
+                style={{ width: "172px" }}
               >
                 + Conforto
               </p>
@@ -177,7 +177,7 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-[#94B1DA] hover:text-[#6B90C4] transition-colors animate-bounce"
         aria-label="Rolar para baixo"
       >
-        <span className="font-lato text-xs">Saiba mais</span>
+        <span className="font-lato text-xs"></span>
         <ChevronDown size={20} />
       </button>
     </section>
