@@ -15,7 +15,7 @@ const team = [
   {
     name: "Dra. Adriana Silveira Santos",
     details:
-      "CRM-BA 13.600 | RQE 4.886 – | Médica Otorrinolaringologista | Responsável Técnico | Homeopatia",
+      "CRM-BA 13.600 | RQE 4886 / 14329 – | Médica Otorrinolaringologista | Responsável Técnico | Homeopatia",
     imgSrc: "/imagens/corpoclinico/Adriana.png",
   },
   {
