@@ -1,12 +1,9 @@
 /*
  * AudioBaby ContatoSection + Footer
- * This section covers the "Agende sua Consulta" call‑to‑action and the site
- * footer.  We updated the Instagram link to open the client's official
- * profile in a new tab, added an embedded Google Maps iframe showing the
- * clinic location, updated the copyright year to 2026 and linked the
- * Política de Privacidade page to the new route.  A signature link was
- * added to the bottom bar per request.  No other structural changes were
- * made.
+ * This version includes mobile-friendly adjustments to the Google Maps iframe.
+ * The map now expands to the full width of the container on small screens and
+ * uses responsive heights (`h-56 sm:h-64 md:h-72`) to avoid overflow and
+ * cropping on phones. All other content remains unchanged from the original.
  */
 
 import { Phone, MapPin, Clock, Mail, Instagram, Facebook } from "lucide-react";
@@ -126,9 +123,12 @@ export default function ContatoSection() {
                 {/* Use a direct Google Maps embed URL instead of the maps.app link to avoid errors
                     when running locally.  The query encodes the clinic address and uses the embed
                     output format. */}
+                {/* On small screens, the map spans the full width, while on medium+ screens it reverts to the
+                   original desktop width (~296px). Set explicit widths using Tailwind's arbitrary values
+                   so desktop layouts remain unchanged. */}
                 <iframe
                   src="https://maps.google.com/maps?q=Av.%20Luis%20Viana%20Filho%206462%2C%20Salvador%20BA%20Brasil&output=embed"
-                  className="w-296  h-64 rounded-3xl border-0"
+                  className="w-full sm:w-[1185px] h-56 sm:h-64 md:h-72 rounded-3xl border-0"
                   allowFullScreen
                   loading="lazy"
                 />

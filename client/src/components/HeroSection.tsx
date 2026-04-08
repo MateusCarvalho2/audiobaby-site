@@ -1,10 +1,9 @@
 /*
  * AudioBaby HeroSection
- * Updated hero headline to use the Montserrat Alternates font rather than the
- * Rheago display font.  This file replicates the original hero section design
- * from the upstream repository but replaces the `font-rheago` class on the
- * main heading so that the global h1 style (MontserratAlternates-MediumItalic)
- * applies.  No other changes to layout or content were made.
+ * This version includes responsive improvements for mobile screens. Statistics
+ * now stack vertically on small devices (`flex-col sm:flex-row`), gaps are
+ * reduced to avoid excessive spacing, and width styles on headings were
+ * removed. Vertical separators are hidden on small screens (`hidden sm:block`).
  */
 
 import { Phone, ChevronDown } from "lucide-react";
@@ -130,7 +129,8 @@ export default function HeroSection() {
           </div>
 
           {/* Stats */}
-          <div className="flex gap-8 mt-10 pt-8 border-t border-[#94B1DA]/20">
+          {/* Stack stats vertically on small screens to prevent text cropping */}
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 mt-10 pt-8 border-t border-[#94B1DA]/20">
             <div>
               <p className="font-nunito font-900 text-3xl text-[#94B1DA]">
                 100%
@@ -141,12 +141,16 @@ export default function HeroSection() {
                 em bebês
               </p>
             </div>
-            <div className="w-px bg-[#94B1DA]/20" />
+            <div className="w-px bg-[#94B1DA]/20 hidden sm:block" />
             <div>
-              <p
-                className="font-nunito font-900 text-3xl text-[#94B1DA]"
-                style={{ width: "172px" }}
-              >
+              {/*
+               * Mantém uma largura mínima no desktop para evitar que o texto
+               * "+ Conforto" quebre em duas linhas, mas permite que o
+               * conteúdo se ajuste naturalmente em telas menores. A classe
+               * `sm:w-[172px]` aplica 172 px de largura a partir do breakpoint
+               * `sm` (≥640 px), preservando o layout original no computador.
+               */}
+              <p className="font-nunito font-900 text-3xl text-[#94B1DA] sm:w-[172px] whitespace-nowrap">
                 + Conforto
               </p>
               {/* Updated sedation message: when necessary */}
@@ -156,7 +160,7 @@ export default function HeroSection() {
                 quando necessária
               </p>
             </div>
-            <div className="w-px bg-[#94B1DA]/20" />
+            <div className="w-px bg-[#94B1DA]/20 hidden sm:block" />
             <div>
               <p className="font-nunito font-900 text-3xl text-[#94B1DA]">
                 O melhor lugar para o seu bebê
