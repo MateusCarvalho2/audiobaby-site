@@ -18,7 +18,9 @@ export function useScrollReveal() {
       }
     );
 
-    const elements = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+    const elements = document.querySelectorAll(
+      ".reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-clip"
+    );
     elements.forEach((el) => observer.observe(el));
 
     return () => {

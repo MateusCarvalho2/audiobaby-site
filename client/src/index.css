@@ -18,7 +18,7 @@
 /* Custom font-face for Rheago. The font file is served from the public/fonts directory. */
 @font-face {
   font-family: 'Rheago';
-  src: url('') format('opentype');
+  src: url('/fonts/Rheago.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -70,6 +70,7 @@
   --color-audiobaby-yellow-dark: #D4A820;
   --color-audiobaby-cream: #FFF8F0;
   --color-audiobaby-text: #2C3E50;
+  --ease-motion: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
@@ -106,6 +107,10 @@
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip; /* Prevent lateral scroll bugs */
+    position: relative;
   }
   /* Apply the MontserratAlternates font only to the largest headings (h1 and h2).
      Smaller headings (h3-h6) and names retain their assigned fonts (Nunito or Lato). */
@@ -123,6 +128,7 @@
   }
   html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 }
 
@@ -255,6 +261,35 @@
     100% { transform: scale(1.5); opacity: 0; }
   }
 
+  @keyframes page-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes media-zoom {
+    from { transform: scale(1.08); }
+    to { transform: scale(1); }
+  }
+
   .animate-wave-pulse {
     animation: wave-pulse 1.2s ease-in-out infinite;
   }
@@ -303,11 +338,243 @@
     border: 1px solid rgba(148, 177, 218, 0.3);
   }
 
-  /* Scroll reveal - initially hidden */
+  .page-shell {
+    animation: page-in 0.75s var(--ease-motion) both;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    position: relative;
+  }
+
+  .section-band {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .section-band {
+      padding-top: 5.5rem;
+      padding-bottom: 5.5rem;
+    }
+  }
+
+  .section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #6B90C4;
+  }
+
+  .section-kicker::before {
+    content: "";
+    width: 2rem;
+    height: 2px;
+    background: #F4C62F;
+  }
+
+  .section-title {
+    max-width: 760px;
+    font-size: clamp(2.15rem, 6vw, 4.6rem);
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: 0;
+  }
+
+  .hero-video {
+    animation: media-zoom 1.4s var(--ease-motion) both;
+  }
+
+  .hero-reveal {
+    animation: hero-rise 0.9s var(--ease-motion) both;
+  }
+
+  .hero-reveal:nth-child(2) { animation-delay: 0.08s; }
+  .hero-reveal:nth-child(3) { animation-delay: 0.16s; }
+  .hero-reveal:nth-child(4) { animation-delay: 0.24s; }
+  .hero-reveal:nth-child(5) { animation-delay: 0.32s; }
+
+  .motion-button {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 3.25rem;
+    padding: 0.95rem 1.35rem;
+    overflow: hidden;
+    border: 1px solid #F4C62F;
+    border-radius: 9999px;
+    background: #F4C62F;
+    color: #2C3E50;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 900;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 16px 36px rgba(244, 198, 47, 0.25);
+    transition:
+      transform 0.65s var(--ease-motion),
+      border-color 0.65s var(--ease-motion),
+      background-color 0.65s var(--ease-motion),
+      color 0.65s var(--ease-motion),
+      box-shadow 0.65s var(--ease-motion);
+  }
+
+  .motion-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.55) 45%, transparent 58%);
+    transform: translateX(-120%);
+    transition: transform 0.85s var(--ease-motion);
+  }
+
+  .motion-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 46px rgba(44, 62, 80, 0.18);
+  }
+
+  .motion-button:hover::before {
+    transform: translateX(120%);
+  }
+
+  .motion-button.secondary {
+    border-color: rgba(148, 177, 218, 0.45);
+    background: rgba(255, 255, 255, 0.72);
+    color: #2C3E50;
+    box-shadow: 0 16px 34px rgba(44, 62, 80, 0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  .motion-button.blue {
+    border-color: #94B1DA;
+    background: #94B1DA;
+    color: white;
+    box-shadow: 0 16px 34px rgba(148, 177, 218, 0.28);
+  }
+
+  .motion-button.whatsapp {
+    border-color: #25D366;
+    background: #25D366;
+    color: white;
+    box-shadow: 0 16px 34px rgba(37, 211, 102, 0.24);
+  }
+
+  .motion-button.nav-cta {
+    min-height: 2.8rem;
+    padding: 0.82rem 1.1rem;
+    font-size: 0.86rem;
+  }
+
+  .motion-card {
+    border-radius: 8px;
+    box-shadow: 0 16px 42px rgba(44, 62, 80, 0.06);
+    transition:
+      transform 0.7s var(--ease-motion),
+      border-color 0.7s var(--ease-motion),
+      box-shadow 0.7s var(--ease-motion),
+      background-color 0.7s var(--ease-motion);
+  }
+
+  .motion-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(148, 177, 218, 0.55);
+    box-shadow: 0 24px 64px rgba(44, 62, 80, 0.14);
+  }
+
+  .motion-icon {
+    display: inline-flex;
+    width: 3.25rem;
+    height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(148, 177, 218, 0.18);
+    border-radius: 8px;
+    transition:
+      transform 0.7s var(--ease-motion),
+      background-color 0.7s var(--ease-motion);
+  }
+
+  .group:hover .motion-icon {
+    transform: rotate(-3deg) scale(1.04);
+    background: #EEF4FB;
+  }
+
+  .motion-tab {
+    display: inline-flex;
+    min-height: 2.75rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(148, 177, 218, 0.25);
+    border-radius: 9999px;
+    background: #EEF4FB;
+    padding: 0.7rem 1rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.86rem;
+    font-weight: 900;
+    color: #6B90C4;
+    transition:
+      transform 0.55s var(--ease-motion),
+      background-color 0.55s var(--ease-motion),
+      color 0.55s var(--ease-motion),
+      border-color 0.55s var(--ease-motion),
+      box-shadow 0.55s var(--ease-motion);
+  }
+
+  .motion-tab:hover,
+  .motion-tab.is-active {
+    transform: translateY(-2px);
+    border-color: #94B1DA;
+    background: #94B1DA;
+    color: white;
+    box-shadow: 0 14px 34px rgba(148, 177, 218, 0.3);
+  }
+
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.55rem;
+    border-radius: 9999px;
+    padding: 0.72rem 0.92rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2C3E50;
+    text-decoration: none;
+    transition:
+      color 0.55s var(--ease-motion),
+      background-color 0.55s var(--ease-motion),
+      transform 0.55s var(--ease-motion);
+  }
+
+  .nav-link:hover,
+  .nav-link.is-active {
+    transform: translateY(-1px);
+    background: #EEF4FB;
+    color: #6B90C4;
+  }
+
+  /* Scroll reveal - initially hidden (Premium configurations inspired by Landon Norris site) */
   .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    transform: translateY(48px);
+    transition: opacity 1.1s var(--ease-motion), transform 1.1s var(--ease-motion);
   }
 
   .reveal.visible {
@@ -317,8 +584,8 @@
 
   .reveal-left {
     opacity: 0;
-    transform: translateX(-40px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    transform: translateX(-24px);
+    transition: opacity 1.1s var(--ease-motion), transform 1.1s var(--ease-motion);
   }
 
   .reveal-left.visible {
@@ -328,12 +595,82 @@
 
   .reveal-right {
     opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    transform: translateX(24px);
+    transition: opacity 1.1s var(--ease-motion), transform 1.1s var(--ease-motion);
   }
 
   .reveal-right.visible {
     opacity: 1;
     transform: translateX(0);
+  }
+
+  /* Premium Scale Reveal (soft scale up + fade) */
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.93) translateY(36px);
+    transition: opacity 1.2s var(--ease-motion), transform 1.2s var(--ease-motion);
+  }
+
+  .reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  /* Premium Blur Reveal (cinematic blur to sharp + slide) */
+  .reveal-blur {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(32px);
+    transition: opacity 1.2s var(--ease-motion), transform 1.2s var(--ease-motion), filter 1.2s var(--ease-motion);
+  }
+
+  .reveal-blur.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+
+  /* Premium Clip Path Mask Reveal (text mask reveal effect) */
+  .reveal-clip {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    transform: translateY(40px);
+    transition: clip-path 1.3s var(--ease-motion), transform 1.3s var(--ease-motion);
+  }
+
+  .reveal-clip.visible {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translateY(0);
+  }
+
+  /* CSS Stagger Delay Utility Classes */
+  .delay-50 { transition-delay: 50ms !important; }
+  .delay-100 { transition-delay: 100ms !important; }
+  .delay-150 { transition-delay: 150ms !important; }
+  .delay-200 { transition-delay: 200ms !important; }
+  .delay-250 { transition-delay: 250ms !important; }
+  .delay-300 { transition-delay: 300ms !important; }
+  .delay-350 { transition-delay: 350ms !important; }
+  .delay-400 { transition-delay: 400ms !important; }
+  .delay-500 { transition-delay: 500ms !important; }
+  .delay-600 { transition-delay: 600ms !important; }
+  .delay-700 { transition-delay: 700ms !important; }
+  .delay-800 { transition-delay: 800ms !important; }
+
+  /* Under 1024px (tablets & mobiles), fallback to vertical transitions to avoid horizontal shifts */
+  @media (max-width: 1024px) {
+    .reveal-left,
+    .reveal-right {
+      transform: translateY(36px);
+    }
+
+    .reveal-left.visible,
+    .reveal-right.visible {
+      transform: translateY(0);
+    }
+  }
+
+  /* Custom text shadow for hero section readability */
+  .text-shadow-hero {
+    text-shadow: 0 2px 4px rgba(44, 62, 80, 0.12), 0 1px 2px rgba(0, 0, 0, 0.05);
   }
 }

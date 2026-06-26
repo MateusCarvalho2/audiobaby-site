@@ -14,10 +14,7 @@ const WAVE_ICON =
 
 export default function ManifestoSection() {
   return (
-    <section id="sobre" className="relative bg-[#F8FBFF] overflow-hidden py-20 md:py-28">
-      {/* Decorative wave background */}
-      <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#94B1DA] via-[#F4C62F] to-[#94B1DA]" />
-
+    <section id="sobre" className="relative bg-[#F8FBFF] overflow-hidden py-16 md:py-20">
       {/* Floating decorative elements */}
       <div className="absolute top-12 right-8 opacity-10 animate-float">
         <img src={WAVE_ICON} alt="" className="w-48 h-auto" />
@@ -29,17 +26,17 @@ export default function ManifestoSection() {
       <div className="container">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text Content */}
-          <div className="reveal-left">
+          <div>
             {/* Section label */}
-            <div className="inline-flex items-center gap-2 mb-6">
+            <div className="reveal-left inline-flex items-center gap-2 mb-6">
               <div className="w-8 h-0.5 bg-[#F4C62F]" />
               <span className="font-nunito font-700 text-sm text-[#6B90C4] uppercase tracking-widest">
                 Nossa História
               </span>
             </div>
 
-            {/* Main heading uses global MontserratAlternates font */}
-            <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] leading-tight mb-6">
+            {/* Main heading uses global MontserratAlternates font with clip mask reveal */}
+            <h2 className="reveal-clip delay-100 font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] leading-tight mb-6">
               Nascemos para estar
               <br />
               <span className="text-[#94B1DA]">ao seu lado</span>
@@ -47,7 +44,7 @@ export default function ManifestoSection() {
               nesse momento.
             </h2>
 
-            <div className="space-y-4 font-lato text-[#4A5568] leading-relaxed">
+            <div className="reveal-blur delay-200 space-y-4 font-lato text-[#4A5568] leading-relaxed">
               <p>
                 Existe um momento que nenhuma mãe espera viver: quando alguém diz
                 <strong className="text-[#2C3E50]"> "seu bebê falhou na Triagem Auditiva Neonatal."</strong>
@@ -59,13 +56,13 @@ export default function ManifestoSection() {
             </div>
 
             {/* Quote highlight */}
-            <div className="mt-8 pl-5 border-l-4 border-[#F4C62F]">
+            <div className="reveal-left delay-300 mt-8 pl-5 border-l-4 border-[#F4C62F]">
               <p className="font-nunito font-700 text-xl text-[#2C3E50] italic leading-relaxed">
                 "Aqui, um exame não é apenas técnica. É colo. É silêncio. É tempo respeitado. É escuta verdadeira."
               </p>
             </div>
 
-            <p className="mt-6 font-lato text-[#4A5568] leading-relaxed">
+            <p className="reveal-blur delay-400 mt-6 font-lato text-[#4A5568] leading-relaxed">
               Foi a partir dessa compreensão que nasceu a AudioBaby — um espaço onde técnica e acolhimento caminham juntos, transformando um momento de medo em um caminho de cuidado.
             </p>
 
@@ -76,9 +73,12 @@ export default function ManifestoSection() {
                 { icon: "💛", label: "Acolhimento Humano" },
                 { icon: "👶", label: "Foco no Bebê" },
                 { icon: "👨‍👩‍👧", label: "Suporte à Família" },
-              ].map((v) => (
-                <div key={v.label} className="flex items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-sm">
-                  <span className="text-2xl">{v.icon}</span>
+              ].map((v, idx) => (
+                <div 
+                  key={v.label} 
+                  className={`reveal-scale delay-${(idx + 1) * 100} flex items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-sm border border-[#94B1DA]/10 hover:border-[#94B1DA]/30 hover:shadow-md transition-all duration-500`}
+                >
+                  <span className="text-2xl transition-transform duration-300 hover:scale-125">{v.icon}</span>
                   <span className="font-nunito font-700 text-sm text-[#2C3E50]">{v.label}</span>
                 </div>
               ))}
@@ -86,12 +86,12 @@ export default function ManifestoSection() {
           </div>
 
           {/* Image */}
-          <div className="reveal-right relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+          <div className="reveal-scale relative">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
               <img
                 src={BEBE_IMG}
                 alt="Bebê dormindo durante exame auditivo PEATE/BERA na AudioBaby"
-                className="w-full h-[400px] md:h-[500px] object-cover"
+                className="w-full h-[400px] md:h-[500px] object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
               />
               {/* Image overlay badge */}
               <div className="absolute bottom-6 left-6 right-6">
@@ -101,7 +101,7 @@ export default function ManifestoSection() {
                   </p>
                   <p className="font-lato text-xs text-[#718096] mt-1">
                     {/* Updated sedation text: when necessary */}
-                    Sedação quando necessária, sem pressa, respeitando o ritmo do seu bebê
+                    Sedação apenas quando indicada, sem pressa, respeitando o ritmo do seu bebê
                   </p>
                 </div>
               </div>

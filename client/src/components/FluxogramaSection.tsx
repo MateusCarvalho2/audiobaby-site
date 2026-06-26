@@ -36,7 +36,7 @@ const steps = [
     title: "Diagnóstico Avançado",
     subtitle: "PEATE/BERA + ASSR + Imitanciometria",
     // Updated description: sedation when necessary
-    desc: "Exames objetivos de alta precisão, realizados em sono espontâneo na AudioBaby, sedação quando necessária.",
+    desc: "Exames objetivos de alta precisão, realizados em sono espontâneo sempre que possível. Sedação apenas quando indicada e com acompanhamento médico.",
     color: "bg-white",
     textColor: "text-[#2C3E50]",
     icon: "🔬",
@@ -63,7 +63,7 @@ const steps = [
 
 export default function FluxogramaSection() {
   return (
-    <section className="py-20 md:py-28 bg-[#94B1DA] overflow-hidden relative">
+    <section className="py-16 md:py-20 bg-[#94B1DA] overflow-hidden relative">
       {/* Decorative grafismo */}
       <div className="absolute top-0 right-0 opacity-10 w-80 h-80">
         <img src={GRAFISMO_COMP} alt="" className="w-full h-full object-contain" />
@@ -74,7 +74,7 @@ export default function FluxogramaSection() {
 
       <div className="container relative z-10">
         {/* Header */}
-        <div className="text-center mb-14 reveal">
+        <div className="text-center mb-14 reveal-clip">
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
             <span className="font-nunito font-700 text-sm text-white/80 uppercase tracking-widest">
@@ -105,8 +105,8 @@ export default function FluxogramaSection() {
             {steps.map((step, i) => (
               <div
                 key={step.step}
-                className="reveal flex flex-col items-center text-center"
-                style={{ transitionDelay: `${i * 0.1}s` }}
+                className="reveal-scale flex flex-col items-center text-center"
+                style={{ transitionDelay: `${i * 0.12}s` }}
               >
                 {/* Step number circle */}
                 <div className="relative z-10 mb-4">

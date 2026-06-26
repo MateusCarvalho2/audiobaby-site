@@ -15,7 +15,7 @@ export default function WhatsAppFloat() {
         href="https://wa.me/5571981581346?text=Olá! Gostaria de agendar um exame na AudioBaby."
         target="_blank"
         rel="noopener noreferrer"
-        className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#1DA851] rounded-full shadow-2xl transition-all duration-200 hover:scale-110"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-2xl transition-all duration-500 ease-motion hover:-translate-y-1 hover:scale-105 hover:bg-[#1DA851]"
         aria-label="Falar pelo WhatsApp"
       >
         <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white">

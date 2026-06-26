@@ -1,263 +1,143 @@
-/*
- * AudioBaby ExamesSection — Updated for Responsive Layout
- *
- * This version is based on the upstream ExamesSection component but
- * includes a few enhancements:
- *   • The exam cards grid now uses one column on the smallest screens,
- *     two columns on medium widths and three on large devices.  This
- *     improves readability on mobile without sacrificing density on
- *     desktop.
- *   • The sedation messaging has been updated to reflect that sedation
- *     is used only when necessary.
- */
-
 import { useState } from "react";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
+import { examCategories, exames, type ExamCategoryId } from "@/data/content";
 
 const HEADPHONE_ICON =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/4_ac7150bc.png";
-const WHISTLE_ICON =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/5_05c11fe1.png";
-const WAVE_ICON =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/3_e124f16a.png";
-const GRAFISMO_ICON =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/6_8125284e.png";
-const GRAFISMO2_ICON =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/7_adf21273.png";
-
 const TRIAGEM_IMG =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/bebe_triagem_neonatal_350ed09d.jpg";
-const FONO_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/fonoaudiologa_crianca_fb5ab1ac.jpg";
-
-const categories = [
-  { id: "neonatal", label: "Recém-nascidos", icon: "👶" },
-  { id: "diagnostico", label: "Diagnóstico Avançado", icon: "🔬" },
-  { id: "comportamental", label: "Avaliação Comportamental", icon: "🎯" },
-  { id: "pac", label: "Processamento Auditivo", icon: "🧠" },
-  { id: "medico", label: "Atendimento Médico", icon: "🩺" },
-];
-
-const exames: Record<
-  string,
-  Array<{ title: string; desc: string; detail: string; icon: string }>
-> = {
-  neonatal: [
-    {
-      title: "Triagem Auditiva Neonatal Universal",
-      desc: "Emissões Otoacústicas Evocadas (EOAT e EOAPD) + Imitanciometria Pediatrica",
-      detail:
-        "Para recém-nascidos sem fatores de risco. Exame rápido, indolor e realizado durante o sono natural do bebê.",
-      icon: "👂",
-    },
-    {
-      title: "Triagem Auditiva Neonatal Ampliada",
-      desc: "EOAs + PEATE Automático (BERA automático) + Imitanciometria Pediatrica",
-      detail:
-        "Para bebês com fatores de risco: UTI neonatal, prematuridade, infecções congênitas, hiperbilirrubinemia, histórico familiar.",
-      icon: "🔊",
-    },
-  ],
-  diagnostico: [
-    {
-      title: "PEATE / BERA Diagnóstico",
-      desc: "Potencial Evocado Auditivo de Tronco Encefálico",
-      detail:
-        "Realizado preferencialmente em sono espontâneo. Estima limiares auditivos em cada frequência sonora específica e diferencia tipos de perda auditiva.",
-      icon: "📈",
-    },
-    {
-      title: "PEAEE / ASSR",
-      desc: "Potencial Evocado Auditivo de Estado Estável",
-      detail:
-        "Estimativa objetiva de limiares auditivos por frequência. Avaliação de perdas auditivas severas e profundas. Complemento de alta precisão ao PEATE.",
-      icon: "📊",
-    },
-    {
-      title: "Imitanciometria Pediátrica",
-      desc: "Avaliação da Orelha Média com sonda 1000 Hz",
-      detail:
-        "Padrão ouro para lactentes. Timpanometria e pesquisa de reflexos acústicos. Diferencia perda auditiva condutiva de neurossensorial.",
-      icon: "👂🏼",
-    },
-  ],
-  comportamental: [
-    {
-      title: "Audiometria de Observação Comportamental",
-      desc: "Para bebês de 0 a 6 meses",
-      detail:
-        "Avaliação da resposta comportamental aos sons. Correlação entre achados objetivos e desempenho auditivo funcional.",
-      icon: "👁️",
-    },
-    {
-      title: "Audiometria com Reforço Visual (VRA)",
-      desc: "Para crianças de 6 meses a 2 anos",
-      detail:
-        "Técnica lúdica que usa reforço visual para avaliar a audição. Adaptada ao desenvolvimento da criança.",
-      icon: "🎠",
-    },
-    {
-      title: "Audiometria Lúdica Condicionada",
-      desc: "Para crianças a partir de 2 anos",
-      detail:
-        "Avaliação através de jogos e atividades. Determina limiares auditivos de forma divertida e precisa.",
-      icon: "🎮",
-    },
-  ],
-  pac: [
-    {
-      title: "Avaliação do Processamento Auditivo Central",
-      desc: "Para crianças a partir de 7 anos",
-      detail:
-        "Avalia como o cérebro processa e interpreta os sons. Indicado para dificuldades de compreensão, queixas escolares, trocas fonêmicas e suspeita de TPAC.",
-      icon: "🧩",
-    },
-    {
-      title: "Bateria Completa de Testes PAC",
-      desc: "Testes dicóticos, monóticos e temporais",
-      detail:
-        "Avaliação criteriosa e individualizada com integração dos achados audiológicos, escolares e clínicos. Relatório individualizado, com orientações terapêuticas.",
-      icon: "📋",
-    },
-  ],
-  medico: [
-    {
-      title: "Consulta Médica Complementar",
-      desc: "Avaliação clínica integrada",
-      detail:
-        "Investigação etiológica das alterações auditivas e dos distúrbios de linguagem. Solicitação de exames complementares. Planejamento terapêutico e seguimento longitudinal.",
-      icon: "👨‍⚕️",
-    },
-    {
-      title: "Devolutiva Integrada",
-      desc: "Médico + Fonoaudiólogo juntos",
-      detail: "Análise e Relatórios  Integrados",
-      icon: "💬",
-    },
-    {
-      title: "Consulta Homeopática",
-      desc: "Avaliação homeopática integrada",
-      detail:
-        "Tratamento de suporte para a criança com dificuldades de ajuste do ciclo sono‑vigília, ou para apoio emocional das mães em fase de lactação e acompanhamento  dos filhos.",
-      icon: "👨‍⚕️🌿",
-    },
-    {
-      title: "Follow-up Auditivo de Bebês de Risco",
-      desc: "Monitoramento seriado",
-      detail:
-        "Acompanhamento mesmo após triagem normal para bebês com fatores de risco. Conforme recomendações internacionais do Joint Committee on Infant Hearing.",
-      icon: "📅",
-    },
-  ],
-};
 
 export default function ExamesSection() {
-  const [activeCategory, setActiveCategory] = useState("neonatal");
+  const [activeCategory, setActiveCategory] =
+    useState<ExamCategoryId>("neonatal");
+  const activeExames = exames[activeCategory] || [];
 
   return (
-    <section id="exames" className="py-20 md:py-28 bg-white overflow-hidden">
+    <section id="exames" className="section-band bg-white">
       <div className="container">
-        {/* Header */}
-        <div className="text-center mb-12 reveal">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-8 h-0.5 bg-[#F4C62F]" />
-            <span className="font-nunito font-700 text-sm text-[#6B90C4] uppercase tracking-widest">
-              Nossos Serviços
-            </span>
-            <div className="w-8 h-0.5 bg-[#F4C62F]" />
+        <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-end mb-12">
+          <div className="reveal-left">
+            <div className="section-kicker">Nossos Serviços</div>
+            <h2 className="section-title text-[#2C3E50]">
+              Todos os exames auditivos
+              <span className="text-[#94B1DA]"> em uma jornada clara</span>
+            </h2>
           </div>
-          {/* Main section title uses global MontserratAlternates font via h2 */}
-          <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] mb-4">
-            Todos os exames auditivos
-            <br />
-            <span className="text-[#94B1DA]">em um único lugar</span>
-          </h2>
-          <p className="font-lato text-lg text-[#718096] max-w-2xl mx-auto">
-            Da triagem neonatal ao diagnóstico avançado, oferecemos cuidado completo e contínuo para a saúde auditiva do seu filho.
+          <p className="reveal-right font-lato text-lg text-[#5E6D7A] leading-relaxed max-w-2xl lg:ml-auto">
+            Da triagem neonatal ao diagnóstico avançado, a família entende o
+            próximo passo, o motivo de cada exame e como o resultado orienta a
+            conduta.
           </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10 reveal">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-nunito font-700 text-sm transition-all duration-200 ${
-                activeCategory === cat.id
-                  ? "bg-[#94B1DA] text-white shadow-lg scale-105"
-                  : "bg-[#EEF4FB] text-[#6B90C4] hover:bg-[#94B1DA]/20"
-              }`}
-            >
-              <span>{cat.icon}</span>
-              {cat.label}
-            </button>
-          ))}
+        <div className="reveal flex gap-2 overflow-x-auto pb-3 mb-10 md:flex-wrap md:justify-center">
+          {examCategories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`motion-tab ${isActive ? "is-active" : ""}`}
+                type="button"
+              >
+                <span aria-hidden>{cat.icon}</span>
+                <span>{cat.label}</span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Exames Grid */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
-          {(exames[activeCategory] || []).map((exame, i) => (
-            <div
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {activeExames.map((exame, i) => (
+            <article
               key={exame.title}
-              className="group bg-white border border-[#94B1DA]/20 rounded-3xl p-6 hover:border-[#94B1DA]/60 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              style={{ animationDelay: `${i * 0.1}s` }}
+              className="motion-card reveal group flex min-h-[250px] flex-col border border-[#94B1DA]/18 bg-[#F8FBFF] p-6"
+              style={{ transitionDelay: `${i * 70}ms` }}
             >
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#EEF4FB] flex items-center justify-center text-2xl flex-shrink-0 group-hover:bg-[#94B1DA]/20 transition-colors">
-                  {exame.icon}
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <div className="flex items-start gap-4">
+                  <div className="motion-icon bg-white text-2xl shadow-sm">
+                    {exame.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-nunito text-lg font-900 leading-tight text-[#2C3E50]">
+                      {exame.title}
+                    </h3>
+                    <p className="mt-2 font-lato text-sm font-bold leading-snug text-[#6B90C4]">
+                      {exame.desc}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-nunito font-800 text-[#2C3E50] text-base leading-tight">
-                    {exame.title}
-                  </h3>
-                  <p className="font-lato text-xs text-[#94B1DA] font-bold mt-1">{exame.desc}</p>
-                </div>
+                <ArrowRight
+                  size={18}
+                  className="mt-1 shrink-0 text-[#94B1DA] transition-transform duration-500 ease-motion group-hover:translate-x-1"
+                />
               </div>
-              <p className="font-lato text-sm text-[#718096] leading-relaxed">
+              <p className="mt-auto font-lato text-sm leading-relaxed text-[#5E6D7A]">
                 {exame.detail}
               </p>
-            </div>
+            </article>
           ))}
         </div>
 
-        {/* Bottom feature strip */}
-        <div className="grid md:grid-cols-2 gap-8 items-center bg-[#EEF4FB] rounded-3xl overflow-hidden">
-          <div className="p-8 md:p-10">
-            <div className="flex items-center gap-3 mb-4">
-              <img src={HEADPHONE_ICON} alt="" className="w-10 h-10 object-contain" />
-              <span className="font-nunito font-800 text-[#94B1DA] text-sm uppercase tracking-wide">
+        <div className="reveal mt-14 grid overflow-hidden border border-[#94B1DA]/20 bg-[#EEF4FB] md:grid-cols-[0.9fr_1.1fr]">
+          <div className="p-7 md:p-10">
+            <div className="mb-5 flex items-center gap-3">
+              <img
+                src={HEADPHONE_ICON}
+                alt=""
+                className="h-10 w-10 object-contain"
+              />
+              <span className="font-nunito text-sm font-800 uppercase tracking-wide text-[#6B90C4]">
                 Diferencial AudioBaby
               </span>
             </div>
-            <h3 className="font-900 text-2xl md:text-3xl text-[#2C3E50] mb-4">
-              Exames em sono espontâneo,
-              {/* Updated tagline: sedation when necessary */}
-              <span className="text-[#94B1DA]"> Sedação quando necessária</span>
+            <h3 className="mb-5 font-nunito text-2xl font-900 leading-tight text-[#2C3E50] md:text-3xl">
+              Sono espontâneo sempre que possível.
+              <span className="text-[#94B1DA]">
+                {" "}
+                Sedação apenas quando indicada.
+              </span>
             </h3>
-            <p className="font-lato text-[#4A5568] leading-relaxed mb-6">
-              Nosso ambiente é preparado especialmente para o sono natural do bebê. Sem pressa, sem pressão. Respeitamos o ritmo do seu filho para garantir resultados precisos e uma experiência tranquila para toda a família.
-              Exames com sedação, se necessário. Caso indicado, nossa equipe conta com a flexibilidade de realizar a avaliação auditiva em ambiente hospitalar  seguro, sob sedação, com suporte e acompanhamento de um médico anestesista, um médico otorrinolaringologista e um fonoaudiólogo.
+            <p className="mb-6 font-lato leading-relaxed text-[#4A5568]">
+              O ambiente é preparado para acolher o bebê sem pressa. Quando há
+              indicação de sedação, a avaliação é planejada com suporte médico e
+              segurança.
             </p>
-            <ul className="space-y-2">
+            <ul className="grid gap-3 sm:grid-cols-2">
               {[
-                "Ambiente silencioso, climatizado e humanizado",
-                "Agendamentos flexíveis com tempo ampliado",
-                "Relatórios integrados médico-fonoaudiológicos",
-                "Comunicação ética, clara e empática",
+                "Ambiente silencioso e climatizado",
+                "Agendamento com tempo ampliado",
+                "Relatórios integrados",
+                "Orientação clara para a família",
               ].map((item) => (
-                <li key={item} className="flex items-center gap-2 font-lato text-sm text-[#4A5568]">
-                  <ChevronRight size={14} className="text-[#F4C62F] flex-shrink-0" />
+                <li
+                  key={item}
+                  className="flex items-center gap-2 font-lato text-sm text-[#4A5568]"
+                >
+                  <CheckCircle2
+                    size={16}
+                    className="shrink-0 text-[#F4C62F]"
+                  />
                   {item}
                 </li>
               ))}
             </ul>
+            <a
+              href="https://wa.me/5571981581346?text=Olá! Gostaria de agendar um exame na AudioBaby."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="motion-button mt-8 inline-flex"
+            >
+              Agendar exame
+              <ChevronRight size={16} />
+            </a>
           </div>
-          <div className="relative h-64 md:h-full min-h-[300px]">
+          <div className="relative min-h-[320px] overflow-hidden">
             <img
               src={TRIAGEM_IMG}
               alt="Triagem auditiva neonatal na AudioBaby"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-[1200ms] ease-motion hover:scale-[1.04]"
             />
           </div>
         </div>

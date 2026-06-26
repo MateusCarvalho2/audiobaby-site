@@ -32,7 +32,7 @@ const depoimentos = [
 
 export default function DepoimentosSection() {
   return (
-    <section className="py-20 md:py-28 bg-white overflow-hidden">
+    <section className="py-16 md:py-20 bg-white overflow-hidden">
       <div className="container">
         {/* Header */}
         <div className="text-center mb-14 reveal">

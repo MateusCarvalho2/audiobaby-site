@@ -20,7 +20,7 @@ export default function ContatoSection() {
   return (
     <>
       {/* CTA Section */}
-      <section id="contato" className="py-20 md:py-28 bg-[#2C3E50] overflow-hidden relative">
+      <section id="contato" className="py-16 md:py-20 bg-[#2C3E50] overflow-hidden relative">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 opacity-5 w-96 h-96">
           <img src={GRAFISMO_COMP} alt="" className="w-full h-full object-contain" />
@@ -128,7 +128,7 @@ export default function ContatoSection() {
                    so desktop layouts remain unchanged. */}
                 <iframe
                   src="https://maps.google.com/maps?q=Av.%20Luis%20Viana%20Filho%206462%2C%20Salvador%20BA%20Brasil&output=embed"
-                  className="w-full sm:w-[1185px] h-56 sm:h-64 md:h-72 rounded-3xl border-0"
+                  className="h-56 w-full border-0 sm:h-64 md:h-72"
                   allowFullScreen
                   loading="lazy"
                 />
@@ -150,7 +150,7 @@ export default function ContatoSection() {
                   href="https://wa.me/5571981581346?text=Olá! Gostaria de agendar um exame na AudioBaby."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1DA851] text-white font-nunito font-800 text-base px-6 py-4 rounded-2xl transition-all duration-200 hover:shadow-lg mb-4"
+                  className="motion-button whatsapp mb-4 w-full"
                 >
                   <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -166,8 +166,8 @@ export default function ContatoSection() {
                 </div>
 
                 <a
-                  href="tel:+5571981581346"
-                  className="w-full flex items-center justify-center gap-3 bg-[#EEF4FB] hover:bg-[#94B1DA]/20 text-[#6B90C4] font-nunito font-700 text-base px-6 py-4 rounded-2xl transition-all duration-200"
+                  href="tel:+557130378420"
+                  className="motion-button secondary w-full"
                 >
                   <Phone size={18} />
                   (71) 3037-8420
@@ -208,20 +208,28 @@ export default function ContatoSection() {
               <h4 className="font-nunito font-800 text-white text-sm mb-4">Navegação</h4>
               <ul className="space-y-2">
                 {[
-                  { label: "Início", href: "#inicio" },
-                  { label: "Sobre nós", href: "#sobre" },
-                  { label: "Exames", href: "#exames" },
-                  { label: "Diferenciais", href: "#diferenciais" },
-                  { label: "Estrutura", href: "#unidade" },
-                  { label: "Equipe", href: "#equipe" },
-                  { label: "Contato", href: "#contato" },
+                  { label: "Início", href: "/" },
+                  { label: "Sobre nós", href: "/#sobre" },
+                  { label: "Exames", href: "/exames" },
+                  { label: "Diferenciais", href: "/#diferenciais" },
+                  { label: "Estrutura", href: "/estrutura" },
+                  { label: "Equipe", href: "/equipe" },
+                  { label: "Blog", href: "/blog" },
+                  { label: "Contato", href: "/#contato" },
                 ].map((link) => (
                   <li key={link.href}>
                     <a
                       href={link.href}
                       onClick={(e) => {
-                        e.preventDefault();
-                        document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
+                        const hash = link.href.startsWith("/#")
+                          ? link.href.replace("/", "")
+                          : "";
+                        if (hash && window.location.pathname === "/") {
+                          e.preventDefault();
+                          document
+                            .querySelector(hash)
+                            ?.scrollIntoView({ behavior: "smooth" });
+                        }
                       }}
                       className="font-lato text-sm text-white/50 hover:text-[#94B1DA] transition-colors"
                     >
@@ -257,7 +265,7 @@ export default function ContatoSection() {
             <p className="font-lato text-xs text-white/40">
               © 2026 AudioBaby — Núcleo de Audiologia Infantil. Todos os direitos reservados. <br /> Produzido por: Mateus Carvalho
             </p>
-            <div className="flex gap-4 items-center">
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-6 w-full md:w-auto">
               <Link
                 to="/politica-de-privacidade"
                 className="font-lato text-xs text-white/40 hover:text-white/70 transition-colors"
@@ -271,18 +279,16 @@ export default function ContatoSection() {
                 {/* texto do lado de politica de privacidade */}
               </a>
               {/* Signature link (canto inferior direito) */}
-              {/* Developer signature replaced by logo.  The image lives in public/signature-logo.png
-                  and links to the provided site. */}
               <a
                 href="https://canva.link/mateuscarvalhomktt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-opacity hover:opacity-80"
+                className="transition-opacity hover:opacity-80 shrink-0"
               >
                 <img
                   src="/signature-logo.png"
                   alt="Assinatura"
-                  className="h-40 w-auto"
+                  className="h-12 md:h-14 w-auto max-w-full object-contain"
                 />
               </a>
             </div>

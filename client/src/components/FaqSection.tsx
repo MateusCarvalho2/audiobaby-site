@@ -15,11 +15,11 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     q: "Meu bebê falhou na triagem auditiva da maternidade. O que isso significa?",
-    a: "Falhar na triagem não significa necessariamente que seu bebê tem perda auditiva. Cerca de 3 a 4% dos bebês falham na primeira triagem por diversas razões — verniz caseoso no canal auditivo, líquido na orelha média, choro ou agitação durante o exame. O próximo passo é realizar uma nova triagem ou um diagnóstico completo. Não entre em pânico: estamos aqui para orientar você em cada etapa.",
+    a: "Falhar na triagem não significa necessariamente que seu bebê tem perda auditiva. Cerca de 2% a 4% dos bebês são encaminhados para avaliação diagnóstica após a triagem por diferentes motivos, como vernix no canal auditivo, líquido na orelha média, choro ou agitação durante o exame. O próximo passo é repetir a triagem ou realizar investigação completa, conforme o caso.",
   },
   {
     q: "Com quantos dias de vida posso trazer meu bebê para o exame?",
-    a: "O ideal é realizar a triagem auditiva ainda na maternidade, nos primeiros dias de vida. Caso não tenha sido feita, pode ser realizada a qualquer momento. O PEATE diagnóstico pode ser feito a partir de 1 mês de vida. Quanto mais cedo o diagnóstico, maiores as possibilidades de intervenção e desenvolvimento.",
+    a: "O ideal é realizar a triagem auditiva ainda na maternidade ou no primeiro mês de vida. Quando há encaminhamento, a investigação diagnóstica deve ser organizada sem demora, com meta de conclusão até 3 meses de vida. Quanto mais cedo o diagnóstico, maiores as possibilidades de intervenção e acompanhamento.",
   },
   {
     q: "O exame vai doer ou assustar meu bebê?",
@@ -28,7 +28,7 @@ const faqs = [
   {
     q: "Meu filho vai precisar de sedação para fazer o PEATE/BERA?",
     // Updated answer: sedação quando necessária, sempre com acompanhamento médico.
-    a: "Na grande maioria dos casos, não. Realizamos o PEATE em sono espontâneo — aproveitamos o momento em que o bebê está dormindo naturalmente. Para crianças maiores que não conseguem dormir espontaneamente, avaliamos cada caso individualmente. Sedação quando necessária, sempre com acompanhamento médico.",
+    a: "Na grande maioria dos casos, não. Realizamos o PEATE em sono espontâneo sempre que possível, aproveitando o momento em que o bebê dorme naturalmente. Para crianças que não conseguem dormir espontaneamente, avaliamos cada caso individualmente. A sedação só é considerada quando indicada e sempre com acompanhamento médico.",
   },
   {
     q: "Quais são os fatores de risco para perda auditiva em bebês?",
@@ -40,7 +40,7 @@ export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-20 md:py-24 bg-[#EEF4FB]">
+    <section id="faq" className="py-16 md:py-20 bg-[#EEF4FB] overflow-hidden">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: header */}
@@ -64,7 +64,7 @@ export default function FaqSection() {
               href="https://wa.me/5571981581346?text=Olá! Tenho dúvidas sobre os exames auditivos da AudioBaby."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#94B1DA] hover:bg-[#6B90C4] text-white font-nunito font-700 text-sm px-6 py-3 rounded-full transition-all duration-200 hover:shadow-lg"
+              className="motion-button blue"
             >
               Falar com nossa equipe
             </a>

@@ -62,7 +62,7 @@ export default function AgendamentoModal({ isOpen, onClose }: AgendamentoModalPr
         {/* Header */}
         <div className="sticky top-0 bg-gradient-to-r from-[#94B1DA] to-[#6B90C4] p-6 flex items-center justify-between">
           <div>
-            <h2 className="font-rheago text-2xl text-white">Agendar Consulta</h2>
+            <h2 className="text-2xl text-white">Agendar Consulta</h2>
             <p className="text-[#E8F1F8] text-sm mt-1">Preencha os dados abaixo</p>
           </div>
           <button

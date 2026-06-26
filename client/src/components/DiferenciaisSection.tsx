@@ -57,10 +57,10 @@ const diferenciais = [
 
 export default function DiferenciaisSection() {
   return (
-    <section id="diferenciais" className="py-20 md:py-28 bg-white overflow-hidden">
+    <section id="diferenciais" className="py-16 md:py-20 bg-white overflow-hidden">
       <div className="container">
         {/* Header */}
-        <div className="text-center mb-14 reveal">
+        <div className="text-center mb-14 reveal-clip">
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
             <span className="font-nunito font-700 text-sm text-[#6B90C4] uppercase tracking-widest">
@@ -86,15 +86,15 @@ export default function DiferenciaisSection() {
             {diferenciais.slice(0, 3).map((d, i) => (
               <div
                 key={d.title}
-                className="reveal bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 border border-[#94B1DA]/15"
-                style={{ transitionDelay: `${i * 0.1}s` }}
+                className="reveal-scale bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1.5 border border-[#94B1DA]/15 hover:border-[#94B1DA]/40 group"
+                style={{ transitionDelay: `${i * 120}ms` }}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#EEF4FB] flex items-center justify-center text-2xl flex-shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-[#EEF4FB] flex items-center justify-center text-2xl flex-shrink-0 transition-transform duration-500 group-hover:scale-110">
                     {d.icon}
                   </div>
                   <div>
-                    <h3 className="font-nunito font-800 text-[#2C3E50] text-base mb-1">{d.title}</h3>
+                    <h3 className="font-nunito font-800 text-[#2C3E50] text-base mb-1 transition-colors duration-300 group-hover:text-[#6B90C4]">{d.title}</h3>
                     <p className="font-lato text-sm text-[#718096] leading-relaxed">{d.desc}</p>
                   </div>
                 </div>
@@ -103,12 +103,12 @@ export default function DiferenciaisSection() {
           </div>
 
           {/* Center – images and highlight */}
-          <div className="reveal flex flex-col gap-4">
-            <div className="relative rounded-3xl overflow-hidden shadow-xl h-56">
+          <div className="reveal-blur flex flex-col gap-4">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl h-56 group">
               <img
                 src={CLINICA_IMG}
                 alt="Ambiente da clínica AudioBaby"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E50]/40 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
@@ -118,32 +118,32 @@ export default function DiferenciaisSection() {
             </div>
 
             {/* Central highlight card */}
-            <div className="bg-[#94B1DA] rounded-3xl p-6 text-center">
+            <div className="bg-[#94B1DA] rounded-3xl p-6 text-center shadow-md border border-[#94B1DA]/10 hover:border-[#94B1DA]/30 transition-all duration-500">
               <img
                 src={HEADPHONE_ICON}
                 alt=""
-                className="w-16 h-16 object-contain mx-auto mb-3 opacity-90"
+                className="w-16 h-16 object-contain mx-auto mb-3 opacity-90 transition-transform duration-700 hover:rotate-6"
               />
               <p className="font-nunito font-900 text-white text-2xl mb-1">Especialistas</p>
               <p className="font-nunito font-700 text-white/80 text-sm">em audição infantil</p>
               <div className="mt-4 pt-4 border-t border-white/20 grid grid-cols-2 gap-3">
                 <div>
-                  <p className="font-nunito font-900 text-[#F4C62F] text-xl">100%</p>
+                  <p className="font-nunito font-900 text-[#F4C62F] text-xl animate-pulse">100%</p>
                   <p className="font-lato text-xs text-white/80">Foco em crianças</p>
                 </div>
                 <div>
                   {/* Updated sedation highlight: show sedation when necessary */}
                   <p className="font-nunito font-900 text-[#F4C62F] text-xl">Sedação</p>
-                  <p className="font-lato text-xs text-white/80">quando necessária</p>
+                  <p className="font-lato text-xs text-white/80">quando indicada</p>
                 </div>
               </div>
             </div>
 
-            <div className="relative rounded-3xl overflow-hidden shadow-xl h-48">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl h-48 group">
               <img
                 src={CONSULTA_IMG}
                 alt="Devolutiva diagnóstica integrada na AudioBaby"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E50]/50 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
@@ -158,15 +158,15 @@ export default function DiferenciaisSection() {
             {diferenciais.slice(3, 6).map((d, i) => (
               <div
                 key={d.title}
-                className="reveal bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 border border-[#94B1DA]/15"
-                style={{ transitionDelay: `${(i + 3) * 0.1}s` }}
+                className="reveal-scale bg-[#F8FBFF] rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1.5 border border-[#94B1DA]/15 hover:border-[#94B1DA]/40 group"
+                style={{ transitionDelay: `${(i + 3) * 120}ms` }}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#EEF4FB] flex items-center justify-center text-2xl flex-shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-[#EEF4FB] flex items-center justify-center text-2xl flex-shrink-0 transition-transform duration-500 group-hover:scale-110">
                     {d.icon}
                   </div>
                   <div>
-                    <h3 className="font-nunito font-800 text-[#2C3E50] text-base mb-1">{d.title}</h3>
+                    <h3 className="font-nunito font-800 text-[#2C3E50] text-base mb-1 transition-colors duration-300 group-hover:text-[#6B90C4]">{d.title}</h3>
                     <p className="font-lato text-sm text-[#718096] leading-relaxed">{d.desc}</p>
                   </div>
                 </div>

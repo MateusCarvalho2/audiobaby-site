@@ -9,7 +9,7 @@ import { Link } from "wouter";
 
 export default function PrivacyPolicy() {
   return (
-    <section className="py-20 md:py-28 bg-white min-h-screen">
+    <section className="py-16 md:py-20 bg-white min-h-screen">
       <div className="container">
         <h1 className="font-nunito font-900 text-3xl md:text-4xl text-[#2C3E50] mb-4">
           Política de Privacidade

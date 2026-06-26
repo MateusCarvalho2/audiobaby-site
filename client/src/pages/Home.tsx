@@ -1,116 +1,67 @@
-/*
- * AudioBaby Home Page
- *
- * This page stitches together all of the site sections including the
- * hero, manifesto, services, timeline, differentiators, team, FAQ,
- * clinic photos and contact.  It uses an IntersectionObserver to add
- * reveal animations as sections scroll into view.
- */
-
 import { useEffect } from "react";
-import Navbar from "@/components/Navbar";
+import BlogPreviewSection from "@/components/BlogPreviewSection";
+import ContatoSection from "@/components/ContatoSection";
+import DiferenciaisSection from "@/components/DiferenciaisSection";
+import FaqSection from "@/components/FaqSection";
+import FluxogramaSection from "@/components/FluxogramaSection";
 import HeroSection from "@/components/HeroSection";
 import ManifestoSection from "@/components/ManifestoSection";
-import ExamesSection from "@/components/ExamesSection";
-import FluxogramaSection from "@/components/FluxogramaSection";
-import DiferenciaisSection from "@/components/DiferenciaisSection";
-import EquipeSection from "@/components/EquipeSection";
-import UnidadeSection from "@/components/UnidadeSection";
-import FaqSection from "@/components/FaqSection";
-import ContatoSection from "@/components/ContatoSection";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
+import Navbar from "@/components/Navbar";
+import PathwaysSection from "@/components/PathwaysSection";
 import WaveDivider, { AudioWaveBar } from "@/components/WaveDivider";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 export default function Home() {
-  // Scroll reveal observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
-      {
-        threshold: 0.08,
-        rootMargin: "0px 0px -40px 0px",
-      }
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
     );
 
     const elements = document.querySelectorAll(
-      ".reveal, .reveal-left, .reveal-right"
+      ".reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-clip"
     );
     elements.forEach((el) => observer.observe(el));
 
-    return () => {
-      elements.forEach((el) => observer.unobserve(el));
-    };
+    return () => elements.forEach((el) => observer.unobserve(el));
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Sticky Navigation */}
+    <>
       <Navbar />
+      <div className="page-shell min-h-screen bg-white">
+        <HeroSection />
+        <WaveDivider color="#F8FBFF" bgColor="white" />
+        <ManifestoSection />
+        <WaveDivider color="white" bgColor="#F8FBFF" flip />
+        <PathwaysSection />
 
-      {/* Hero — full screen with mother and baby */}
-      <HeroSection />
-
-      {/* Wave transition */}
-      <WaveDivider color="#F8FBFF" bgColor="white" />
-
-      {/* Manifesto / About */}
-      <ManifestoSection />
-
-      {/* Wave transition */}
-      <WaveDivider color="white" bgColor="#F8FBFF" flip />
-
-      {/* Exames / Services */}
-      <ExamesSection />
-
-      {/* Audio wave decorative bar */}
-      <div className="bg-white py-4">
-        <div className="container">
-          <div className="flex items-center gap-4">
-            <div className="flex-1 h-px bg-[#94B1DA]/20" />
-            <AudioWaveBar />
-            <div className="flex-1 h-px bg-[#94B1DA]/20" />
+        <div className="bg-white py-4">
+          <div className="container">
+            <div className="flex items-center gap-4">
+              <div className="h-px flex-1 bg-[#94B1DA]/20" />
+              <AudioWaveBar />
+              <div className="h-px flex-1 bg-[#94B1DA]/20" />
+            </div>
           </div>
         </div>
+        <WaveDivider color="#94B1DA" bgColor="white" />
+
+        <FluxogramaSection />
+        <WaveDivider color="white" bgColor="#94B1DA" />
+        <DiferenciaisSection />
+        <WaveDivider color="#F8FBFF" bgColor="white" />
+        <BlogPreviewSection />
+        <WaveDivider color="#EEF4FB" bgColor="#F8FBFF" />
+        <FaqSection />
+        <WaveDivider color="#2C3E50" bgColor="#EEF4FB" />
+        <ContatoSection />
+        <WhatsAppFloat />
       </div>
-
-      {/* Fluxograma — blue section */}
-      <FluxogramaSection />
-
-      {/* Wave transition */}
-      <WaveDivider color="white" bgColor="#94B1DA" />
-
-      {/* Diferenciais */}
-      <DiferenciaisSection />
-
-      {/* Equipe Section */}
-      <EquipeSection />
-
-      {/* Wave transition to FAQ */}
-      <WaveDivider color="#EEF4FB" bgColor="white" />
-
-      {/* FAQ */}
-      <FaqSection />
-
-      {/* Wave transition to Unidade Section */}
-      <WaveDivider color="#F8FBFF" bgColor="#EEF4FB" flip />
-
-      {/* Unidade — photos of the clinic */}
-      <UnidadeSection />
-
-      {/* Wave transition to Contato */}
-      <WaveDivider color="#2C3E50" bgColor="#F8FBFF" />
-
-      {/* Contato + Footer */}
-      <ContatoSection />
-
-      {/* Floating WhatsApp button */}
-      <WhatsAppFloat />
-    </div>
+    </>
   );
 }
