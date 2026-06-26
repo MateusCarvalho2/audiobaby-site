@@ -6,7 +6,7 @@
  * cropping on phones. All other content remains unchanged from the original.
  */
 
-import { Phone, MapPin, Clock, Mail, Instagram, Facebook } from "lucide-react";
+import { Phone, MapPin, Clock, Mail, Instagram } from "lucide-react";
 import { Link } from "wouter";
 
 const LOGO_BRANCA =
@@ -108,13 +108,6 @@ export default function ContatoSection() {
                   aria-label="Instagram"
                 >
                   <Instagram size={18} className="text-[#94B1DA]" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 rounded-xl bg-[#94B1DA]/20 hover:bg-[#94B1DA]/40 flex items-center justify-center transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook size={18} className="text-[#94B1DA]" />
                 </a>
               </div>
 
@@ -267,17 +260,11 @@ export default function ContatoSection() {
             </p>
             <div className="flex flex-wrap items-center justify-center md:justify-end gap-6 w-full md:w-auto">
               <Link
-                to="/politica-de-privacidade"
+                href="/politica-de-privacidade"
                 className="font-lato text-xs text-white/40 hover:text-white/70 transition-colors"
               >
                 Política de Privacidade
               </Link>
-              <a
-                href="#"
-                className="font-lato text-xs text-white/40 hover:text-white/70 transition-colors"
-              >
-                {/* texto do lado de politica de privacidade */}
-              </a>
               {/* Signature link (canto inferior direito) */}
               <a
                 href="https://canva.link/mateuscarvalhomktt"
