@@ -29,12 +29,9 @@ export default function InternalHero({
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#2C3E50] via-[#2C3E50]/80 via-45% to-transparent" />
         
-        {/* Smooth gradient fade matching the background color of the next section */}
+        {/* Smooth gradient fade blending the image into the hero's dark blue background */}
         <div 
-          className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t" 
-          style={{
-            backgroundImage: `linear-gradient(to top, ${bgColor} 0%, transparent 100%)`
-          }}
+          className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#2C3E50] to-transparent" 
         />
       </div>
 
