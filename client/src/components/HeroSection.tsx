@@ -53,8 +53,8 @@ export default function HeroSection() {
     }
 
     const updateLoop = () => {
-      // Smooth interpolation (lerp)
-      currentRatio += (targetRatio - currentRatio) * 0.08;
+      // Smooth interpolation (lerp) - slightly slower coefficient (0.05) for buttery smooth motion
+      currentRatio += (targetRatio - currentRatio) * 0.05;
 
       if (Math.abs(targetRatio - currentRatio) < 0.0005) {
         currentRatio = targetRatio;
@@ -77,13 +77,11 @@ export default function HeroSection() {
           const targetTime = currentRatio * duration;
           const diff = Math.abs(video.currentTime - targetTime);
           
-          // Throttled seeking: seek at most once every 33ms (~30fps) to prevent overloading the video decoder
-          // while ensuring fluid playback without frozen/stuck frames.
-          if (diff > 0.02) {
-            const now = performance.now();
-            if (now - lastSeekTimeRef.current > 33) {
+          // Use browser-native !seeking flag to decode as fast as possible (up to 60fps/120fps)
+          // without clogging the decoder pipeline. Threshold is set to 0.01s for ultra-fine updates.
+          if (diff > 0.01) {
+            if (!video.seeking) {
               video.currentTime = targetTime;
-              lastSeekTimeRef.current = now;
             }
             videoPending = true;
           }
