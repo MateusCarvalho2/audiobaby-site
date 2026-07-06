@@ -15,6 +15,12 @@ export default function HeroSection() {
     let animationFrameId: number;
     let isRunning = false;
 
+    const video = videoRef.current;
+    if (video) {
+      // Synchronously pause the video immediately on mount to freeze it at the first frame
+      video.pause();
+    }
+
     const startLoop = () => {
       if (!isRunning) {
         isRunning = true;
@@ -30,28 +36,13 @@ export default function HeroSection() {
     };
 
     const handleMetadata = () => {
-      const video = videoRef.current;
-      if (!video) return;
-      videoDurationRef.current = Math.max(0, video.duration || 0);
-      
-      // Force initial play & pause immediately to prime Safari's decoder and render the first frame
-      video.pause();
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            video.pause();
-            video.currentTime = 0;
-          })
-          .catch(() => {
-            video.pause();
-          });
-      }
-      
+      const v = videoRef.current;
+      if (!v) return;
+      videoDurationRef.current = Math.max(0, v.duration || 0);
+      v.pause();
       startLoop();
     };
 
-    const video = videoRef.current;
     if (video) {
       video.addEventListener("loadedmetadata", handleMetadata);
       video.addEventListener("canplay", handleMetadata);
@@ -150,6 +141,7 @@ export default function HeroSection() {
           src={HERO_VIDEO}
           muted
           playsInline
+          autoPlay
           preload="auto"
           aria-label="Vídeo institucional da AudioBaby"
         />
