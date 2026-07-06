@@ -8,6 +8,7 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const backgroundRef = useRef<HTMLDivElement | null>(null);
   const videoDurationRef = useRef(0);
+  const lastSeekTimeRef = useRef(0);
 
   useEffect(() => {
     let targetRatio = 0;
@@ -76,11 +77,13 @@ export default function HeroSection() {
           const targetTime = currentRatio * duration;
           const diff = Math.abs(video.currentTime - targetTime);
           
-          // HTML5 seeking is asynchronous. We check !video.seeking to avoid bottlenecking the video decoder.
-          // Also only seek when the time difference is larger than ~1 frame (0.03s) to prevent micro-stutters.
-          if (diff > 0.03) {
-            if (!video.seeking) {
+          // Throttled seeking: seek at most once every 33ms (~30fps) to prevent overloading the video decoder
+          // while ensuring fluid playback without frozen/stuck frames.
+          if (diff > 0.02) {
+            const now = performance.now();
+            if (now - lastSeekTimeRef.current > 33) {
               video.currentTime = targetTime;
+              lastSeekTimeRef.current = now;
             }
             videoPending = true;
           }
