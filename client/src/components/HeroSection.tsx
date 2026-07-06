@@ -33,14 +33,28 @@ export default function HeroSection() {
       const video = videoRef.current;
       if (!video) return;
       videoDurationRef.current = Math.max(0, video.duration || 0);
+      
+      // Force initial play & pause immediately to prime Safari's decoder and render the first frame
       video.pause();
-      video.currentTime = 0;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            video.pause();
+            video.currentTime = 0;
+          })
+          .catch(() => {
+            video.pause();
+          });
+      }
+      
       startLoop();
     };
 
     const video = videoRef.current;
     if (video) {
       video.addEventListener("loadedmetadata", handleMetadata);
+      video.addEventListener("canplay", handleMetadata);
       if (video.readyState >= 1) {
         handleMetadata();
       }
@@ -63,17 +77,24 @@ export default function HeroSection() {
       }
 
       let videoPending = false;
-      // Smoothly seek the video based on currentRatio
-      if (video && videoDurationRef.current > 0) {
-        const targetTime = currentRatio * videoDurationRef.current;
-        const diff = Math.abs(video.currentTime - targetTime);
-        
-        // HTML5 seeking is asynchronous. We check !video.seeking to avoid bottlenecking the video decoder.
-        // Also only seek when the time difference is larger than ~1 frame (0.03s) to prevent micro-stutters.
-        if (diff > 0.03) {
-          if (!video.seeking) {
-            video.currentTime = targetTime;
+      
+      if (video) {
+        // Read duration directly from video node to handle browsers that delay metadata event emission
+        const duration = video.duration || videoDurationRef.current;
+        if (!isNaN(duration) && duration > 0) {
+          const targetTime = currentRatio * duration;
+          const diff = Math.abs(video.currentTime - targetTime);
+          
+          // HTML5 seeking is asynchronous. We check !video.seeking to avoid bottlenecking the video decoder.
+          // Also only seek when the time difference is larger than ~1 frame (0.03s) to prevent micro-stutters.
+          if (diff > 0.03) {
+            if (!video.seeking) {
+              video.currentTime = targetTime;
+            }
+            videoPending = true;
           }
+        } else {
+          // If duration is not yet available, keep the loop active to capture it once it loads
           videoPending = true;
         }
       }
@@ -95,6 +116,7 @@ export default function HeroSection() {
     return () => {
       if (video) {
         video.removeEventListener("loadedmetadata", handleMetadata);
+        video.removeEventListener("canplay", handleMetadata);
       }
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
