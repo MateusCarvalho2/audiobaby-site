@@ -53,8 +53,8 @@ export default function HeroSection() {
     }
 
     const updateLoop = () => {
-      // Smooth interpolation (lerp) - slightly slower coefficient (0.05) for buttery smooth motion
-      currentRatio += (targetRatio - currentRatio) * 0.05;
+      // Smooth interpolation (lerp) - balanced at 0.06 for a responsive yet liquid motion
+      currentRatio += (targetRatio - currentRatio) * 0.06;
 
       if (Math.abs(targetRatio - currentRatio) < 0.0005) {
         currentRatio = targetRatio;
@@ -77,11 +77,14 @@ export default function HeroSection() {
           const targetTime = currentRatio * duration;
           const diff = Math.abs(video.currentTime - targetTime);
           
-          // Use browser-native !seeking flag to decode as fast as possible (up to 60fps/120fps)
-          // without clogging the decoder pipeline. Threshold is set to 0.01s for ultra-fine updates.
-          if (diff > 0.01) {
-            if (!video.seeking) {
+          // Ultra-fluid updates: seek at most once every 16ms (60fps) matching requestAnimationFrame rate.
+          // This bypasses Safari's slow 'seeking' flag while preventing decoder congestion.
+          // Threshold of 0.002s captures even microscopic scroll shifts for step-free slow rolagem.
+          if (diff > 0.002) {
+            const now = performance.now();
+            if (now - lastSeekTimeRef.current > 16) {
               video.currentTime = targetTime;
+              lastSeekTimeRef.current = now;
             }
             videoPending = true;
           }
