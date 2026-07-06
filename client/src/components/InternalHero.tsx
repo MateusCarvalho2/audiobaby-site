@@ -25,9 +25,9 @@ export default function InternalHero({
         <img
           src={image}
           alt=""
-          className={`h-full w-full object-cover opacity-[0.58] ${imageClassName}`}
+          className={`h-full w-full object-cover opacity-[0.82] ${imageClassName}`}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2C3E50]/96 via-[#2C3E50]/72 to-[#2C3E50]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#2C3E50] via-[#2C3E50]/80 via-45% to-transparent" />
         
         {/* Smooth gradient fade matching the background color of the next section */}
         <div 

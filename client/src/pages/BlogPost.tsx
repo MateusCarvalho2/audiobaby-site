@@ -80,7 +80,7 @@ export default function BlogPost({
               </p>
             </div>
             {/* Smooth wavy divider transition to the page content */}
-            <div 
+            <div
               className="absolute inset-x-0 bottom-0 z-10 w-full overflow-hidden leading-none"
               style={{ transform: "translateY(1px)" }}
             >
@@ -101,7 +101,7 @@ export default function BlogPost({
           <section className="section-band bg-white">
             <div className="container grid gap-10 lg:grid-cols-[0.72fr_0.28fr]">
               <div className="reveal max-w-3xl">
-                {post.content.map((paragraph) => (
+                {post.content.map(paragraph => (
                   <p
                     key={paragraph}
                     className="mb-6 font-lato text-lg leading-relaxed text-[#4A5568]"
@@ -117,11 +117,11 @@ export default function BlogPost({
               </div>
 
               <aside className="reveal-right h-fit border border-[#94B1DA]/18 bg-[#F8FBFF] p-5 lg:sticky lg:top-28">
-                <h2 className="font-nunito text-lg font-900 text-[#2C3E50]">
+                <h2 className="text-lg font-900 text-[#2C3E50]">
                   Pontos principais
                 </h2>
                 <ul className="mt-5 grid gap-3">
-                  {post.takeaways.map((item) => (
+                  {post.takeaways.map(item => (
                     <li
                       key={item}
                       className="flex gap-3 font-lato text-sm leading-relaxed text-[#4A5568]"

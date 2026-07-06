@@ -1,6 +1,7 @@
-import { useState } from "react";
 import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
-import { examCategories, exames, type ExamCategoryId } from "@/data/content";
+import { Link } from "wouter";
+import { examCategories, exames } from "@/data/content";
+import { getCategoryIcon, getExamIcon } from "@/lib/icons";
 
 const HEADPHONE_ICON =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/4_ac7150bc.png";
@@ -8,10 +9,6 @@ const TRIAGEM_IMG =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/bebe_triagem_neonatal_350ed09d.jpg";
 
 export default function ExamesSection() {
-  const [activeCategory, setActiveCategory] =
-    useState<ExamCategoryId>("neonatal");
-  const activeExames = exames[activeCategory] || [];
-
   return (
     <section id="exames" className="section-band bg-white">
       <div className="container">
@@ -30,53 +27,71 @@ export default function ExamesSection() {
           </p>
         </div>
 
-        <div className="reveal flex gap-2 overflow-x-auto pb-3 mb-10 md:flex-wrap md:justify-center">
-          {examCategories.map((cat) => {
-            const isActive = activeCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`motion-tab ${isActive ? "is-active" : ""}`}
-                type="button"
-              >
-                <span aria-hidden>{cat.icon}</span>
-                <span>{cat.label}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {activeExames.map((exame, i) => (
-            <article
-              key={exame.title}
-              className="motion-card reveal group flex min-h-[250px] flex-col border border-[#94B1DA]/18 bg-[#F8FBFF] p-6"
-              style={{ transitionDelay: `${i * 70}ms` }}
+        <div className="grid gap-7">
+          {examCategories.map((category, categoryIndex) => (
+            <section
+              key={category.id}
+              className="reveal border border-[#94B1DA]/18 bg-[#F8FBFF] p-5 md:p-7"
+              style={{ transitionDelay: `${categoryIndex * 80}ms` }}
             >
-              <div className="mb-5 flex items-start justify-between gap-4">
-                <div className="flex items-start gap-4">
-                  <div className="motion-icon bg-white text-2xl shadow-sm">
-                    {exame.icon}
+              <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="mb-3 inline-flex h-12 w-12 items-center justify-center bg-[#EEF4FB] text-[#6B90C4] rounded-2xl shadow-sm border border-white">
+                    {getCategoryIcon(category.icon, "h-6 w-6")}
                   </div>
-                  <div>
-                    <h3 className="font-nunito text-lg font-900 leading-tight text-[#2C3E50]">
-                      {exame.title}
-                    </h3>
-                    <p className="mt-2 font-lato text-sm font-bold leading-snug text-[#6B90C4]">
-                      {exame.desc}
-                    </p>
-                  </div>
+                  <h3 className="font-nunito text-2xl font-900 leading-tight text-[#2C3E50]">
+                    {category.label}
+                  </h3>
                 </div>
-                <ArrowRight
-                  size={18}
-                  className="mt-1 shrink-0 text-[#94B1DA] transition-transform duration-500 ease-motion group-hover:translate-x-1"
-                />
+                <span className="font-lato text-sm font-bold text-[#6B90C4]">
+                  {exames[category.id].length} procedimento
+                  {exames[category.id].length > 1 ? "s" : ""}
+                </span>
               </div>
-              <p className="mt-auto font-lato text-sm leading-relaxed text-[#5E6D7A]">
-                {exame.detail}
-              </p>
-            </article>
+
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {exames[category.id].map((exame, i) => {
+                  const isYellow = exame.slug.includes("neonatal") || exame.slug.includes("ludica") || exame.slug.includes("integrada");
+                  const bgClass = isYellow ? "bg-[#F4C62F]/10 border-[#F4C62F]/10" : "bg-[#94B1DA]/12 border-[#94B1DA]/12";
+                  const textClass = isYellow ? "text-[#F4C62F]" : "text-[#6B90C4]";
+                  return (
+                    <Link
+                      key={exame.slug}
+                      href={`/exames/${exame.slug}`}
+                      className="motion-card group flex min-h-[280px] flex-col border border-[#94B1DA]/16 bg-white p-5"
+                      style={{ transitionDelay: `${i * 60}ms` }}
+                    >
+                      <div className="mb-5 flex items-start justify-between gap-4">
+                        <div className="flex items-start gap-4">
+                          <div className={`flex items-center justify-center h-12 w-12 rounded-2xl border ${bgClass} ${textClass} shrink-0 transition-transform duration-300 group-hover:scale-110`}>
+                            {getExamIcon(exame.slug, "h-6 w-6")}
+                          </div>
+                          <div>
+                            <h4 className="font-nunito text-lg font-900 leading-tight text-[#2C3E50]">
+                              {exame.title}
+                            </h4>
+                            <p className="mt-2 font-lato text-sm font-bold leading-snug text-[#6B90C4]">
+                              {exame.desc}
+                            </p>
+                          </div>
+                        </div>
+                        <ArrowRight
+                          size={18}
+                          className="mt-1 shrink-0 text-[#94B1DA] transition-transform duration-500 ease-motion group-hover:translate-x-1"
+                        />
+                      </div>
+                      <p className="font-lato text-sm leading-relaxed text-[#5E6D7A]">
+                        {exame.detail}
+                      </p>
+                      <span className="mt-auto inline-flex items-center gap-2 pt-6 font-nunito text-sm font-900 uppercase tracking-[0.12em] text-[#6B90C4]">
+                        Ver preparo
+                        <ArrowRight size={15} />
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </section>
           ))}
         </div>
 
@@ -110,15 +125,12 @@ export default function ExamesSection() {
                 "Agendamento com tempo ampliado",
                 "Relatórios integrados",
                 "Orientação clara para a família",
-              ].map((item) => (
+              ].map(item => (
                 <li
                   key={item}
                   className="flex items-center gap-2 font-lato text-sm text-[#4A5568]"
                 >
-                  <CheckCircle2
-                    size={16}
-                    className="shrink-0 text-[#F4C62F]"
-                  />
+                  <CheckCircle2 size={16} className="shrink-0 text-[#F4C62F]" />
                   {item}
                 </li>
               ))}

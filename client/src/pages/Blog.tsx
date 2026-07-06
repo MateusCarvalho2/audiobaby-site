@@ -9,7 +9,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 export default function Blog() {
   useScrollReveal();
 
-  const featured = blogPosts.find((post) => post.featured) || blogPosts[0];
+  const featured = blogPosts.find(post => post.featured) || blogPosts[0];
 
   return (
     <>
@@ -17,9 +17,9 @@ export default function Blog() {
       <div className="page-shell min-h-screen bg-white">
         <InternalHero
           label="Blog"
-          title="Conteúdo para"
-          highlight="famílias bem orientadas."
-          description="Guias curtos sobre triagem auditiva, diagnóstico infantil, fatores de risco e preparo para exames."
+          title="Conhecimento para"
+          highlight="cada fase do cuidado."
+          description="Um espaço com conteúdos sobre saúde auditiva, desenvolvimento infantil, exames, rotina clínica e orientações práticas para famílias e profissionais."
           image="https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/fonoaudiologa_crianca_fb5ab1ac.jpg"
           waveColor="#F8FBFF"
           bgColor="#F8FBFF"
@@ -43,7 +43,11 @@ export default function Blog() {
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {blogPosts.map((post, i) => (
-                <div key={post.slug} style={{ transitionDelay: `${i * 80}ms` }}>
+                <div
+                  key={post.slug}
+                  className="h-full"
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                >
                   <BlogCard post={post} />
                 </div>
               ))}
@@ -51,7 +55,7 @@ export default function Blog() {
           </div>
         </section>
 
-        <ContatoSection />
+        <ContatoSection topWaveBgColor="#F8FBFF" />
         <WhatsAppFloat />
       </div>
     </>

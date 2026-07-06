@@ -6,10 +6,15 @@ export type ExamCategoryId =
   | "medico";
 
 export type Exam = {
+  slug: string;
   title: string;
   desc: string;
   detail: string;
   icon: string;
+  purpose: string[];
+  preparation: string[];
+  procedure: string[];
+  indications: string[];
 };
 
 export type BlogPost = {
@@ -39,113 +44,387 @@ export const examCategories: Array<{
 export const exames: Record<ExamCategoryId, Exam[]> = {
   neonatal: [
     {
+      slug: "triagem-auditiva-neonatal-universal",
       title: "Triagem Auditiva Neonatal Universal",
       desc: "Emissões Otoacústicas Evocadas (EOAT e EOAPD) + Imitanciometria Pediátrica",
       detail:
         "Para recém-nascidos sem fatores de risco. Exame rápido, indolor e realizado durante o sono natural do bebê.",
       icon: "👂",
+      purpose: [
+        "Rastrear sinais iniciais de alteração auditiva em recém-nascidos.",
+        "Ajudar a definir se o bebê pode seguir em acompanhamento habitual ou se precisa repetir/investigar melhor.",
+      ],
+      preparation: [
+        "Trazer o bebê alimentado, confortável e, se possível, em período de sono ou descanso.",
+        "Evitar cremes ou óleos na região próxima às orelhas no dia do exame.",
+        "Levar documentos, exames anteriores e a caderneta da criança.",
+      ],
+      procedure: [
+        "A equipe posiciona uma pequena sonda na orelha do bebê para captar respostas da cóclea.",
+        "Quando indicado, a imitanciometria pediátrica complementa a avaliação da orelha média.",
+        "O exame é indolor e costuma ser feito com o bebê dormindo ou tranquilo.",
+      ],
+      indications: [
+        "Recém-nascidos sem fatores de risco conhecidos.",
+        "Bebês que precisam concluir ou repetir a triagem auditiva.",
+      ],
     },
     {
+      slug: "triagem-auditiva-neonatal-ampliada",
       title: "Triagem Auditiva Neonatal Ampliada",
       desc: "EOAs + PEATE Automático (BERA automático) + Imitanciometria Pediátrica",
       detail:
         "Para bebês com fatores de risco: UTI neonatal, prematuridade, infecções congênitas, hiperbilirrubinemia e histórico familiar.",
       icon: "🔊",
+      purpose: [
+        "Avaliar bebês com maior risco para alterações auditivas.",
+        "Combinar rastreio coclear, resposta neural automática e avaliação da orelha média.",
+      ],
+      preparation: [
+        "Planejar a consulta para um horário em que o bebê costume dormir.",
+        "Trazer informações da maternidade, UTI neonatal, infecções, medicações e histórico familiar.",
+        "Manter a rotina orientada pela equipe no agendamento, principalmente se houver muitos exames no mesmo dia.",
+      ],
+      procedure: [
+        "São realizados testes complementares enquanto o bebê permanece calmo ou dormindo.",
+        "Sensores adesivos podem ser usados para registrar respostas auditivas automáticas.",
+        "O resultado orienta se há necessidade de diagnóstico completo ou seguimento seriado.",
+      ],
+      indications: [
+        "Prematuridade, UTI neonatal, hiperbilirrubinemia, infecções congênitas ou histórico familiar.",
+        "Bebês em que a equipe deseja uma triagem mais abrangente desde o início.",
+      ],
     },
   ],
   diagnostico: [
     {
+      slug: "peate-bera-diagnostico",
       title: "PEATE / BERA Diagnóstico",
       desc: "Potencial Evocado Auditivo de Tronco Encefálico",
       detail:
         "Realizado preferencialmente em sono espontâneo. Estima limiares auditivos por frequência e ajuda a diferenciar tipos de perda auditiva.",
       icon: "📈",
+      purpose: [
+        "Estimar limiares auditivos de forma objetiva.",
+        "Investigar a integridade da via auditiva até o tronco encefálico.",
+        "Apoiar a diferenciação entre alterações condutivas, sensoriais e neurais.",
+      ],
+      preparation: [
+        "Para bebês, chegar com a criança cansada e com possibilidade de dormir durante o exame.",
+        "A alimentação costuma ser organizada perto do início do exame, conforme orientação da equipe.",
+        "Trazer exames anteriores e relatar medicamentos, intercorrências e dificuldades de sono.",
+      ],
+      procedure: [
+        "Sensores adesivos são posicionados na pele e fones emitem estímulos sonoros controlados.",
+        "O equipamento registra respostas elétricas da via auditiva enquanto a criança dorme ou permanece muito quieta.",
+        "Quando sono natural não é suficiente, a equipe discute alternativas com orientação médica.",
+      ],
+      indications: [
+        "Falha na triagem auditiva neonatal.",
+        "Suspeita de perda auditiva, atraso de linguagem ou necessidade de diagnóstico objetivo.",
+        "Monitoramento de bebês com fatores de risco.",
+      ],
     },
     {
+      slug: "peaee-assr",
       title: "PEAEE / ASSR",
       desc: "Potencial Evocado Auditivo de Estado Estável",
       detail:
         "Estimativa objetiva de limiares auditivos por frequência. Complementa o PEATE na avaliação de perdas severas e profundas.",
       icon: "📊",
+      purpose: [
+        "Estimar respostas auditivas por frequência de maneira objetiva.",
+        "Complementar o PEATE quando é preciso detalhar melhor o grau da perda auditiva.",
+      ],
+      preparation: [
+        "Seguir as mesmas orientações de sono e conforto usadas para exames eletrofisiológicos.",
+        "Trazer resultados de PEATE/BERA, emissões otoacústicas e imitanciometria, se houver.",
+        "Confirmar previamente se haverá necessidade de tempo ampliado no agendamento.",
+      ],
+      procedure: [
+        "Sensores registram respostas auditivas enquanto estímulos são apresentados por fones.",
+        "A análise ajuda a estimar limiares em frequências específicas.",
+        "O exame é indolor e exige pouco movimento para registros estáveis.",
+      ],
+      indications: [
+        "Investigação de perdas moderadas, severas ou profundas.",
+        "Planejamento de intervenção auditiva quando o PEATE precisa de complementação.",
+      ],
     },
     {
+      slug: "imitanciometria-pediatrica",
       title: "Imitanciometria Pediátrica",
       desc: "Avaliação da orelha média com sonda de 1000 Hz",
       detail:
         "Timpanometria e pesquisa de reflexos acústicos em lactentes. Ajuda a diferenciar alterações condutivas e neurossensoriais.",
       icon: "👂🏼",
+      purpose: [
+        "Avaliar o funcionamento da orelha média.",
+        "Identificar sinais de líquido, pressão alterada ou outras condições que podem interferir na audição.",
+      ],
+      preparation: [
+        "Não exige jejum nem sedação.",
+        "O bebê ou a criança precisa estar o mais tranquilo possível por alguns minutos.",
+        "Informar se houve otite recente, secreção, febre ou uso de medicação.",
+      ],
+      procedure: [
+        "Uma pequena sonda é posicionada na entrada do ouvido.",
+        "O equipamento varia suavemente a pressão e registra a resposta da orelha média.",
+        "Em lactentes, a sonda de 1000 Hz pode ser usada conforme a idade e a indicação clínica.",
+      ],
+      indications: [
+        "Suspeita de alteração condutiva ou otite média.",
+        "Complemento de triagem, PEATE/BERA e avaliação audiológica infantil.",
+      ],
     },
   ],
   comportamental: [
     {
+      slug: "audiometria-observacao-comportamental",
       title: "Audiometria de Observação Comportamental",
       desc: "Para bebês de 0 a 6 meses",
       detail:
         "Avalia respostas comportamentais aos sons e correlaciona achados objetivos com o desempenho auditivo funcional.",
       icon: "👁️",
+      purpose: [
+        "Observar respostas do bebê a estímulos sonoros.",
+        "Relacionar achados objetivos com comportamento auditivo funcional.",
+      ],
+      preparation: [
+        "Trazer o bebê descansado e alimentado, mantendo itens de conforto por perto.",
+        "Evitar horários em que a criança esteja muito irritada ou com sono extremo, quando possível.",
+        "Informar respostas auditivas percebidas em casa.",
+      ],
+      procedure: [
+        "A equipe apresenta sons controlados e observa mudanças comportamentais.",
+        "Podem ser analisadas reações como atenção, pausa, susto ou busca pelo som.",
+        "O resultado é interpretado junto com idade, desenvolvimento e outros exames.",
+      ],
+      indications: [
+        "Bebês pequenos que precisam de avaliação funcional da audição.",
+        "Acompanhamento de desenvolvimento auditivo e correlação com exames objetivos.",
+      ],
     },
     {
+      slug: "audiometria-reforco-visual-vra",
       title: "Audiometria com Reforco Visual (VRA)",
       desc: "Para crianças de 6 meses a 2 anos",
       detail:
         "Técnica lúdica que usa reforço visual para avaliar a audição de acordo com a fase de desenvolvimento da criança.",
       icon: "🎠",
+      purpose: [
+        "Estimar respostas auditivas em crianças pequenas por meio de uma tarefa lúdica.",
+        "Avaliar como a criança detecta sons em diferentes intensidades.",
+      ],
+      preparation: [
+        "A criança deve vir descansada e alimentada.",
+        "Trazer chupeta, mamadeira, brinquedo pequeno ou outro item de conforto, se fizer parte da rotina.",
+        "Evitar explicar o exame como algo difícil; a proposta é brincar e responder aos sons.",
+      ],
+      procedure: [
+        "A criança aprende a procurar uma imagem ou brinquedo luminoso quando percebe o som.",
+        "A equipe apresenta estímulos em caixas acústicas ou fones, conforme a idade e tolerância.",
+        "O exame pode precisar de pausas para manter a criança confortável.",
+      ],
+      indications: [
+        "Crianças que já sustentam atenção e procuram a fonte sonora.",
+        "Investigação de audição em lactentes maiores e crianças pequenas.",
+      ],
     },
     {
+      slug: "audiometria-ludica-condicionada",
       title: "Audiometria Lúdica Condicionada",
       desc: "Para crianças a partir de 2 anos",
       detail:
         "Avaliação com jogos e atividades para determinar limiares auditivos de forma precisa e acolhedora.",
       icon: "🎮",
+      purpose: [
+        "Determinar limiares auditivos com participação ativa da criança.",
+        "Transformar a resposta ao som em uma tarefa simples, como encaixar ou jogar uma peça.",
+      ],
+      preparation: [
+        "Explicar que será uma brincadeira com sons, sem criar pressão por acerto.",
+        "Trazer óculos, medicamentos ou informações relevantes sobre atenção e desenvolvimento.",
+        "Evitar prometer duração fixa, pois o ritmo depende da colaboração da criança.",
+      ],
+      procedure: [
+        "A criança é condicionada a realizar uma ação quando escuta o som.",
+        "Os estímulos são apresentados em intensidades e frequências diferentes.",
+        "A avaliação pode ser adaptada com pausas e reforços positivos.",
+      ],
+      indications: [
+        "Crianças a partir de aproximadamente 2 anos, conforme maturidade e colaboração.",
+        "Queixas de fala, escola, atenção, otites recorrentes ou suspeita de perda auditiva.",
+      ],
     },
   ],
   pac: [
     {
+      slug: "avaliacao-processamento-auditivo-central",
       title: "Avaliação do Processamento Auditivo Central",
       desc: "Para crianças a partir de 7 anos",
       detail:
         "Avalia como o cérebro processa sons. Indicada em queixas escolares, dificuldade de compreensão e suspeita de TPAC.",
       icon: "🧩",
+      purpose: [
+        "Investigar como o sistema nervoso organiza e interpreta informações sonoras.",
+        "Avaliar habilidades como escuta no ruído, integração binaural e aspectos temporais da audição.",
+      ],
+      preparation: [
+        "A criança deve estar descansada e alimentada.",
+        "Trazer avaliação audiológica básica recente, relatórios escolares e queixas da família.",
+        "Informar diagnóstico, medicações, dificuldades de atenção, linguagem ou aprendizagem.",
+      ],
+      procedure: [
+        "São aplicados testes auditivos comportamentais em ambiente controlado.",
+        "A criança precisa compreender instruções e responder a diferentes tarefas sonoras.",
+        "O resultado é integrado com história clínica, escola e outros profissionais quando necessário.",
+      ],
+      indications: [
+        "Dificuldade de entender fala no ruído.",
+        "Queixas escolares, desatenção auditiva, trocas de sons ou necessidade de repetição frequente.",
+      ],
     },
     {
+      slug: "bateria-completa-testes-pac",
       title: "Bateria Completa de Testes PAC",
       desc: "Testes dicóticos, monóticos e temporais",
       detail:
         "Avaliação individualizada com integração dos achados audiológicos, escolares e clínicos, seguida de orientações terapêuticas.",
       icon: "📋",
+      purpose: [
+        "Mapear diferentes habilidades do processamento auditivo central.",
+        "Gerar orientações para família, escola e intervenção terapêutica quando indicada.",
+      ],
+      preparation: [
+        "Trazer exames auditivos anteriores e relatórios de fonoaudiologia, psicopedagogia, neurologia ou escola.",
+        "Garantir que a criança esteja descansada e com alimentação habitual.",
+        "Confirmar com a equipe se a avaliação será feita em uma ou mais etapas.",
+      ],
+      procedure: [
+        "A bateria é escolhida conforme idade, queixa e capacidade de resposta.",
+        "Podem ser usados testes com fala no ruído, escuta dicótica, padrões sonoros e tarefas temporais.",
+        "A devolutiva explica o perfil encontrado e os próximos passos.",
+      ],
+      indications: [
+        "Suspeita de Transtorno do Processamento Auditivo Central.",
+        "Necessidade de relatório detalhado para planejamento terapêutico e escolar.",
+      ],
     },
   ],
   medico: [
     {
+      slug: "consulta-medica-complementar",
       title: "Consulta Médica Complementar",
       desc: "Avaliação clínica integrada",
       detail:
         "Investigação etiológica das alterações auditivas e dos distúrbios de linguagem, com planejamento terapêutico e seguimento.",
       icon: "👨‍⚕️",
+      purpose: [
+        "Integrar sintomas, história clínica, exame físico e achados audiológicos.",
+        "Investigar possíveis causas e definir conduta médica quando necessário.",
+      ],
+      preparation: [
+        "Trazer exames auditivos, relatórios, receitas e informações da gestação, parto e desenvolvimento.",
+        "Listar medicamentos em uso, alergias e cirurgias anteriores.",
+        "Anotar dúvidas principais para aproveitar melhor a consulta.",
+      ],
+      procedure: [
+        "O médico revisa a história clínica e os exames disponíveis.",
+        "A avaliação pode incluir exame otorrinolaringológico e solicitação de exames complementares.",
+        "A conduta é explicada à família com prioridade para segurança e clareza.",
+      ],
+      indications: [
+        "Alterações auditivas confirmadas ou suspeitas.",
+        "Atraso de linguagem, otites recorrentes, fatores de risco ou necessidade de avaliação integrada.",
+      ],
     },
     {
+      slug: "devolutiva-integrada",
       title: "Devolutiva Integrada",
       desc: "Médico + fonoaudiólogo juntos",
       detail:
         "Análise conjunta dos achados, relatórios integrados e orientações claras para a família.",
       icon: "💬",
+      purpose: [
+        "Traduzir resultados técnicos em um plano claro para a família.",
+        "Integrar a visão médica e fonoaudiológica quando o caso exige decisões conjuntas.",
+      ],
+      preparation: [
+        "Levar todos os exames realizados e dúvidas anotadas.",
+        "Se possível, trazer informações de escola, terapeutas ou outros profissionais envolvidos.",
+        "Separar tempo para discutir próximos passos e acompanhamento.",
+      ],
+      procedure: [
+        "A equipe revisa os achados e explica o significado clínico dos resultados.",
+        "São discutidas prioridades, encaminhamentos e necessidade de seguimento.",
+        "A família sai com orientações organizadas e linguagem acessível.",
+      ],
+      indications: [
+        "Casos com múltiplos exames ou resultados que precisam ser integrados.",
+        "Famílias que precisam entender condutas, prioridades e plano de acompanhamento.",
+      ],
     },
     {
+      slug: "consulta-homeopatica",
       title: "Consulta Homeopática",
       desc: "Avaliação homeopática integrada",
       detail:
         "Tratamento de suporte para dificuldades de ajuste do ciclo sono-vigília ou apoio emocional no acompanhamento dos filhos.",
       icon: "🌿",
+      purpose: [
+        "Oferecer avaliação de suporte dentro de um cuidado médico integrado.",
+        "Apoiar questões de rotina, sono e bem-estar emocional quando a indicação for adequada.",
+      ],
+      preparation: [
+        "Trazer histórico clínico, medicamentos em uso e principais queixas da rotina.",
+        "Anotar padrões de sono, alimentação, comportamento e fatores que pioram ou melhoram os sintomas.",
+        "Informar acompanhamento com outros profissionais.",
+      ],
+      procedure: [
+        "A consulta considera história clínica, rotina e contexto familiar.",
+        "A conduta é individualizada e explicada à família.",
+        "Quando necessário, o cuidado é articulado com outras avaliações médicas ou fonoaudiológicas.",
+      ],
+      indications: [
+        "Famílias que buscam suporte médico complementar dentro do acompanhamento.",
+        "Situações em que a equipe identifica possibilidade de abordagem integrada.",
+      ],
     },
     {
+      slug: "follow-up-auditivo-bebes-risco",
       title: "Follow-up Auditivo de Bebês de Risco",
       desc: "Monitoramento seriado",
       detail:
         "Acompanhamento mesmo após triagem normal quando há fatores de risco, conforme diretrizes nacionais e internacionais.",
       icon: "📅",
+      purpose: [
+        "Acompanhar bebês com risco de perda auditiva tardia, progressiva ou flutuante.",
+        "Identificar mudanças auditivas no tempo certo para orientar intervenção.",
+      ],
+      preparation: [
+        "Trazer resultados de triagem, internação, exames laboratoriais e relatórios médicos.",
+        "Informar intercorrências desde a última avaliação.",
+        "Manter o calendário de retorno definido pela equipe.",
+      ],
+      procedure: [
+        "A equipe define exames e intervalos de acompanhamento conforme fatores de risco.",
+        "Podem ser repetidos testes objetivos, comportamentais e avaliação médica.",
+        "Os resultados são comparados ao longo do tempo para detectar mudanças.",
+      ],
+      indications: [
+        "Prematuridade, UTI neonatal, infecções congênitas, histórico familiar ou outros fatores de risco.",
+        "Bebês que passaram na triagem, mas precisam de vigilância auditiva longitudinal.",
+      ],
     },
   ],
 };
+
+export const allExams = Object.values(exames).flat();
+
+export function getExam(slug: string) {
+  return allExams.find(exam => exam.slug === slug);
+}
 
 export const teamMembers = [
   {
@@ -158,7 +437,7 @@ export const teamMembers = [
   {
     name: "Dra. Rosa Lima Beltrão Bacellar",
     details:
-      "CRM 17.014 - BA | RQE 7.667 | Otorrinolaringologista com experiência em transtornos de linguagem",
+      "CRM 17.014 - BA | RQE 7.667 | Otorrinolaringologista | com experiência em transtornos de linguagem",
     imgSrc: "/imagens/corpoclinico/Rosa.png",
   },
   {
@@ -175,7 +454,8 @@ export const teamMembers = [
   },
   {
     name: "Aêdo Santos Cidreira",
-    details: "CRFa 7.915 | Processamento Auditivo Central | Audiologista Infantil",
+    details:
+      "CRFa 7.915 | Processamento Auditivo Central | Audiologista Infantil",
     imgSrc: "/imagens/corpoclinico/Aedo.png",
     badge: "+20 anos de experiência",
   },
@@ -193,10 +473,10 @@ export const teamMembers = [
 ];
 
 export const unidadeImages = [
-  "/imagens/unidade/unidade1.jpg",
+  "/imagens/unidade/ambiente.jpg",
   "/imagens/unidade/unidade2.jpg",
   "/imagens/unidade/unidade3.jpg",
-  "/imagens/unidade/ambiente.jpg",
+  "/imagens/unidade/unidade1.jpg",
 ];
 
 export const blogPosts: BlogPost[] = [
@@ -282,5 +562,5 @@ export const blogPosts: BlogPost[] = [
 ];
 
 export function getBlogPost(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
+  return blogPosts.find(post => post.slug === slug);
 }

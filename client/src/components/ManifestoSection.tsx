@@ -14,12 +14,18 @@ const WAVE_ICON =
 
 export default function ManifestoSection() {
   return (
-    <section id="sobre" className="relative bg-[#F8FBFF] overflow-hidden py-16 md:py-20">
+    <section
+      id="sobre"
+      className="relative bg-gradient-to-b from-[#F8FBFF] via-[#F8FBFF] via-85% to-white overflow-hidden pt-16 md:pt-20 pb-2 md:pb-4"
+    >
       {/* Floating decorative elements */}
       <div className="absolute top-12 right-8 opacity-10 animate-float">
         <img src={WAVE_ICON} alt="" className="w-48 h-auto" />
       </div>
-      <div className="absolute bottom-12 left-4 opacity-8 animate-float" style={{ animationDelay: "1.5s" }}>
+      <div
+        className="absolute bottom-12 left-4 opacity-8 animate-float"
+        style={{ animationDelay: "1.5s" }}
+      >
         <img src={WAVE_ICON} alt="" className="w-32 h-auto rotate-180" />
       </div>
 
@@ -27,43 +33,51 @@ export default function ManifestoSection() {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text Content */}
           <div>
-            {/* Section label */}
-            <div className="reveal-left inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-0.5 bg-[#F4C62F]" />
-              <span className="font-nunito font-700 text-sm text-[#6B90C4] uppercase tracking-widest">
+            {/* Main title */}
+            <div className="reveal-left inline-flex items-center gap-3 mb-6">
+              <div className="w-8 h-1 bg-[#F4C62F] rounded-full" />
+              <h2 className="font-nunito font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50]">
                 Nossa História
-              </span>
+              </h2>
             </div>
 
-            {/* Main heading uses global MontserratAlternates font with clip mask reveal */}
-            <h2 className="reveal-clip delay-100 font-900 text-3xl md:text-4xl lg:text-5xl text-[#2C3E50] leading-tight mb-6">
-              Nascemos para estar
-              <br />
-              <span className="text-[#94B1DA]">ao seu lado</span>
-              <br />
-              nesse momento.
-            </h2>
+            {/* Subtitle / Tagline */}
+            <h3 className="reveal-clip delay-100 font-nunito font-700 text-xl md:text-2xl text-[#6B90C4] leading-relaxed mb-6">
+              Nascemos para estar <span className="text-[#94B1DA]">ao seu lado</span> nesse momento.
+            </h3>
 
             <div className="reveal-blur delay-200 space-y-4 font-lato text-[#4A5568] leading-relaxed">
               <p>
-                Existe um momento que nenhuma mãe espera viver: quando alguém diz
-                <strong className="text-[#2C3E50]"> "seu bebê falhou na Triagem Auditiva Neonatal."</strong>
+                Existe um momento que nenhuma mãe espera viver: quando alguém
+                diz
+                <strong className="text-[#2C3E50]">
+                  {" "}
+                  "seu bebê falhou na Triagem Auditiva Neonatal."
+                </strong>
               </p>
               <p>
-                De repente, aquilo que deveria ser apenas um exame de rotina se transforma em um turbilhão de perguntas. A ansiedade chega primeiro. Depois vem a culpa. E, muitas vezes, a negação.
+                De repente, aquilo que deveria ser apenas um exame de rotina se
+                transforma em um turbilhão de perguntas. A ansiedade chega
+                primeiro. Depois vem a culpa. E, muitas vezes, a negação.
               </p>
-              <p>Muitas mães percorrem essa jornada sentindo-se sozinhas. Mas elas não deveriam.</p>
+              <p>
+                Muitas mães percorrem essa jornada sentindo-se sozinhas. Mas
+                elas não deveriam.
+              </p>
             </div>
 
             {/* Quote highlight */}
             <div className="reveal-left delay-300 mt-8 pl-5 border-l-4 border-[#F4C62F]">
               <p className="font-nunito font-700 text-xl text-[#2C3E50] italic leading-relaxed">
-                "Aqui, um exame não é apenas técnica. É colo. É silêncio. É tempo respeitado. É escuta verdadeira."
+                "Aqui, um exame não é apenas técnica. É colo. É silêncio. É
+                tempo respeitado. É escuta verdadeira."
               </p>
             </div>
 
             <p className="reveal-blur delay-400 mt-6 font-lato text-[#4A5568] leading-relaxed">
-              Foi a partir dessa compreensão que nasceu a AudioBaby — um espaço onde técnica e acolhimento caminham juntos, transformando um momento de medo em um caminho de cuidado.
+              Foi a partir dessa compreensão que nasceu a AudioBaby — um espaço
+              onde técnica e acolhimento caminham juntos, transformando um
+              momento de medo em um caminho de cuidado.
             </p>
 
             {/* Values */}
@@ -74,12 +88,16 @@ export default function ManifestoSection() {
                 { icon: "👶", label: "Foco no Bebê" },
                 { icon: "👨‍👩‍👧", label: "Suporte à Família" },
               ].map((v, idx) => (
-                <div 
-                  key={v.label} 
+                <div
+                  key={v.label}
                   className={`reveal-scale delay-${(idx + 1) * 100} flex items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-sm border border-[#94B1DA]/10 hover:border-[#94B1DA]/30 hover:shadow-md transition-all duration-500`}
                 >
-                  <span className="text-2xl transition-transform duration-300 hover:scale-125">{v.icon}</span>
-                  <span className="font-nunito font-700 text-sm text-[#2C3E50]">{v.label}</span>
+                  <span className="text-2xl transition-transform duration-300 hover:scale-125">
+                    {v.icon}
+                  </span>
+                  <span className="font-nunito font-700 text-sm text-[#2C3E50]">
+                    {v.label}
+                  </span>
                 </div>
               ))}
             </div>
@@ -101,7 +119,8 @@ export default function ManifestoSection() {
                   </p>
                   <p className="font-lato text-xs text-[#718096] mt-1">
                     {/* Updated sedation text: when necessary */}
-                    Sedação apenas quando indicada, sem pressa, respeitando o ritmo do seu bebê
+                    Sedação apenas quando indicada, sem pressa, respeitando o
+                    ritmo do seu bebê
                   </p>
                 </div>
               </div>
@@ -109,7 +128,9 @@ export default function ManifestoSection() {
 
             {/* Floating stat card */}
             <div className="absolute -top-6 -right-4 md:-right-8 bg-[#F4C62F] rounded-2xl px-5 py-4 shadow-xl">
-              <p className="font-nunito font-900 text-3xl text-[#2C3E50]">+10</p>
+              <p className="font-nunito font-900 text-3xl text-[#2C3E50]">
+                +10
+              </p>
               <p className="font-lato text-xs text-[#2C3E50] font-bold">
                 tipos de exames
                 <br />

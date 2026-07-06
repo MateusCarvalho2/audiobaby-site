@@ -66,10 +66,18 @@ export default function FluxogramaSection() {
     <section className="py-16 md:py-20 bg-[#94B1DA] overflow-hidden relative">
       {/* Decorative grafismo */}
       <div className="absolute top-0 right-0 opacity-10 w-80 h-80">
-        <img src={GRAFISMO_COMP} alt="" className="w-full h-full object-contain" />
+        <img
+          src={GRAFISMO_COMP}
+          alt=""
+          className="w-full h-full object-contain"
+        />
       </div>
       <div className="absolute bottom-0 left-0 opacity-10 w-64 h-64 rotate-180">
-        <img src={GRAFISMO_COMP} alt="" className="w-full h-full object-contain" />
+        <img
+          src={GRAFISMO_COMP}
+          alt=""
+          className="w-full h-full object-contain"
+        />
       </div>
 
       <div className="container relative z-10">
@@ -82,14 +90,16 @@ export default function FluxogramaSection() {
             </span>
             <div className="w-8 h-0.5 bg-[#F4C62F]" />
           </div>
-          {/* Main heading uses global MontserratAlternates via h2 */}
+          {/* Main heading uses the global h2 font */}
           <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-white mb-4">
             Do nascimento ao diagnóstico,
             <br />
             <span className="text-[#F4C62F]">cada passo com você</span>
           </h2>
           <p className="font-lato text-lg text-white/80 max-w-2xl mx-auto">
-            Seguimos as diretrizes do Joint Committee on Infant Hearing e do Ministério da Saúde para garantir o melhor cuidado auditivo desde o primeiro dia de vida.
+            Seguimos as diretrizes do Joint Committee on Infant Hearing e do
+            Ministério da Saúde para garantir o melhor cuidado auditivo desde o
+            primeiro dia de vida.
           </p>
         </div>
 
@@ -117,13 +127,19 @@ export default function FluxogramaSection() {
                   </div>
                   {/* Step number badge */}
                   <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[#F4C62F] flex items-center justify-center shadow-md">
-                    <span className="font-nunito font-900 text-xs text-[#2C3E50]">{step.step}</span>
+                    <span className="font-nunito font-900 text-xs text-[#2C3E50]">
+                      {step.step}
+                    </span>
                   </div>
                 </div>
 
                 {/* Content card */}
-                <div className={`${step.color} rounded-2xl p-5 w-full shadow-lg`}>
-                  <h3 className={`font-nunito font-900 text-base ${step.textColor} mb-1`}>
+                <div
+                  className={`${step.color} rounded-2xl p-5 w-full shadow-lg`}
+                >
+                  <h3
+                    className={`font-nunito font-900 text-base ${step.textColor} mb-1`}
+                  >
                     {step.title}
                   </h3>
                   <p className="font-nunito font-700 text-xs text-[#94B1DA] mb-2">

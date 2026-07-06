@@ -1,22 +1,105 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowRight, ChevronDown, Phone } from "lucide-react";
 import { Link } from "wouter";
 
 const HERO_VIDEO = "/videos/audiobaby-hero.mp4";
 
 export default function HeroSection() {
-  const [scrollRatio, setScrollRatio] = useState(0);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const backgroundRef = useRef<HTMLDivElement | null>(null);
+  const videoDurationRef = useRef(0);
 
   useEffect(() => {
+    let targetRatio = 0;
+    let currentRatio = 0;
+    let animationFrameId: number;
+    let isRunning = false;
+
+    const startLoop = () => {
+      if (!isRunning) {
+        isRunning = true;
+        animationFrameId = requestAnimationFrame(updateLoop);
+      }
+    };
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const heroHeight = window.innerHeight || 800;
-      const ratio = Math.min(1, Math.max(0, scrollY / heroHeight));
-      setScrollRatio(ratio);
+      targetRatio = Math.min(1, Math.max(0, scrollY / heroHeight));
+      startLoop();
     };
 
+    const handleMetadata = () => {
+      const video = videoRef.current;
+      if (!video) return;
+      videoDurationRef.current = Math.max(0, video.duration || 0);
+      video.pause();
+      video.currentTime = 0;
+      startLoop();
+    };
+
+    const video = videoRef.current;
+    if (video) {
+      video.addEventListener("loadedmetadata", handleMetadata);
+      if (video.readyState >= 1) {
+        handleMetadata();
+      }
+    }
+
+    const updateLoop = () => {
+      // Smooth interpolation (lerp)
+      currentRatio += (targetRatio - currentRatio) * 0.08;
+
+      if (Math.abs(targetRatio - currentRatio) < 0.0005) {
+        currentRatio = targetRatio;
+      }
+
+      // Update background scale and opacity directly on the DOM node for max performance (no React re-renders)
+      if (backgroundRef.current) {
+        const scale = 1 + currentRatio * 0.75;
+        const opacity = Math.max(0, 1 - currentRatio * 1.4);
+        backgroundRef.current.style.transform = `scale(${scale})`;
+        backgroundRef.current.style.opacity = `${opacity}`;
+      }
+
+      let videoPending = false;
+      // Smoothly seek the video based on currentRatio
+      if (video && videoDurationRef.current > 0) {
+        const targetTime = currentRatio * videoDurationRef.current;
+        const diff = Math.abs(video.currentTime - targetTime);
+        
+        // HTML5 seeking is asynchronous. We check !video.seeking to avoid bottlenecking the video decoder.
+        // Also only seek when the time difference is larger than ~1 frame (0.03s) to prevent micro-stutters.
+        if (diff > 0.03) {
+          if (!video.seeking) {
+            video.currentTime = targetTime;
+          }
+          videoPending = true;
+        }
+      }
+
+      const isStillAnimating = Math.abs(targetRatio - currentRatio) > 0.0005 || videoPending;
+
+      if (isStillAnimating) {
+        animationFrameId = requestAnimationFrame(updateLoop);
+      } else {
+        isRunning = false;
+      }
+    };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Also trigger on resize to update scroll heights dynamically
+    window.addEventListener("resize", handleScroll, { passive: true });
+
+    return () => {
+      if (video) {
+        video.removeEventListener("loadedmetadata", handleMetadata);
+      }
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   const scrollToNext = () => {
@@ -30,22 +113,22 @@ export default function HeroSection() {
       className="relative min-h-[100svh] overflow-hidden bg-[#F8FBFF]"
     >
       <div 
+        ref={backgroundRef}
         className="absolute inset-0 overflow-hidden"
         style={{
-          transform: `scale(${1 + scrollRatio * 0.75})`,
-          opacity: Math.max(0, 1 - scrollRatio * 1.4),
+          transform: "scale(1)",
+          opacity: 1,
           transformOrigin: "center center",
           willChange: "transform, opacity",
         }}
       >
         <video
+          ref={videoRef}
           className="hero-video h-full w-full object-cover"
           src={HERO_VIDEO}
-          autoPlay
           muted
-          loop
           playsInline
-          preload="metadata"
+          preload="auto"
           aria-label="Vídeo institucional da AudioBaby"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white/96 via-white/78 to-white/16" />

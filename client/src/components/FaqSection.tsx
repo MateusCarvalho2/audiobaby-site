@@ -4,7 +4,7 @@
  * This accordion lists common questions and answers for parents.  It uses
  * Tailwind for styling and animations.  The sedation answer has been
  * updated to indicate sedation is only used when necessary.  Titles rely
- * on the global heading styles (MontserratAlternates) for h2.
+ * on the global heading styles for h2.
  */
 
 import { useState } from "react";
@@ -51,14 +51,16 @@ export default function FaqSection() {
                 Dúvidas Frequentes
               </span>
             </div>
-            {/* Section heading uses global MontserratAlternates font */}
+            {/* Section heading uses the global h2 font */}
             <h2 className="font-900 text-3xl md:text-4xl text-[#2C3E50] mb-6 leading-tight">
               Sabemos que você
               <br />
               tem <span className="text-[#94B1DA]">muitas perguntas.</span>
             </h2>
             <p className="font-lato text-[#4A5568] leading-relaxed mb-8">
-              É completamente normal sentir dúvidas e ansiedade quando se trata da saúde auditiva do seu filho. Reunimos as perguntas mais comuns das mães que atendemos.
+              É completamente normal sentir dúvidas e ansiedade quando se trata
+              da saúde auditiva do seu filho. Reunimos as perguntas mais comuns
+              das mães que atendemos.
             </p>
             <a
               href="https://wa.me/5571981581346?text=Olá! Tenho dúvidas sobre os exames auditivos da AudioBaby."
@@ -91,7 +93,9 @@ export default function FaqSection() {
                 </button>
                 {openIndex === i && (
                   <div className="px-5 pb-5">
-                    <p className="font-lato text-sm text-[#718096] leading-relaxed">{faq.a}</p>
+                    <p className="font-lato text-sm text-[#718096] leading-relaxed">
+                      {faq.a}
+                    </p>
                   </div>
                 )}
               </div>

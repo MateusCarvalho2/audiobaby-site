@@ -14,8 +14,8 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 export default function Home() {
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
@@ -25,9 +25,28 @@ export default function Home() {
     const elements = document.querySelectorAll(
       ".reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-clip"
     );
-    elements.forEach((el) => observer.observe(el));
+    elements.forEach(el => observer.observe(el));
 
-    return () => elements.forEach((el) => observer.unobserve(el));
+    return () => elements.forEach(el => observer.unobserve(el));
+  }, []);
+
+  useEffect(() => {
+    const handleHashScroll = () => {
+      if (window.location.hash) {
+        const hash = window.location.hash;
+        // Wait a brief moment to ensure React has fully rendered the layout
+        setTimeout(() => {
+          const el = document.querySelector(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 300);
+      }
+    };
+
+    handleHashScroll();
+    window.addEventListener("hashchange", handleHashScroll);
+    return () => window.removeEventListener("hashchange", handleHashScroll);
   }, []);
 
   return (
@@ -37,7 +56,6 @@ export default function Home() {
         <HeroSection />
         <WaveDivider color="#F8FBFF" bgColor="white" />
         <ManifestoSection />
-        <WaveDivider color="white" bgColor="#F8FBFF" flip />
         <PathwaysSection />
 
         <div className="bg-white py-4">
@@ -58,8 +76,7 @@ export default function Home() {
         <BlogPreviewSection />
         <WaveDivider color="#EEF4FB" bgColor="#F8FBFF" />
         <FaqSection />
-        <WaveDivider color="#2C3E50" bgColor="#EEF4FB" />
-        <ContatoSection />
+        <ContatoSection topWaveBgColor="#EEF4FB" />
         <WhatsAppFloat />
       </div>
     </>

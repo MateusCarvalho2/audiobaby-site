@@ -1,40 +1,17 @@
 /*
  * Modified AudioBaby index.css
- * Added Rheago font face and class definitions.
- * Added MontserratAlternates-MediumItalic font-face and updated headings
- * to use this new font per client request.
+ * Primary headings use the browser sans-serif stack.
  */
 
 /*
  * AudioBaby — Núcleo de Audiologia Infantil
  * Design Philosophy: "Cuidado em Movimento" — Organic Warmth + Scientific Precision
  * Colors: Azul Bebê #94B1DA (Pantone 7681C) | Amarelo Dourado #F4C62F (Pantone 123C)
- * Typography: Nunito (display/titles) + Lato (body) + Rheago (custom display)
+ * Typography: sans-serif (headings) + Nunito (UI) + Lato (body)
  */
 
 @import "tailwindcss";
 @import "tw-animate-css";
-
-/* Custom font-face for Rheago. The font file is served from the public/fonts directory. */
-@font-face {
-  font-family: 'Rheago';
-  src: url('/fonts/Rheago.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-/*
- * Custom font-face for MontserratAlternates-MediumItalic.
- * This font is used for all primary headings (h1 and h2) as requested.
- */
-@font-face {
-  font-family: 'MontserratAlternates-MediumItalic';
-  src: url('/fonts/MontserratAlternates-MediumItalic.otf') format('opentype');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -63,13 +40,13 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   /* AudioBaby brand colors */
-  --color-audiobaby-blue: #94B1DA;
-  --color-audiobaby-blue-light: #B8CDE8;
-  --color-audiobaby-blue-dark: #6B90C4;
-  --color-audiobaby-yellow: #F4C62F;
-  --color-audiobaby-yellow-dark: #D4A820;
-  --color-audiobaby-cream: #FFF8F0;
-  --color-audiobaby-text: #2C3E50;
+  --color-audiobaby-blue: #94b1da;
+  --color-audiobaby-blue-light: #b8cde8;
+  --color-audiobaby-blue-dark: #6b90c4;
+  --color-audiobaby-yellow: #f4c62f;
+  --color-audiobaby-yellow-dark: #d4a820;
+  --color-audiobaby-cream: #fff8f0;
+  --color-audiobaby-text: #2c3e50;
   --ease-motion: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -104,7 +81,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
@@ -112,11 +89,9 @@
     overflow-x: clip; /* Prevent lateral scroll bugs */
     position: relative;
   }
-  /* Apply the MontserratAlternates font only to the largest headings (h1 and h2).
-     Smaller headings (h3-h6) and names retain their assigned fonts (Nunito or Lato). */
   h1,
   h2 {
-    font-family: 'MontserratAlternates-MediumItalic', sans-serif;
+    font-family: sans-serif;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -163,59 +138,64 @@
 
   /* AudioBaby custom utilities */
   .font-nunito {
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
   }
 
   .font-lato {
-    font-family: 'Lato', sans-serif;
-  }
-
-  /* Custom class for Rheago font */
-  .font-rheago {
-    font-family: 'Rheago', sans-serif;
+    font-family: "Lato", sans-serif;
   }
 
   .text-audiobaby-blue {
-    color: #94B1DA;
+    color: #94b1da;
   }
 
   .text-audiobaby-yellow {
-    color: #F4C62F;
+    color: #f4c62f;
   }
 
   .bg-audiobaby-blue {
-    background-color: #94B1DA;
+    background-color: #94b1da;
   }
 
   .bg-audiobaby-blue-light {
-    background-color: #B8CDE8;
+    background-color: #b8cde8;
   }
 
   .bg-audiobaby-yellow {
-    background-color: #F4C62F;
+    background-color: #f4c62f;
   }
 
   .bg-audiobaby-cream {
-    background-color: #FFF8F0;
+    background-color: #fff8f0;
   }
 
   .border-audiobaby-blue {
-    border-color: #94B1DA;
+    border-color: #94b1da;
   }
 
   .border-audiobaby-yellow {
-    border-color: #F4C62F;
+    border-color: #f4c62f;
   }
 
   /* Wave animation */
   @keyframes wave-pulse {
-    0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(1.5); }
+    0%,
+    100% {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(1.5);
+    }
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   @keyframes fade-up {
@@ -230,8 +210,12 @@
   }
 
   @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes slide-in-left {
@@ -257,8 +241,14 @@
   }
 
   @keyframes pulse-ring {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(1.5); opacity: 0; }
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
   }
 
   @keyframes page-in {
@@ -286,8 +276,12 @@
   }
 
   @keyframes media-zoom {
-    from { transform: scale(1.08); }
-    to { transform: scale(1); }
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
   }
 
   .animate-wave-pulse {
@@ -364,24 +358,25 @@
     align-items: center;
     gap: 0.65rem;
     margin-bottom: 1rem;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size: 0.78rem;
     font-weight: 900;
     line-height: 1;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #6B90C4;
+    color: #6b90c4;
   }
 
   .section-kicker::before {
     content: "";
     width: 2rem;
     height: 2px;
-    background: #F4C62F;
+    background: #f4c62f;
   }
 
   .section-title {
     max-width: 760px;
+    font-family: sans-serif;
     font-size: clamp(2.15rem, 6vw, 4.6rem);
     font-weight: 900;
     line-height: 0.98;
@@ -396,10 +391,18 @@
     animation: hero-rise 0.9s var(--ease-motion) both;
   }
 
-  .hero-reveal:nth-child(2) { animation-delay: 0.08s; }
-  .hero-reveal:nth-child(3) { animation-delay: 0.16s; }
-  .hero-reveal:nth-child(4) { animation-delay: 0.24s; }
-  .hero-reveal:nth-child(5) { animation-delay: 0.32s; }
+  .hero-reveal:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+  .hero-reveal:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+  .hero-reveal:nth-child(4) {
+    animation-delay: 0.24s;
+  }
+  .hero-reveal:nth-child(5) {
+    animation-delay: 0.32s;
+  }
 
   .motion-button {
     position: relative;
@@ -411,11 +414,11 @@
     min-height: 3.25rem;
     padding: 0.95rem 1.35rem;
     overflow: hidden;
-    border: 1px solid #F4C62F;
+    border: 1px solid #f4c62f;
     border-radius: 9999px;
-    background: #F4C62F;
-    color: #2C3E50;
-    font-family: 'Nunito', sans-serif;
+    background: #f4c62f;
+    color: #2c3e50;
+    font-family: "Nunito", sans-serif;
     font-size: 0.95rem;
     font-weight: 900;
     line-height: 1;
@@ -435,7 +438,12 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.55) 45%, transparent 58%);
+    background: linear-gradient(
+      110deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.55) 45%,
+      transparent 58%
+    );
     transform: translateX(-120%);
     transition: transform 0.85s var(--ease-motion);
   }
@@ -452,21 +460,21 @@
   .motion-button.secondary {
     border-color: rgba(148, 177, 218, 0.45);
     background: rgba(255, 255, 255, 0.72);
-    color: #2C3E50;
+    color: #2c3e50;
     box-shadow: 0 16px 34px rgba(44, 62, 80, 0.08);
     backdrop-filter: blur(12px);
   }
 
   .motion-button.blue {
-    border-color: #94B1DA;
-    background: #94B1DA;
+    border-color: #94b1da;
+    background: #94b1da;
     color: white;
     box-shadow: 0 16px 34px rgba(148, 177, 218, 0.28);
   }
 
   .motion-button.whatsapp {
-    border-color: #25D366;
-    background: #25D366;
+    border-color: #25d366;
+    background: #25d366;
     color: white;
     box-shadow: 0 16px 34px rgba(37, 211, 102, 0.24);
   }
@@ -508,7 +516,7 @@
 
   .group:hover .motion-icon {
     transform: rotate(-3deg) scale(1.04);
-    background: #EEF4FB;
+    background: #eef4fb;
   }
 
   .motion-tab {
@@ -520,12 +528,12 @@
     gap: 0.5rem;
     border: 1px solid rgba(148, 177, 218, 0.25);
     border-radius: 9999px;
-    background: #EEF4FB;
+    background: #eef4fb;
     padding: 0.7rem 1rem;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size: 0.86rem;
     font-weight: 900;
-    color: #6B90C4;
+    color: #6b90c4;
     transition:
       transform 0.55s var(--ease-motion),
       background-color 0.55s var(--ease-motion),
@@ -537,8 +545,8 @@
   .motion-tab:hover,
   .motion-tab.is-active {
     transform: translateY(-2px);
-    border-color: #94B1DA;
-    background: #94B1DA;
+    border-color: #94b1da;
+    background: #94b1da;
     color: white;
     box-shadow: 0 14px 34px rgba(148, 177, 218, 0.3);
   }
@@ -550,12 +558,12 @@
     min-height: 2.55rem;
     border-radius: 9999px;
     padding: 0.72rem 0.92rem;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size: 0.76rem;
     font-weight: 900;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #2C3E50;
+    color: #2c3e50;
     text-decoration: none;
     transition:
       color 0.55s var(--ease-motion),
@@ -566,15 +574,17 @@
   .nav-link:hover,
   .nav-link.is-active {
     transform: translateY(-1px);
-    background: #EEF4FB;
-    color: #6B90C4;
+    background: #eef4fb;
+    color: #6b90c4;
   }
 
   /* Scroll reveal - initially hidden (Premium configurations inspired by Landon Norris site) */
   .reveal {
     opacity: 0;
     transform: translateY(48px);
-    transition: opacity 1.1s var(--ease-motion), transform 1.1s var(--ease-motion);
+    transition:
+      opacity 1.1s var(--ease-motion),
+      transform 1.1s var(--ease-motion);
   }
 
   .reveal.visible {
@@ -585,7 +595,9 @@
   .reveal-left {
     opacity: 0;
     transform: translateX(-24px);
-    transition: opacity 1.1s var(--ease-motion), transform 1.1s var(--ease-motion);
+    transition:
+      opacity 1.1s var(--ease-motion),
+      transform 1.1s var(--ease-motion);
   }
 
   .reveal-left.visible {
@@ -596,7 +608,9 @@
   .reveal-right {
     opacity: 0;
     transform: translateX(24px);
-    transition: opacity 1.1s var(--ease-motion), transform 1.1s var(--ease-motion);
+    transition:
+      opacity 1.1s var(--ease-motion),
+      transform 1.1s var(--ease-motion);
   }
 
   .reveal-right.visible {
@@ -608,7 +622,9 @@
   .reveal-scale {
     opacity: 0;
     transform: scale(0.93) translateY(36px);
-    transition: opacity 1.2s var(--ease-motion), transform 1.2s var(--ease-motion);
+    transition:
+      opacity 1.2s var(--ease-motion),
+      transform 1.2s var(--ease-motion);
   }
 
   .reveal-scale.visible {
@@ -621,7 +637,10 @@
     opacity: 0;
     filter: blur(8px);
     transform: translateY(32px);
-    transition: opacity 1.2s var(--ease-motion), transform 1.2s var(--ease-motion), filter 1.2s var(--ease-motion);
+    transition:
+      opacity 1.2s var(--ease-motion),
+      transform 1.2s var(--ease-motion),
+      filter 1.2s var(--ease-motion);
   }
 
   .reveal-blur.visible {
@@ -634,7 +653,9 @@
   .reveal-clip {
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
     transform: translateY(40px);
-    transition: clip-path 1.3s var(--ease-motion), transform 1.3s var(--ease-motion);
+    transition:
+      clip-path 1.3s var(--ease-motion),
+      transform 1.3s var(--ease-motion);
   }
 
   .reveal-clip.visible {
@@ -643,18 +664,42 @@
   }
 
   /* CSS Stagger Delay Utility Classes */
-  .delay-50 { transition-delay: 50ms !important; }
-  .delay-100 { transition-delay: 100ms !important; }
-  .delay-150 { transition-delay: 150ms !important; }
-  .delay-200 { transition-delay: 200ms !important; }
-  .delay-250 { transition-delay: 250ms !important; }
-  .delay-300 { transition-delay: 300ms !important; }
-  .delay-350 { transition-delay: 350ms !important; }
-  .delay-400 { transition-delay: 400ms !important; }
-  .delay-500 { transition-delay: 500ms !important; }
-  .delay-600 { transition-delay: 600ms !important; }
-  .delay-700 { transition-delay: 700ms !important; }
-  .delay-800 { transition-delay: 800ms !important; }
+  .delay-50 {
+    transition-delay: 50ms !important;
+  }
+  .delay-100 {
+    transition-delay: 100ms !important;
+  }
+  .delay-150 {
+    transition-delay: 150ms !important;
+  }
+  .delay-200 {
+    transition-delay: 200ms !important;
+  }
+  .delay-250 {
+    transition-delay: 250ms !important;
+  }
+  .delay-300 {
+    transition-delay: 300ms !important;
+  }
+  .delay-350 {
+    transition-delay: 350ms !important;
+  }
+  .delay-400 {
+    transition-delay: 400ms !important;
+  }
+  .delay-500 {
+    transition-delay: 500ms !important;
+  }
+  .delay-600 {
+    transition-delay: 600ms !important;
+  }
+  .delay-700 {
+    transition-delay: 700ms !important;
+  }
+  .delay-800 {
+    transition-delay: 800ms !important;
+  }
 
   /* Under 1024px (tablets & mobiles), fallback to vertical transitions to avoid horizontal shifts */
   @media (max-width: 1024px) {
@@ -671,6 +716,37 @@
 
   /* Custom text shadow for hero section readability */
   .text-shadow-hero {
-    text-shadow: 0 2px 4px rgba(44, 62, 80, 0.12), 0 1px 2px rgba(0, 0, 0, 0.05);
+    text-shadow:
+      0 2px 4px rgba(44, 62, 80, 0.12),
+      0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* 3D Team Photo CSS (Flat card, only photo tilts/pops in 3D on hover) */
+  .team-photo-container {
+    perspective: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .team-photo-3d {
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+    will-change: transform;
+    transform-style: preserve-3d;
+  }
+
+  /* When the flat card (team-card-flat) is hovered, only the photo tilts & pops up */
+  .team-card-flat:hover .team-photo-3d {
+    transform: scale(1.1) translateY(-8px) rotateX(10deg) rotateY(-8deg);
+    box-shadow: 0 20px 35px -5px rgba(107, 144, 196, 0.3), 
+                0 10px 15px -8px rgba(0, 0, 0, 0.1);
+    border-color: #F8FBFF;
+  }
+
+  /* Responsive styling for mobile */
+  @media (max-width: 768px) {
+    .team-card-flat:hover .team-photo-3d {
+      transform: scale(1.08) translateY(-6px) rotateX(6deg) rotateY(-4deg);
+    }
   }
 }

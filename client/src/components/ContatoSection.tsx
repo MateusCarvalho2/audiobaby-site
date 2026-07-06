@@ -8,6 +8,7 @@
 
 import { Phone, MapPin, Clock, Mail, Instagram, Facebook } from "lucide-react";
 import { Link } from "wouter";
+import WaveDivider from "@/components/WaveDivider";
 
 const LOGO_BRANCA =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/logo branca_e197d821.png";
@@ -16,17 +17,36 @@ const WAVE_ICON =
 const GRAFISMO_COMP =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/2_16bdae17.png";
 
-export default function ContatoSection() {
+type ContatoSectionProps = {
+  topWaveBgColor?: string;
+};
+
+export default function ContatoSection({
+  topWaveBgColor = "white",
+}: ContatoSectionProps) {
   return (
     <>
+      <WaveDivider color="#2C3E50" bgColor={topWaveBgColor} />
+
       {/* CTA Section */}
-      <section id="contato" className="py-16 md:py-20 bg-[#2C3E50] overflow-hidden relative">
+      <section
+        id="contato"
+        className="py-16 md:py-20 bg-[#2C3E50] overflow-hidden relative"
+      >
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 opacity-5 w-96 h-96">
-          <img src={GRAFISMO_COMP} alt="" className="w-full h-full object-contain" />
+          <img
+            src={GRAFISMO_COMP}
+            alt=""
+            className="w-full h-full object-contain"
+          />
         </div>
         <div className="absolute bottom-0 left-0 opacity-5 w-64 h-64 rotate-180">
-          <img src={WAVE_ICON} alt="" className="w-full h-full object-contain" />
+          <img
+            src={WAVE_ICON}
+            alt=""
+            className="w-full h-full object-contain"
+          />
         </div>
 
         <div className="container relative z-10">
@@ -42,7 +62,7 @@ export default function ContatoSection() {
                 </span>
               </div>
 
-              <h2 className="font-nunito font-900 text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
+              <h2 className="font-900 text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
                 Seu bebê merece
                 <br />
                 <span className="text-[#F4C62F]">ouvir o mundo</span>
@@ -51,7 +71,9 @@ export default function ContatoSection() {
               </h2>
 
               <p className="font-lato text-lg text-white/70 leading-relaxed mb-8">
-                Não espere para cuidar da audição do seu filho. Quanto mais cedo o diagnóstico, maiores as possibilidades de intervenção e desenvolvimento.
+                Não espere para cuidar da audição do seu filho. Quanto mais cedo
+                o diagnóstico, maiores as possibilidades de intervenção e
+                desenvolvimento.
               </p>
 
               {/* Contact info */}
@@ -61,8 +83,12 @@ export default function ContatoSection() {
                     <Phone size={18} className="text-[#94B1DA]" />
                   </div>
                   <div>
-                    <p className="font-nunito font-700 text-white text-sm">WhatsApp</p>
-                    <p className="font-lato text-[#94B1DA] text-sm">(71) 98158-1346</p>
+                    <p className="font-nunito font-700 text-white text-sm">
+                      WhatsApp
+                    </p>
+                    <p className="font-lato text-[#94B1DA] text-sm">
+                      (71) 98158-1346
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -70,9 +96,12 @@ export default function ContatoSection() {
                     <MapPin size={18} className="text-[#94B1DA]" />
                   </div>
                   <div>
-                    <p className="font-nunito font-700 text-white text-sm">Endereço</p>
+                    <p className="font-nunito font-700 text-white text-sm">
+                      Endereço
+                    </p>
                     <p className="font-lato text-[#94B1DA] text-sm">
-                      Av. Luis Viana Filho, 6462, Edf. Wall Street West, torre B, salas 305 e 306
+                      Av. Luis Viana Filho, 6462, Edf. Wall Street West, torre
+                      B, salas 305 e 306
                     </p>
                   </div>
                 </div>
@@ -81,7 +110,9 @@ export default function ContatoSection() {
                     <Clock size={18} className="text-[#94B1DA]" />
                   </div>
                   <div>
-                    <p className="font-nunito font-700 text-white text-sm">Horário de Atendimento</p>
+                    <p className="font-nunito font-700 text-white text-sm">
+                      Horário de Atendimento
+                    </p>
                     <p className="font-lato text-[#94B1DA] text-sm">
                       Segunda a Sexta: 8h às 18h | Sábado: 8h às 12h
                     </p>
@@ -92,8 +123,12 @@ export default function ContatoSection() {
                     <Mail size={18} className="text-[#94B1DA]" />
                   </div>
                   <div>
-                    <p className="font-nunito font-700 text-white text-sm">E-mail</p>
-                    <p className="font-lato text-[#94B1DA] text-sm">contato@audiobaby.com.br</p>
+                    <p className="font-nunito font-700 text-white text-sm">
+                      E-mail
+                    </p>
+                    <p className="font-lato text-[#94B1DA] text-sm">
+                      contato@audiobaby.com.br
+                    </p>
                   </div>
                 </div>
               </div>
@@ -116,22 +151,6 @@ export default function ContatoSection() {
                 >
                   <Facebook size={18} className="text-[#94B1DA]" />
                 </a>
-              </div>
-
-              {/* Map embed */}
-              <div className="mt-8">
-                {/* Use a direct Google Maps embed URL instead of the maps.app link to avoid errors
-                    when running locally.  The query encodes the clinic address and uses the embed
-                    output format. */}
-                {/* On small screens, the map spans the full width, while on medium+ screens it reverts to the
-                   original desktop width (~296px). Set explicit widths using Tailwind's arbitrary values
-                   so desktop layouts remain unchanged. */}
-                <iframe
-                  src="https://maps.google.com/maps?q=Av.%20Luis%20Viana%20Filho%206462%2C%20Salvador%20BA%20Brasil&output=embed"
-                  className="h-56 w-full border-0 sm:h-64 md:h-72"
-                  allowFullScreen
-                  loading="lazy"
-                />
               </div>
             </div>
 
@@ -161,7 +180,9 @@ export default function ContatoSection() {
                 {/* Divider */}
                 <div className="flex items-center gap-3 my-4">
                   <div className="flex-1 h-px bg-[#94B1DA]/20" />
-                  <span className="font-lato text-xs text-[#94B1DA]">ou ligue diretamente</span>
+                  <span className="font-lato text-xs text-[#94B1DA]">
+                    ou ligue diretamente
+                  </span>
                   <div className="flex-1 h-px bg-[#94B1DA]/20" />
                 </div>
 
@@ -184,29 +205,59 @@ export default function ContatoSection() {
               </div>
             </div>
           </div>
+
+          {/* Map embed */}
+          <div className="reveal mt-14 overflow-hidden rounded-[24px] bg-[#EEF4FB] md:rounded-[32px]">
+            <iframe
+              src="https://maps.google.com/maps?q=Av.%20Luis%20Viana%20Filho%206462%2C%20Salvador%20BA%20Brasil&output=embed"
+              className="block h-[clamp(12.5rem,24vw,22rem)] w-full border-0"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
+      <div
+        className="relative h-10 overflow-hidden bg-[#1A2632] md:h-12"
+        aria-hidden="true"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-[#2C3E50] via-[#253746] to-[#1A2632]" />
+        <svg
+          viewBox="0 0 1440 96"
+          preserveAspectRatio="none"
+          className="absolute inset-x-0 top-0 h-full w-full"
+        >
+          <path
+            d="M0,0 H1440 V38 C1260,76 1080,18 900,46 C720,74 540,28 360,54 C180,80 90,58 0,72 Z"
+            fill="#2C3E50"
+          />
+        </svg>
+      </div>
+
       {/* Footer */}
-      <footer className="bg-[#1A2632] py-12">
+      <footer className="bg-[#1A2632] py-8">
         <div className="container">
-          <div className="grid md:grid-cols-4 gap-8 mb-10">
+          <div className="grid md:grid-cols-4 gap-8 mb-6">
             {/* Logo + tagline */}
             <div className="md:col-span-2">
               <img
                 src={LOGO_BRANCA}
                 alt="AudioBaby"
-                className="h-14 w-auto object-contain mb-4"
+                className="h-[76px] w-auto object-contain mb-3"
               />
-              <p className="font-lato text-sm text-white/60 leading-relaxed max-w-xs">
-                Núcleo especializado em triagem auditiva neonatal e diagnóstico audiológico infantil. Ciência, acolhimento e responsabilidade.
+              <p className="font-lato text-sm text-white/60 leading-relaxed max-w-sm">
+                Núcleo especializado em triagem auditiva neonatal e diagnóstico
+                audiológico infantil. Ciência, acolhimento e responsabilidade.
               </p>
             </div>
 
             {/* Links */}
             <div>
-              <h4 className="font-nunito font-800 text-white text-sm mb-4">Navegação</h4>
-              <ul className="space-y-2">
+              <h4 className="font-nunito font-800 text-white text-sm mb-3">
+                Navegação
+              </h4>
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-1">
                 {[
                   { label: "Início", href: "/" },
                   { label: "Sobre nós", href: "/#sobre" },
@@ -216,11 +267,11 @@ export default function ContatoSection() {
                   { label: "Equipe", href: "/equipe" },
                   { label: "Blog", href: "/blog" },
                   { label: "Contato", href: "/#contato" },
-                ].map((link) => (
+                ].map(link => (
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      onClick={(e) => {
+                      onClick={e => {
                         const hash = link.href.startsWith("/#")
                           ? link.href.replace("/", "")
                           : "";
@@ -231,7 +282,7 @@ export default function ContatoSection() {
                             ?.scrollIntoView({ behavior: "smooth" });
                         }
                       }}
-                      className="font-lato text-sm text-white/50 hover:text-[#94B1DA] transition-colors"
+                      className="font-lato text-xs text-white/50 hover:text-[#94B1DA] transition-colors"
                     >
                       {link.label}
                     </a>
@@ -242,8 +293,10 @@ export default function ContatoSection() {
 
             {/* Exames */}
             <div>
-              <h4 className="font-nunito font-800 text-white text-sm mb-4">Exames</h4>
-              <ul className="space-y-2">
+              <h4 className="font-nunito font-800 text-white text-sm mb-3">
+                Exames
+              </h4>
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-1 md:block md:space-y-1">
                 {[
                   "Triagem Auditiva Neonatal",
                   "PEATE / BERA",
@@ -251,9 +304,11 @@ export default function ContatoSection() {
                   "Audiometria Lúdica",
                   "Processamento Auditivo",
                   "Otorrinolaringologia",
-                ].map((exame) => (
+                ].map(exame => (
                   <li key={exame}>
-                    <span className="font-lato text-sm text-white/50">{exame}</span>
+                    <span className="font-lato text-xs text-white/50 block">
+                      {exame}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -261,9 +316,10 @@ export default function ContatoSection() {
           </div>
 
           {/* Bottom bar */}
-          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="font-lato text-xs text-white/40">
-              © 2026 AudioBaby — Núcleo de Audiologia Infantil. Todos os direitos reservados. <br /> Produzido por: Mateus Carvalho
+          <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="font-lato text-xs text-white/40 text-center md:text-left">
+              © 2026 AudioBaby — Núcleo de Audiologia Infantil. Todos os
+              direitos reservados. <br /> Produzido por: Mateus Carvalho
             </p>
             <div className="flex flex-wrap items-center justify-center md:justify-end gap-6 w-full md:w-auto">
               <Link
@@ -288,7 +344,7 @@ export default function ContatoSection() {
                 <img
                   src="/signature-logo.png"
                   alt="Assinatura"
-                  className="h-12 md:h-14 w-auto max-w-full object-contain"
+                  className="h-[115px] md:h-[130px] w-auto max-w-full object-contain"
                 />
               </a>
             </div>

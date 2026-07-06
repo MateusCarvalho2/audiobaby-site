@@ -23,7 +23,11 @@ export default function BlogPreviewSection() {
 
         <div className="grid gap-4 lg:grid-cols-3">
           {blogPosts.slice(0, 3).map((post, i) => (
-            <div key={post.slug} style={{ transitionDelay: `${i * 80}ms` }}>
+            <div
+              key={post.slug}
+              className="h-full"
+              style={{ transitionDelay: `${i * 80}ms` }}
+            >
               <BlogCard post={post} />
             </div>
           ))}

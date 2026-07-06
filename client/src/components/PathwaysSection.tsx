@@ -24,7 +24,7 @@ const pathways = [
 
 export default function PathwaysSection() {
   return (
-    <section className="section-band bg-white">
+    <section className="section-band bg-white !pt-2 md:!pt-4">
       <div className="container">
         <div className="reveal-clip mx-auto mb-12 max-w-3xl text-center">
           <div className="section-kicker justify-center">Caminhos de cuidado</div>

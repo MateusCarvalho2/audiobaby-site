@@ -1,9 +1,8 @@
 import { useEffect, useState, type MouseEvent } from "react";
-import { Menu, Phone, X } from "lucide-react";
+import { Instagram, Menu, Phone, X } from "lucide-react";
 import { useLocation } from "wouter";
 
-const LOGO_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663425486120/CsgP7fCye3TgP32oG6rBBU/logo%20oficial_44c5ffbe.png";
+const LOGO_URL = "/imagens/logo-cabecalho.png";
 
 const navLinks = [
   { label: "Início", href: "/" },
@@ -61,13 +60,13 @@ export default function Navbar() {
         >
           <a
             href="/"
-            className="flex min-w-[142px] items-center"
+            className="flex min-w-[297px] items-center"
             aria-label="AudioBaby - ir para o início"
           >
             <img
               src={LOGO_URL}
               alt="AudioBaby - Núcleo de Audiologia Infantil"
-              className={`h-12 w-auto object-contain md:h-14 transition-all duration-500 ${
+              className={`h-[100px] w-auto object-contain md:h-[117px] transition-all duration-500 ${
                 !(isScrolled || isMenuOpen) && isDarkPage
                   ? "brightness-0 invert opacity-90"
                   : ""
@@ -110,7 +109,22 @@ export default function Navbar() {
             })}
           </nav>
 
-          <div className="hidden items-center gap-2 lg:flex">
+          <div className="hidden items-center gap-3 lg:flex">
+            <a
+              href="https://www.instagram.com/audiobaby.clinica/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex h-10 w-10 items-center justify-center border rounded-full transition-all duration-300 hover:scale-105 ${
+                isScrolled
+                  ? "border-[#94B1DA]/20 text-[#6B90C4] hover:bg-[#EEF4FB]"
+                  : isDarkPage
+                    ? "border-white/20 text-white hover:bg-white/10 hover:text-[#F4C62F]"
+                    : "border-[#94B1DA]/20 text-[#6B90C4] hover:bg-[#EEF4FB]"
+              }`}
+              aria-label="Instagram da AudioBaby"
+            >
+              <Instagram size={18} />
+            </a>
             <a
               href="https://wa.me/5571981581346?text=Olá! Gostaria de agendar um exame na AudioBaby."
               target="_blank"

@@ -15,14 +15,14 @@ export default function Estrutura() {
         <InternalHero
           label="Estrutura"
           title="Um espaço feito"
-          highlight="para o ritmo do bebê."
+          highlight="para o ritmo do seu bebê."
           description="Conheça a unidade AudioBaby, preparada para exames silenciosos, acolhimento da família e conforto durante toda a jornada."
-          image="/imagens/unidade/ambiente.jpg"
+          image="/imagens/unidade/unidade1.jpg"
           waveColor="#F8FBFF"
           bgColor="#F8FBFF"
         />
         <UnidadeSection />
-        <ContatoSection />
+        <ContatoSection topWaveBgColor="#F8FBFF" />
         <WhatsAppFloat />
       </div>
     </>
